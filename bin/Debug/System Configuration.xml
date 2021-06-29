@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<App_Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <COM>COM26</COM>
+  <Baud>115200</Baud>
+  <Database>agv_data</Database>
+  <Table>data1</Table>
+  <Kp>0.1</Kp>
+  <Ki>1</Ki>
+  <Kd>0</Kd>
+</App_Config>
