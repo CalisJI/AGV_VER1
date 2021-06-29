@@ -197,7 +197,7 @@ namespace READ_TEXT485
                 chay = true;
             }
             Read_agv();
-            //read_PLC();
+            read_PLC();
 
 
             //Read_From_Text(ref RFID);
