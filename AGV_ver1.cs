@@ -1704,7 +1704,7 @@ namespace READ_TEXT485
                         "`RUNSTOP`= '" + dataGridView1.Rows[i].Cells[3].Value.ToString() + "'," +
                         "`LR`= '" + dataGridView1.Rows[i].Cells[4].Value.ToString() + "'," +
                         "`SPEED`= '" + dataGridView1.Rows[i].Cells[5].Value.ToString() + "'," +
-                        "`DIR`= '" + dataGridView1.Rows[i].Cells[6].Value.ToString() + "'" +
+                        "`DIR`= '" + dataGridView1.Rows[i].Cells[6].Value.ToString() + "'," +
                         "`LIFT`= '" + dataGridView1.Rows[i].Cells[7].Value.ToString() + "'" +
                         " WHERE ID = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'";
                    bool b2= mySQL.SQL_command(cmd2, databases);
