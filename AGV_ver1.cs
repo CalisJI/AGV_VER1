@@ -61,9 +61,7 @@ namespace READ_TEXT485
             BackgroundWorker1.DoWork += BackgroundWorker1_DoWork;
             BackgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             BackgroundWorker1.WorkerSupportsCancellation = true;
-            Rotate_BGR.DoWork += Rotate_BGR_DoWork;
-            Rotate_BGR.RunWorkerCompleted += Rotate_BGR_RunWorkerCompleted;
-            Rotate_BGR.WorkerSupportsCancellation = true;
+           
             
             Timer.Interval = 50;
             Timer.Enabled = false;
@@ -84,21 +82,23 @@ namespace READ_TEXT485
         private void RFID_timer_Tick(object sender, EventArgs e)
         {
             dem++;
+           
             if (dem == 1)
             {
                 MethodInvoker inv = delegate
                 {
-                   
+                    changed = false;
                     ID = textBox14.Text;
-                    textBox11.Text = ID;
+                    
                 };
-                this.Invoke(inv);         
+                this.Invoke(inv);
             }
-            else if (dem == 2) 
+            else if (dem ==2)
             {
+                textBox11.Text = ID;
                 if (textBox14.Text != "") textBox14.Text = "";
                 dem = 0;
-                if (RFID_timer.Enabled) 
+                if (RFID_timer.Enabled)
                 {
                     RFID_timer.Stop();
                     RFID_timer.Enabled = false;
@@ -109,18 +109,18 @@ namespace READ_TEXT485
         private void Timer_main_Tick(object sender, EventArgs e)
         {
             dem_lost++;
-            if (textBox1.Text != "0" && IO_Check && textBox1.Text != "")  
+            if (textBox1.Text != "0" && IO_Check && textBox1.Text != "")
             {
                 out_put1[6] = '1';
                 out_put1[7] = '1';
-                PLC_WRegister[0] = BinaryToShort(""+out_put1[0]
-                    +out_put1[1]
-                    +out_put1[2]
-                    +out_put1[3]
-                    +out_put1[4]
-                    +out_put1[5]
-                    +out_put1[6]
-                    +out_put1[7]);
+                PLC_WRegister[0] = BinaryToShort("" + out_put1[0]
+                    + out_put1[1]
+                    + out_put1[2]
+                    + out_put1[3]
+                    + out_put1[4]
+                    + out_put1[5]
+                    + out_put1[6]
+                    + out_put1[7]);
             }
             else if (textBox1.Text == "0" && IO_Check)
             {
@@ -137,60 +137,125 @@ namespace READ_TEXT485
             }
 
 
-            if (!textBox14.Focused&&!Start_btn.Enabled) 
+            if (!textBox14.Focused && !Start_btn.Enabled)
             {
                 textBox14.Focus();
             }
+            Console.WriteLine("---------------------------"+Registers[5]);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            PIDspeed();
+           
+                PIDspeed();
+
             Zedgraph();
             
         }
-        private void Rotate_BGR_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+       
+        bool begin = false;
+        private void wait_rotate()
         {
-            if (rotated)
+            bool d = false;
+            
+            int so = Math.Abs(Registers[9]);
+            if ((so <= 6 && so >= 0) && Registers[0] == 1 && !begin) 
             {
-                MethodInvoker inv = delegate 
+                begin = false;
+            }
+            else begin = true;
+            if (((so>=3)|| Registers[0] == 0) && begin)
+            {
+                d = false;
+                MethodInvoker inv = delegate
+                {
+                    if (!d)
+                    {
+                        pictureBox5.Show();
+                    }
+
+                }; this.Invoke(inv);
+
+            }
+            if (so <= 1 && Registers[0] == 1 && begin && !d)  
+            {
+                d = true;
+            }
+          
+           
+            if (rotated && d) 
+            {
+                MethodInvoker inv = delegate
                 {
                     rotated = false;
                     Start_btn.Hide();
                     button10.Show();
-                };this.Invoke(inv);
-               
-            }
-            else 
-            {
-                MethodInvoker inv = delegate 
-                {
-                    rotated = true;
-                    button10.Hide();
-                    Start_btn.Show();
+                    WRegisters16[10] = 0;
+                    WRegisters16[11] = 0;
+                    //WRegisters16[4] = 100;
                     WRegisters16[5] = 0;
+                    auto = true;
+                    if (chanmode) 
+                    {
+                       // WRegisters16[5] = 0;
+                    }
+                   
                     if (!Start_btn.Enabled && !Timer.Enabled)
                     {
                         Timer.Enabled = true;
                         Timer.Start();
+                        error = 0;
+                        last_error = 0;
+                        last_pre_error = 0;
+                        Tchar = 0;
+                        pre_out = 0;
+                        OUT = 0;
                     }
-                };this.Invoke(inv);
-               
-            }
-            MethodInvoker inv1 = delegate 
-            {
-                pictureBox5.Hide();
-            };this.Invoke(inv1);
-            
-        }
+                    check_rotate = false;
+                   
+                        pictureBox5.Hide();
+                   
+                }; this.Invoke(inv);
 
-        private void Rotate_BGR_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (textBox2.Text == "0" && textBox2.Text == "1" && textBox2.Text == "-1" && Registers[0] == 1) { }
-            while ((textBox2.Text != "0" && textBox2.Text != "1" && textBox2.Text != "-1")||Registers[0]==0) 
-            {            
-                    pictureBox5.Show();              
             }
+            else if(!rotated && d)
+            {
+                MethodInvoker inv = delegate
+                {
+                    rotated = true;
+                    button10.Hide();
+                    Start_btn.Show();
+                    WRegisters16[10] = 0;
+                    WRegisters16[11] = 0;
+                    //WRegisters16[4] = 100;
+                    WRegisters16[5] = 0;
+                    auto = true;
+                    if (chanmode)
+                    {
+                       // WRegisters16[5] = 0;
+                    }
+                    check_rotate = false;
+                   
+                    if (!Start_btn.Enabled && !Timer.Enabled)
+                    {
+                        Timer.Enabled = true;
+                        Timer.Start();
+                        error = 0;
+                        last_error = 0;
+                        last_pre_error = 0;
+                        Tchar = 0;
+                        pre_out = 0;
+                        OUT = 0;
+                    }
+
+                    pictureBox5.Hide();
+                   
+                }; this.Invoke(inv);
+
+            }
+           
+           
+
         }
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -212,7 +277,15 @@ namespace READ_TEXT485
             Read_agv();
             read_PLC();
 
-
+            if (check_rotate) 
+            {
+                if (Timer.Enabled) 
+                {
+                    Timer.Stop();
+                    Timer.Enabled = false;
+                }
+                wait_rotate();
+            }
             //Read_From_Text(ref RFID);
 
 
@@ -726,6 +799,17 @@ namespace READ_TEXT485
                     textBox3.Text = Registers[5].ToString();
                     progressBar1.Value = Registers[0];
                 }; this.Invoke(invoker);
+                //if (Registers[7] != 0) 
+                //{
+                //    if (WRegisters16[0] != 1) 
+                //    {
+                //        WRegisters16[0] = 1;
+                //    }
+                //    else if (WRegisters16[0] == 1) 
+                //    {
+                //        WRegisters16[0] = 0;
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -842,19 +926,23 @@ namespace READ_TEXT485
             //}
         }
         bool rotated = true;
+        bool check_rotate = false;
         private void Rotate(int speed, ref bool ahead) 
         {
             WRegisters16[5] = 1;
+            auto = false;
             if (ahead) 
             {
                 WRegisters16[8] = 1;
                 WRegisters16[9] = 1;
                 WRegisters16[10] = (short)speed;
                 WRegisters16[11] =(short)speed;
-                if (!Rotate_BGR.IsBusy) 
-                {
-                    Rotate_BGR.RunWorkerAsync();
-                }
+                //if (!Rotate_BGR.IsBusy) 
+                //{
+                //    Rotate_BGR.RunWorkerAsync();
+                //}
+                check_rotate = true;
+                begin = false;
                
             }
             else
@@ -863,10 +951,12 @@ namespace READ_TEXT485
                 WRegisters16[9] = 0;
                 WRegisters16[10] = (short)speed;
                 WRegisters16[11] = (short)speed;
-                if (!Rotate_BGR.IsBusy) 
-                {
-                    Rotate_BGR.RunWorkerAsync();
-                }
+                //if (!Rotate_BGR.IsBusy) 
+                //{
+                //    Rotate_BGR.RunWorkerAsync();
+                //}
+                check_rotate = true;
+                begin = false;
             }
             if (Timer.Enabled)
             {
@@ -883,20 +973,28 @@ namespace READ_TEXT485
                     if (RFID_ID == DataTable.Rows[i][0].ToString()) 
                     {
                         WRegisters16[4] = Convert.ToInt16(DataTable.Rows[i][5].ToString());
+                        MethodInvoker inv = delegate 
+                        {
+                            textBox9.Text = WRegisters16[4].ToString();
+                        };this.Invoke(inv);
                         WRegisters16[3] = Convert.ToInt16(DataTable.Rows[i][4].ToString());
                         WRegisters16[1] = Convert.ToInt16(DataTable.Rows[i][3].ToString());
                         
                         if (DataTable.Rows[i][6].ToString() == "1") 
                         {
-                            WRegisters16[8] = 1;
-                            WRegisters16[9] = 0;
+                            if (!rotated)
+                            {
+                                Rotate(manual_Speed, ref rotated);
+                            }
+                       
                         }
                         else if(DataTable.Rows[i][6].ToString() == "0") 
                         {
-                            WRegisters16[4] = 0;
-                            WRegisters16[5] = 1;
-                            rotated = true;
-                            Rotate(manual_Speed, ref rotated);
+                            if (rotated) 
+                            {
+                                Rotate(manual_Speed, ref rotated);
+                            }
+                          
                            
                         }
                         if(DataTable.Rows[i][7].ToString() == "1") 
@@ -940,48 +1038,54 @@ namespace READ_TEXT485
         public void PIDspeed()
         {
             //var Chart = chart1.ChartAreas[0];
-            if (auto) 
+            if (WRegisters16[1] != 0) 
             {
-                set_speed = float.Parse(textBox9.Text);
-            }
-            else 
-            {
-                set_speed = (float)300;
-            }
+                if (auto)
+                {
+                    set_speed = float.Parse(textBox9.Text);
+                }
+                else
+                {
+                    set_speed = (float)manual_Speed;
+                }
 
-            if (set_speed > Ychar)
-            {
-                Ychar = set_speed;
+                if (set_speed > Ychar)
+                {
+                    Ychar = set_speed;
+                }
+                T = 0.05f;
+                tickStart += T;
+                error = (float)(set_speed - (Registers[5]));
+                //last_error = 0;
+                //last_pre_error = 0;
+                Kp = float.Parse(textBox6.Text);
+                Ki = float.Parse(textBox7.Text);
+                Kd = float.Parse(textBox8.Text);
+                P = Kp * (error - last_error);
+                I = (float)(0.5 * Ki * T * (error + last_error));
+                D = Kd / T * (error - 2 * last_error + last_pre_error);
+                OUT = pre_out + P + I + D;
+                last_pre_error = last_error;
+                last_error = error;
+                pre_out = OUT;
+                
+                if(OUT> (set_speed * 1.2)||OUT<0)
+                {
+                    OUT = set_speed;
+                   
+                    WRegisters16[4] = (Int16)set_speed;
+                }
+                else 
+                {
+                    WRegisters16[4] = (Int16)OUT;
+                }
+              
+               
+                Console.WriteLine(OUT);
+                textBox5.Text = OUT.ToString();
             }
-            T = 0.05f;
-            tickStart += T;
-            error = (float)(set_speed - (Registers[5]));
-            //last_error = 0;
-            //last_pre_error = 0;
-            Kp = float.Parse(textBox6.Text);
-            Ki = float.Parse(textBox7.Text);
-            Kd = float.Parse(textBox8.Text);
-            P = Kp * (error - last_error);
-            I = (float)(0.5 * Ki * T * (error + last_error));
-            D = Kd / T * (error - 2 * last_error + last_pre_error);
-            OUT = pre_out + P + I + D;
-            last_pre_error = last_error;
-            last_error = error;
-            pre_out = OUT;
-            WRegisters16[4] = (Int16)OUT;
+           
           
-            textBox5.Text = OUT.ToString();
-            //if (Tchar - temp_time > 1000)
-            //{
-            //    chart1.Series.Clear();
-            //    createNewSeries("PID");
-            //    chart1.Series["PID"].ChartType = SeriesChartType.Line;
-            //    chart1.Series["PID"].Color = Color.Red;
-            //    chart1.Series[0].IsVisibleInLegend = false;
-            //    Chart.AxisX.Minimum = Tchar;
-            //}
-            //Chart.AxisX.Maximum = Tchar;
-            //Chart.AxisY.Maximum = Ychar * (1 + 0.3);
 
 
         }
@@ -991,11 +1095,7 @@ namespace READ_TEXT485
             string strHex = Convert.ToInt32(data, 2).ToString();
 
             short hex = Convert.ToInt16(strHex);
-            //for (int i = 0; i < data.Length; i += 8)
-            //{
-            //    byteList.Add(Convert.ToByte(data.Substring(i, 8), 2));
-            //}
-            //string hex = Encoding.ASCII.GetString(byteList.ToArray());
+          
             return hex;
         }
         string data_write1 = string.Empty;
@@ -1232,10 +1332,6 @@ namespace READ_TEXT485
 
         }
         #endregion
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
-
-        }
         #region Controller
         private void Start_btn_Click(object sender, EventArgs e)
         {
@@ -1274,14 +1370,9 @@ namespace READ_TEXT485
             pre_out = 0;
             OUT = 0;
             WRegisters16[4] = 0;
-            textBox14.LostFocus -= TextBox14_LostFocus;
 
-            //if (BackgroundWorker1.IsBusy)
-            //{
-            //    chay = true;
-            //    BackgroundWorker1.CancelAsync();
-
-            //}
+            WRegisters16[10] = 0;   //2010 Speed Motor A
+            WRegisters16[11] = 0;   //2011 Speed Motor B
             Stop_btn.Enabled = false;
             if (Timer.Enabled) 
             {
@@ -1302,20 +1393,7 @@ namespace READ_TEXT485
         #region Status
         private void Reset_Fault_btn_Click(object sender, EventArgs e)
         {
-            short[] value = new short[] { 1 };
-            short[] value1 = new short[] { 0 };
-            WRegisters16[0] = 0;
-            bool Reset1 = _RS485.SendFc16(1, 2000, 1, value);
-            if (!Reset1) 
-            {
-                MessageBox.Show("Reset Fault: " + _RS485.Modbus_status);
 
-            }
-            bool Reset0 = _RS485.SendFc16(1, 2000, 1, value1);
-            if (!Reset0)
-            {
-                MessageBox.Show("Reset Fault: " + _RS485.Modbus_status);
-            }
         }
         #endregion
         #region Events
@@ -1591,28 +1669,37 @@ namespace READ_TEXT485
         {
             WRegisters16[0] = 0;
         }
-
+        bool changed = false;
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
-            Thread t = new Thread(() => {
-                try
-                {
-                    Compare_RFID(ID);
-                }
-                catch (Exception exx)
-                {
+            if (!changed) 
+            {
+                Thread t = new Thread(() => {
+                    try
+                    {
+                        changed = true;
+                        Compare_RFID(ID);
+                    }
+                    catch (Exception exx)
+                    {
 
-                    MessageBox.Show(exx.Message);
-                }
-                //read_rs232(ID);
-               
-            });
-            t.Start();
+                        MessageBox.Show(exx.Message);
+                    }
+                    //read_rs232(ID);
+
+                });
+                t.Start();
+            }
+           
         }
 
         private void textBox14_TextChanged(object sender, EventArgs e)
         {
-            
+          
+            if(textBox14.Text != "") 
+            {
+                textBox11.Text = "";
+            }    
             if (!RFID_timer.Enabled) 
             {
                 RFID_timer.Enabled = true;
@@ -1663,9 +1750,11 @@ namespace READ_TEXT485
             }
            
         }
+        bool chanmode = false;
 
         private void Continue_btn_Click(object sender, EventArgs e)
         {
+            chanmode = true;
             Rotate(manual_Speed, ref rotated);
         }
 

@@ -70,13 +70,14 @@ namespace READ_TEXT485
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.Stop_btn = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.Start_btn = new System.Windows.Forms.Button();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
+            this.Start_btn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Discon_btn = new System.Windows.Forms.Button();
             this.Connect_btn = new System.Windows.Forms.Button();
@@ -145,7 +146,6 @@ namespace READ_TEXT485
             this.XE = new System.Windows.Forms.CheckBox();
             this.X3 = new System.Windows.Forms.CheckBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -576,8 +576,8 @@ namespace READ_TEXT485
             this.groupBox3.Controls.Add(this.pictureBox1);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Controls.Add(this.button10);
             this.groupBox3.Controls.Add(this.Start_btn);
+            this.groupBox3.Controls.Add(this.button10);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(487, 10);
             this.groupBox3.Name = "groupBox3";
@@ -620,16 +620,6 @@ namespace READ_TEXT485
             this.pictureBox4.TabStop = false;
             this.pictureBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox4_MouseDown);
             this.pictureBox4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox4_MouseUp);
-            // 
-            // Start_btn
-            // 
-            this.Start_btn.Location = new System.Drawing.Point(20, 56);
-            this.Start_btn.Name = "Start_btn";
-            this.Start_btn.Size = new System.Drawing.Size(72, 26);
-            this.Start_btn.TabIndex = 0;
-            this.Start_btn.Text = "Start";
-            this.Start_btn.UseVisualStyleBackColor = true;
-            this.Start_btn.Click += new System.EventHandler(this.Start_btn_Click);
             // 
             // textBox15
             // 
@@ -702,6 +692,27 @@ namespace READ_TEXT485
             this.label22.Size = new System.Drawing.Size(76, 12);
             this.label22.TabIndex = 1;
             this.label22.Text = "Manual Speed";
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.Yellow;
+            this.button10.Location = new System.Drawing.Point(20, 56);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(72, 26);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "Continue";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.Continue_btn_Click);
+            // 
+            // Start_btn
+            // 
+            this.Start_btn.Location = new System.Drawing.Point(20, 56);
+            this.Start_btn.Name = "Start_btn";
+            this.Start_btn.Size = new System.Drawing.Size(72, 26);
+            this.Start_btn.TabIndex = 0;
+            this.Start_btn.Text = "Start";
+            this.Start_btn.UseVisualStyleBackColor = true;
+            this.Start_btn.Click += new System.EventHandler(this.Start_btn_Click);
             // 
             // groupBox1
             // 
@@ -1464,17 +1475,6 @@ namespace READ_TEXT485
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.Yellow;
-            this.button10.Location = new System.Drawing.Point(20, 56);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(72, 26);
-            this.button10.TabIndex = 0;
-            this.button10.Text = "Continue";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.Continue_btn_Click);
             // 
             // AGV_ver1
             // 
