@@ -397,6 +397,7 @@ namespace READ_TEXT485
         #region Connection
         private void Connect_btn_Click(object sender, EventArgs e)
         {
+            App_Config = Configxml.GetSystem_Config();
             //string port = ComP_box.Text;
             string port = App_Config.COM;
             //int baud = int.Parse(Baud_box.Text);
@@ -1601,11 +1602,13 @@ namespace READ_TEXT485
         private void ComP_box_SelectedIndexChanged(object sender, EventArgs e)
         {
             Configxml.UpdateSystem_Config("COM", ComP_box.Text);
+           
         }
 
         private void Baud_box_SelectedIndexChanged(object sender, EventArgs e)
         {
             Configxml.UpdateSystem_Config("Baud", Baud_box.Text);
+         
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
