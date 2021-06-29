@@ -153,28 +153,41 @@ namespace READ_TEXT485
         {
             if (rotated)
             {
-                rotated = false;
-                Start_btn.Hide();
-                button10.Show();
+                MethodInvoker inv = delegate 
+                {
+                    rotated = false;
+                    Start_btn.Hide();
+                    button10.Show();
+                };this.Invoke(inv);
+               
             }
             else 
             {
-                rotated = true;
-                button10.Hide();
-                Start_btn.Show();
-                WRegisters16[5] = 0;
-                if(!Start_btn.Enabled && !Timer.Enabled) 
+                MethodInvoker inv = delegate 
                 {
-                    Timer.Enabled = true;
-                    Timer.Start();
-                }
-            } 
-            pictureBox5.Hide();
+                    rotated = true;
+                    button10.Hide();
+                    Start_btn.Show();
+                    WRegisters16[5] = 0;
+                    if (!Start_btn.Enabled && !Timer.Enabled)
+                    {
+                        Timer.Enabled = true;
+                        Timer.Start();
+                    }
+                };this.Invoke(inv);
+               
+            }
+            MethodInvoker inv1 = delegate 
+            {
+                pictureBox5.Hide();
+            };this.Invoke(inv1);
+            
         }
 
         private void Rotate_BGR_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (textBox2.Text != "0" && textBox2.Text != "1" && textBox2.Text != "-1") 
+            while (textBox2.Text == "0" && textBox2.Text == "1" && textBox2.Text == "-1" && Registers[0] == 1) { }
+            while ((textBox2.Text != "0" && textBox2.Text != "1" && textBox2.Text != "-1")||Registers[0]==0) 
             {            
                     pictureBox5.Show();              
             }
@@ -451,6 +464,14 @@ namespace READ_TEXT485
             {
                 if (Stop_btn.Enabled) Stop_btn.PerformClick();
                 //if (serialPort1.IsOpen) serialPort1.Close();
+                MethodInvoker inv = delegate 
+                {
+                    button10.Hide();
+                    Start_btn.Show();
+                    
+                };this.Invoke(inv);
+               
+                
             }
             catch (Exception ex)
             {

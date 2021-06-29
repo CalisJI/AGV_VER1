@@ -50,3 +50,4 @@ F:\VISUAL PROJECT\READ_TEXT485\bin\Debug\zh-cn\ZedGraph.resources.dll
 F:\VISUAL PROJECT\READ_TEXT485\bin\Debug\zh-tw\ZedGraph.resources.dll
 F:\VISUAL PROJECT\READ_TEXT485\bin\Debug\LibUsbDotNet.LibUsbDotNet.dll
 F:\VISUAL PROJECT\READ_TEXT485\bin\Debug\LibUsbDotNet.LibUsbDotNet.pdb
+F:\VISUAL PROJECT\READ_TEXT485\obj\Debug\READ_TEXT485.csprojAssemblyReference.cache
