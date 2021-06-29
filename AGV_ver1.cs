@@ -213,6 +213,7 @@ namespace READ_TEXT485
             Start_btn.Enabled = false;
             Stop_btn.Enabled = false;
             pictureBox5.Hide();
+            button10.Hide();
             string[] serial_port = SerialPort.GetPortNames();
             foreach (string item in serial_port)
             {
