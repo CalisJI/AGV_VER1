@@ -214,7 +214,20 @@ namespace READ_TEXT485
                     check_rotate = false;
                    
                         pictureBox5.Hide();
-                   
+                    
+                    if (temp1[5] == '1') 
+                    {                       
+                        WRegisters16[4] = 0;
+                    }
+                    short[] value = new short[2];
+                    build_data();
+                    value[0] = BinaryToShort(data_write1);
+                    value[1] = BinaryToShort(data_Write2);
+                    PLC_WRegister[0] = value[0];
+                    PLC_WRegister[1] = value[1];
+                    //temp1[5] = '1';
+
+
                 }; this.Invoke(inv);
 
             }
@@ -249,7 +262,16 @@ namespace READ_TEXT485
                     }
 
                     pictureBox5.Hide();
-                   
+                    if (temp1[5] == '1')
+                    {                     
+                        WRegisters16[4] = 0;
+                    }
+                    short[] value = new short[2];
+                    build_data();
+                    value[0] = BinaryToShort(data_write1);
+                    value[1] = BinaryToShort(data_Write2);
+                    PLC_WRegister[0] = value[0];
+                    PLC_WRegister[1] = value[1];
                 }; this.Invoke(inv);
 
             }
@@ -285,6 +307,15 @@ namespace READ_TEXT485
                     Timer.Enabled = false;
                 }
                 wait_rotate();
+            }
+            else 
+            {
+                short[] value = new short[2];
+                build_data();
+                value[0] = BinaryToShort(data_write1);
+                value[1] = BinaryToShort(data_Write2);
+                PLC_WRegister[0] = value[0];
+                PLC_WRegister[1] = value[1];
             }
             //Read_From_Text(ref RFID);
 
@@ -906,25 +937,7 @@ namespace READ_TEXT485
                 MessageBox.Show(ex.Message);
             }
         }
-        private void read_rs232(string data_inSP2)
-        {
-            //string in_rfid = string.Empty;
-            //if (data_inSP2.StartsWith("s") && data_inSP2.Contains("e"))
-            //{
-            //    int vitri_e = data_inSP2.IndexOf("e") - 1;
-            //    in_rfid = data_inSP2.Substring(1, vitri_e);
-                Compare_RFID(data_inSP2);
-            //    MethodInvoker inv = delegate
-            //    {
-            //        textBox11.Text = in_rfid;
-            //    }; this.Invoke(inv);
-
-            //}
-            //else 
-            //{
-            //    serialPort1.Write("A");
-            //}
-        }
+       
         bool rotated = true;
         bool check_rotate = false;
         private void Rotate(int speed, ref bool ahead) 
@@ -964,6 +977,7 @@ namespace READ_TEXT485
                 Timer.Enabled = false;
             }
         }
+        Int16 temp_speed = 0;
         private void Compare_RFID(string RFID_ID)
         {
             try
@@ -973,6 +987,7 @@ namespace READ_TEXT485
                     if (RFID_ID == DataTable.Rows[i][0].ToString()) 
                     {
                         WRegisters16[4] = Convert.ToInt16(DataTable.Rows[i][5].ToString());
+                        temp_speed = WRegisters16[4];
                         MethodInvoker inv = delegate 
                         {
                             textBox9.Text = WRegisters16[4].ToString();
@@ -1000,22 +1015,22 @@ namespace READ_TEXT485
                         if(DataTable.Rows[i][7].ToString() == "1") 
                         {
                             temp1[5] = '1';
-                            short[] value = new short[2];
-                            build_data();
-                            value[0] = BinaryToShort(data_write1);
-                            value[1] = BinaryToShort(data_Write2);
-                            PLC_WRegister[0] = value[0];
-                            PLC_WRegister[1] = value[1];
+                            //short[] value = new short[2];
+                            //build_data();
+                            //value[0] = BinaryToShort(data_write1);
+                            //value[1] = BinaryToShort(data_Write2);
+                            //PLC_WRegister[0] = value[0];
+                            //PLC_WRegister[1] = value[1];
                         }
                         else if(DataTable.Rows[i][7].ToString() == "0") 
                         {
                             temp1[5] = '0';
-                            short[] value = new short[2];
-                            build_data();
-                            value[0] = BinaryToShort(data_write1);
-                            value[1] = BinaryToShort(data_Write2);
-                            PLC_WRegister[0] = value[0];
-                            PLC_WRegister[1] = value[1];
+                            //short[] value = new short[2];
+                            //build_data();
+                            //value[0] = BinaryToShort(data_write1);
+                            //value[1] = BinaryToShort(data_Write2);
+                            //PLC_WRegister[0] = value[0];
+                            //PLC_WRegister[1] = value[1];
                         }
                         
                     }
@@ -1755,7 +1770,15 @@ namespace READ_TEXT485
         private void Continue_btn_Click(object sender, EventArgs e)
         {
             chanmode = true;
-            Rotate(manual_Speed, ref rotated);
+            if (temp1[5] == '1') 
+            {
+                WRegisters16[4] = temp_speed;
+            }
+            else 
+            {
+                Rotate(manual_Speed, ref rotated);
+            }
+           
         }
 
         bool hold = false;

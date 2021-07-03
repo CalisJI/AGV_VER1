@@ -74,8 +74,6 @@ C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\K4os.Compression.LZ4.xml
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\K4os.Compression.LZ4.Streams.xml
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\K4os.Hash.xxHash.xml
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\LibUsbDotNet.LibUsbDotNet.pdb
-C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\ModBus_RTU.pdb
-C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\ModBus_RTU.xml
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\MySql.Data.xml
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\System.Buffers.xml
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\System.Memory.xml
@@ -95,7 +93,6 @@ C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\sv\ZedGraph.resources.dll
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\tr\ZedGraph.resources.dll
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\zh-cn\ZedGraph.resources.dll
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Debug\zh-tw\ZedGraph.resources.dll
-C:\Users\PC\Source\Repos\AGV_VER1\obj\Debug\READ_TEXT485.csproj.AssemblyReference.cache
 C:\Users\PC\Source\Repos\AGV_VER1\obj\Debug\READ_TEXT485.AGV_ver1.resources
 C:\Users\PC\Source\Repos\AGV_VER1\obj\Debug\READ_TEXT485.Properties.Resources.resources
 C:\Users\PC\Source\Repos\AGV_VER1\obj\Debug\READ_TEXT485.csproj.GenerateResource.cache
