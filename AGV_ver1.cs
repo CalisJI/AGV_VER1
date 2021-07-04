@@ -279,6 +279,7 @@ namespace READ_TEXT485
            
 
         }
+
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             
@@ -616,6 +617,18 @@ namespace READ_TEXT485
         }
         #endregion
         #region SubFuncTion
+        private void obstacle(bool detect) 
+        {
+            if (detect) 
+            {
+                WRegisters16[4] = 0;
+
+            }
+            else 
+            {
+                WRegisters16[4] = temp_speed;
+            }
+        }
         private void Zedgraph() 
         {
             if (zedGraphControl1.GraphPane.CurveList.Count <= 0)
@@ -688,7 +701,11 @@ namespace READ_TEXT485
                             out_put1[i] = out1[i];
                             out_put2[i] = out2[i];
                         }
-
+                        if (in_put1[0] == '1')
+                        {
+                            obstacle(true);
+                        }
+                        else obstacle(false);
                         textBox12.Text = in1 + in2;
                         textBox13.Text = out1 + out2;
                     }; this.Invoke(inv);
