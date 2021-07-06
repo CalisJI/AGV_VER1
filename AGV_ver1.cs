@@ -1132,19 +1132,19 @@ namespace READ_TEXT485
                 Kd = float.Parse(textBox8.Text);
 
 
-                I = integral_prior + error * T;
-                D = (error - last_error) / T;
-                OUT = Kp * error + Ki * I + Kd * D;
-                last_error = error;
-                integral_prior = I;
-
-                //P = Kp * (error - last_error);
-                //I = (float)(0.5 * Ki * T * (error + last_error));
-                //D = Kd / T * (error - 2 * last_error + last_pre_error);
-                //OUT = pre_out + P + I + D;
-                //last_pre_error = last_error;
+                //I = integral_prior + error * T;
+                //D = (error - last_error) / T;
+                //OUT = Kp * error + Ki * I + Kd * D;
                 //last_error = error;
-                //pre_out = OUT;
+                //integral_prior = I;
+
+                P = Kp * (error - last_error);
+                I = (float)(0.5 * Ki * T * (error + last_error));
+                D = Kd / T * (error - 2 * last_error + last_pre_error);
+                OUT = pre_out + P + I + D;
+                last_pre_error = last_error;
+                last_error = error;
+                pre_out = OUT;
 
                 if (OUT> (set_speed * 1.2)||OUT<0)
                 {
