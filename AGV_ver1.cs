@@ -570,6 +570,7 @@ namespace READ_TEXT485
                     Timer_main.Enabled = true;
                     Timer_main.Start();
                 }
+                manual_Speed = int.Parse(textBox15.Text);
             }
             else
             {
