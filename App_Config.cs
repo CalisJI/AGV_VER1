@@ -15,6 +15,7 @@ namespace READ_TEXT485
         public string Kp { get; set; }
         public string Ki { get; set; }
         public string Kd { get; set; }
+        public string rotate { get; set; }
 
     }
 }

@@ -231,6 +231,7 @@ namespace READ_TEXT485
                     //temp1[5] = '1';
                     check_rotate = false;
 
+                    Configxml.UpdateSystem_Config("rotate", rotated.ToString());
                 }; this.Invoke(inv);
 
             }
@@ -280,7 +281,7 @@ namespace READ_TEXT485
                         PLC_WRegister[0] = value[0];
                         PLC_WRegister[1] = value[1];
                     }
-                   
+                    Configxml.UpdateSystem_Config("rotate", rotated.ToString());
                 }; this.Invoke(inv);
                 check_rotate = false;
             }
@@ -470,6 +471,14 @@ namespace READ_TEXT485
             catch (Exception ex)
             {
                 comboBox2.Text = "SQL Error";
+            }
+            if (App_Config.rotate == "True") 
+            {
+                rotated = true;
+            }
+            else if (App_Config.rotate == "False") 
+            {
+                rotated = false;
             }
             comboBox2.SelectedItem = App_Config.Table;
             GraphPane = zedGraphControl1.GraphPane;
@@ -1718,6 +1727,7 @@ namespace READ_TEXT485
         bool changed = false;
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
+            if (!Start_btn.Enabled) return;
             if (!changed) 
             {
                 Thread t = new Thread(() => {

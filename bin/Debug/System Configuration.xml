@@ -3,8 +3,9 @@
   <COM>COM1</COM>
   <Baud>115200</Baud>
   <Database>agv_data</Database>
-  <Table>data2</Table>
+  <Table />
   <Kp>0.1</Kp>
   <Ki>1</Ki>
   <Kd>0</Kd>
+  <rotate>True</rotate>
 </App_Config>
