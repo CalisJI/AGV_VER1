@@ -224,7 +224,7 @@ namespace READ_TEXT485
                         pre_out = 0;
                         OUT = 0;
                     }
-                    check_rotate = false;
+                   
                    
                         pictureBox5.Hide();
                     
@@ -239,7 +239,7 @@ namespace READ_TEXT485
                     PLC_WRegister[0] = value[0];
                     PLC_WRegister[1] = value[1];
                     //temp1[5] = '1';
-
+                    check_rotate = false;
 
                 }; this.Invoke(inv);
 
@@ -260,7 +260,7 @@ namespace READ_TEXT485
                     {
                        // WRegisters16[5] = 0;
                     }
-                    check_rotate = false;
+                  
                    
                     if (!Start_btn.Enabled && !Timer.Enabled)
                     {
@@ -286,7 +286,7 @@ namespace READ_TEXT485
                     PLC_WRegister[0] = value[0];
                     PLC_WRegister[1] = value[1];
                 }; this.Invoke(inv);
-
+                check_rotate = false;
             }
            
           
@@ -975,29 +975,25 @@ namespace READ_TEXT485
             auto = false;
             if (ahead) 
             {
+                //check_rotate = true;
                 WRegisters16[8] = 1;
                 WRegisters16[9] = 1;
                 WRegisters16[10] = (short)speed;
                 WRegisters16[11] =(short)speed;
-                //if (!Rotate_BGR.IsBusy) 
-                //{
-                //    Rotate_BGR.RunWorkerAsync();
-                //}
-                check_rotate = true;
+                
+               
                 begin = false;
                
             }
             else
             {
+                //check_rotate = true;
                 WRegisters16[8] = 0;
                 WRegisters16[9] = 0;
                 WRegisters16[10] = (short)speed;
                 WRegisters16[11] = (short)speed;
-                //if (!Rotate_BGR.IsBusy) 
-                //{
-                //    Rotate_BGR.RunWorkerAsync();
-                //}
-                check_rotate = true;
+               
+              
                 begin = false;
             }
             if (Timer.Enabled)
@@ -1028,6 +1024,7 @@ namespace READ_TEXT485
                         {
                             if (!rotated)
                             {
+                                check_rotate = true;
                                 Rotate(manual_Speed, ref rotated);
                                
                             }
@@ -1037,6 +1034,7 @@ namespace READ_TEXT485
                         {
                             if (rotated) 
                             {
+                                check_rotate = true;
                                 Rotate(manual_Speed, ref rotated);
                             }
                             if (DataTable.Rows[i][4].ToString() == "1") 
