@@ -658,7 +658,7 @@ namespace READ_TEXT485
             IPointListEdit list = curve.Points as IPointListEdit;
             if (list == null)
                 return;
-            list.Add(tickStart, OUT);
+            list.Add(tickStart, Registers[5]);
             Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
             Scale yScale = zedGraphControl1.GraphPane.YAxis.Scale;
             if (tickStart > xScale.Max - xScale.MajorStep)
@@ -666,13 +666,13 @@ namespace READ_TEXT485
                 xScale.Max = tickStart + xScale.MajorStep;
                 xScale.Min = xScale.Max - 5;
             }
-            if (OUT > yScale.Max - yScale.MajorStep)
+            if (Registers[5] > yScale.Max - yScale.MajorStep)
             {
-                yScale.Max = OUT + yScale.MajorStep;
+                yScale.Max = Registers[5] + yScale.MajorStep;
             }
-            else if (OUT < yScale.Min + yScale.MajorStep)
+            else if (Registers[5] < yScale.Min + yScale.MajorStep)
             {
-                yScale.Min = OUT - yScale.MajorStep;
+                yScale.Min = Registers[5] - yScale.MajorStep;
             }
             zedGraphControl1.AxisChange();
             zedGraphControl1.Invalidate();
