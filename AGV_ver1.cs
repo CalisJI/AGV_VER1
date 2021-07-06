@@ -114,39 +114,23 @@ namespace READ_TEXT485
                 short[] value = new short[1];
                 temp1[6] = '1';
                 temp1[7] = '1';
-                //build_data();
+                build_data();
 
                 value[0] = BinaryToShort(data_write1);
                 
                 PLC_WRegister[0] = value[0];
-                //PLC_WRegister[1] = value[1];
-                //PLC_WRegister[0] = BinaryToShort("" + out_put1[0]
-                //    + out_put1[1]
-                //    + out_put1[2]
-                //    + out_put1[3]
-                //    + out_put1[4]
-                //    + out_put1[5]
-                //    + out_put1[6]
-                //    + out_put1[7]);
+               
             }
             else if (textBox1.Text == "0" && IO_Check)
             {
                 short[] value = new short[2];
                 temp1[6] = '0';
                 temp1[7] = '0';
-                //build_data();
+                build_data();
                 value[0] = BinaryToShort(data_write1);
                
                 PLC_WRegister[0] = value[0];
-               // PLC_WRegister[1] = value[1];
-                //PLC_WRegister[0] = BinaryToShort("" + out_put1[0]
-                //    + out_put1[1]
-                //    + out_put1[2]
-                //    + out_put1[3]
-                //    + out_put1[4]
-                //    + out_put1[5]
-                //    + out_put1[6]
-                //    + out_put1[7]);
+             
             }
 
 
@@ -228,9 +212,14 @@ namespace READ_TEXT485
                    
                         pictureBox5.Hide();
                     
-                    if (temp1[5] == '1') 
+                    if (temp_xilanh == '1') 
                     {                       
                         WRegisters16[4] = 0;
+                        MethodInvoker inv1 = delegate
+                        {
+                            textBox9.Text = WRegisters16[4].ToString();
+                        }; this.Invoke(inv1);
+                        temp1[5] = temp_xilanh;
                         short[] value = new short[2];
                         build_data();
                         value[0] = BinaryToShort(data_write1);
@@ -276,9 +265,14 @@ namespace READ_TEXT485
                     }
 
                     pictureBox5.Hide();
-                    if (temp1[5] == '1')
+                    if (temp_xilanh == '1')
                     {                     
                         WRegisters16[4] = 0;
+                        MethodInvoker inv1 = delegate 
+                        {
+                            textBox9.Text = WRegisters16[4].ToString();
+                        };this.Invoke(inv1);
+                        temp1[5] = temp_xilanh;
                         short[] value = new short[2];
                         build_data();
                         value[0] = BinaryToShort(data_write1);
@@ -1005,6 +999,7 @@ namespace READ_TEXT485
             }
         }
         Int16 temp_speed = 0;
+        char temp_xilanh = ' ';
         private void Compare_RFID(string RFID_ID)
         {
             try
@@ -1055,12 +1050,14 @@ namespace READ_TEXT485
                         }
                         if(DataTable.Rows[i][7].ToString() == "1") 
                         {
-                            temp1[5] = '1';
+                            temp_xilanh = '1';
+                            //temp1[5] = '1';
                            
                         }
                         else if(DataTable.Rows[i][7].ToString() == "0") 
                         {
-                            temp1[5] = '0';
+                            temp_xilanh = '0';
+                           // temp1[5] = '0';
                            
                         }
                         
@@ -1791,7 +1788,7 @@ namespace READ_TEXT485
             {
                 MethodInvoker inv = delegate 
                 {
-                    manual_Speed = 100;
+                    manual_Speed = 300;
                     textBox15.Text = manual_Speed.ToString();
                 };this.Invoke(inv);
                 
@@ -1807,6 +1804,10 @@ namespace READ_TEXT485
             if (temp1[5] == '1') 
             {
                 WRegisters16[4] = temp_speed;
+                MethodInvoker inv1 = delegate
+                {
+                    textBox9.Text = WRegisters16[4].ToString();
+                }; this.Invoke(inv1);
             }
             else 
             {
