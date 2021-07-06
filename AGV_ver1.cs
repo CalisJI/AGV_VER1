@@ -1087,7 +1087,9 @@ namespace READ_TEXT485
         float T, Tchar = 0;
         float OUT, pre_out;
         float tickStart = 0;
-        float Ychar = 0;
+        float integral_prior = 0;
+
+
         bool auto = true;
         public void PIDspeed()
         {
@@ -1103,10 +1105,6 @@ namespace READ_TEXT485
                     set_speed = (float)manual_Speed;
                 }
 
-                if (set_speed > Ychar)
-                {
-                    Ychar = set_speed;
-                }
                 T = 0.05f;
                 tickStart += T;
                 error = (float)(set_speed - (Registers[5]));
@@ -1115,15 +1113,23 @@ namespace READ_TEXT485
                 Kp = float.Parse(textBox6.Text);
                 Ki = float.Parse(textBox7.Text);
                 Kd = float.Parse(textBox8.Text);
-                P = Kp * (error - last_error);
-                I = (float)(0.5 * Ki * T * (error + last_error));
-                D = Kd / T * (error - 2 * last_error + last_pre_error);
-                OUT = pre_out + P + I + D;
-                last_pre_error = last_error;
+
+
+                I = integral_prior + error * T;
+                D = (error - last_error) / T;
+                OUT = Kp * error + Ki * I + Kd * D;
                 last_error = error;
-                pre_out = OUT;
-                
-                if(OUT> (set_speed * 1.2)||OUT<0)
+                integral_prior = I;
+
+                //P = Kp * (error - last_error);
+                //I = (float)(0.5 * Ki * T * (error + last_error));
+                //D = Kd / T * (error - 2 * last_error + last_pre_error);
+                //OUT = pre_out + P + I + D;
+                //last_pre_error = last_error;
+                //last_error = error;
+                //pre_out = OUT;
+
+                if (OUT> (set_speed * 1.2)||OUT<0)
                 {
                     OUT = set_speed;                 
                     WRegisters16[4] = (Int16)set_speed;
@@ -1219,7 +1225,7 @@ namespace READ_TEXT485
             {
                 textBox5.Text = "0";
             }; this.Invoke(inv);
-            Ychar = 0;
+           
         }
         bool straight = false;
         private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
@@ -1262,7 +1268,7 @@ namespace READ_TEXT485
             {
                 textBox5.Text = "0";
             }; this.Invoke(inv);
-            Ychar = 0;
+          
         }
 
         private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
@@ -1303,7 +1309,7 @@ namespace READ_TEXT485
             {
                 textBox5.Text = "0";
             }; this.Invoke(inv);
-            Ychar = 0;
+          
         }
 
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
@@ -1344,7 +1350,7 @@ namespace READ_TEXT485
             {
                 textBox5.Text = "0";
             }; this.Invoke(inv);
-            Ychar = 0;
+           
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1437,7 +1443,7 @@ namespace READ_TEXT485
             {
                 textBox5.Text = "0";
             };this.Invoke(inv);
-            Ychar = 0;
+           
             ClearZelGraph();
             WRegisters16[1] = 0;
             Start_btn.Enabled = true;
