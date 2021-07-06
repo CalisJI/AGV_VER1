@@ -1485,6 +1485,7 @@ namespace READ_TEXT485
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AGV_ver1";
             this.Text = "AGV Controller";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AGV_ver1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

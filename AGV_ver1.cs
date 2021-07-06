@@ -1850,6 +1850,15 @@ namespace READ_TEXT485
            
         }
 
+        private void AGV_ver1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Configxml.UpdateSystem_Config("Kp", Kp.ToString());
+            Configxml.UpdateSystem_Config("Ki", Ki.ToString());
+            Configxml.UpdateSystem_Config("Kd", Kd.ToString());
+            Configxml.UpdateSystem_Config("rotate", rotated.ToString());
+
+        }
+
         bool hold = false;
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
