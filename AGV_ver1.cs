@@ -154,7 +154,7 @@ namespace READ_TEXT485
             {
                 textBox14.Focus();
             }
-            Console.WriteLine("---------------------------"+Registers[5]);
+            //Console.WriteLine("---------------------------"+Registers[5]);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -289,8 +289,7 @@ namespace READ_TEXT485
 
             }
            
-           
-
+          
         }
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1578,6 +1577,7 @@ namespace READ_TEXT485
         {
             try
             {
+                build_data();
                 short[] value = new short[2];
                 value[0] = BinaryToShort(data_write1);
                 value[1] = BinaryToShort(data_Write2);
@@ -1597,112 +1597,112 @@ namespace READ_TEXT485
         {
             if (Y0.Checked) temp1[7] = '1';
             else temp1[7] = '0';
-            build_data();
+           //build_data();
         }
        
         private void Y1_CheckedChanged(object sender, EventArgs e)
         {
             if (Y1.Checked) temp1[6] = '1';
             else temp1[6] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y2_CheckedChanged(object sender, EventArgs e)
         {
             if (Y2.Checked) temp1[5] = '1';
             else temp1[5] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y4_CheckedChanged(object sender, EventArgs e)
         {
             if (Y4.Checked) temp1[3] = '1';
             else temp1[3] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y3_CheckedChanged(object sender, EventArgs e)
         {
             if (Y3.Checked) temp1[4] = '1';
             else temp1[4] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y5_CheckedChanged(object sender, EventArgs e)
         {
             if (Y5.Checked) temp1[2] = '1';
             else temp1[2] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y6_CheckedChanged(object sender, EventArgs e)
         {
             if (Y6.Checked) temp1[1] = '1';
             else temp1[1] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y7_CheckedChanged(object sender, EventArgs e)
         {
             if (Y7.Checked) temp1[0] = '1';
             else temp1[0] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y8_CheckedChanged(object sender, EventArgs e)
         {
             if (Y8.Checked) temp2[7] = '1';
             else temp2[7] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Y9_CheckedChanged(object sender, EventArgs e)
         {
             if (Y9.Checked) temp2[6] = '1';
             else temp2[6] = '0';
-            build_data();
+            //build_data();
         }
 
         private void YA_CheckedChanged(object sender, EventArgs e)
         {
             if (YA.Checked) temp2[5] = '1';
             else temp2[5] = '0';
-            build_data();
+            //build_data();
         }
 
         private void YB_CheckedChanged(object sender, EventArgs e)
         {
             if (YB.Checked) temp2[4] = '1';
             else temp2[4] = '0';
-            build_data();
+            //build_data();
         }
 
         private void YC_CheckedChanged(object sender, EventArgs e)
         {
             if (YC.Checked) temp2[3] = '1';
             else temp2[3] = '0';
-            build_data();
+            //build_data();
         }
 
         private void YD_CheckedChanged(object sender, EventArgs e)
         {
             if (YD.Checked) temp2[2] = '1';
             else temp2[2] = '0';
-            build_data();
+            //build_data();
         }
 
         private void YE_CheckedChanged(object sender, EventArgs e)
         {
             if (YE.Checked) temp2[1] = '1';
             else temp2[1] = '0';
-            build_data();
+            //build_data();
         }
 
         private void YF_CheckedChanged(object sender, EventArgs e)
         {
             if (YF.Checked) temp2[0] = '1';
             else temp2[0] = '0';
-            build_data();
+            //build_data();
         }
 
         private void Reset_Fault_btn_MouseDown(object sender, MouseEventArgs e)
