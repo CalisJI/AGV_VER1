@@ -114,7 +114,7 @@ namespace READ_TEXT485
                 short[] value = new short[1];
                 temp1[6] = '1';
                 temp1[7] = '1';
-                build_data();
+                //build_data();
 
                 value[0] = BinaryToShort(data_write1);
                 
@@ -134,7 +134,7 @@ namespace READ_TEXT485
                 short[] value = new short[2];
                 temp1[6] = '0';
                 temp1[7] = '0';
-                build_data();
+                //build_data();
                 value[0] = BinaryToShort(data_write1);
                
                 PLC_WRegister[0] = value[0];
@@ -1054,22 +1054,12 @@ namespace READ_TEXT485
                         if(DataTable.Rows[i][7].ToString() == "1") 
                         {
                             temp1[5] = '1';
-                            //short[] value = new short[2];
-                            //build_data();
-                            //value[0] = BinaryToShort(data_write1);
-                            //value[1] = BinaryToShort(data_Write2);
-                            //PLC_WRegister[0] = value[0];
-                            //PLC_WRegister[1] = value[1];
+                           
                         }
                         else if(DataTable.Rows[i][7].ToString() == "0") 
                         {
                             temp1[5] = '0';
-                            //short[] value = new short[2];
-                            //build_data();
-                            //value[0] = BinaryToShort(data_write1);
-                            //value[1] = BinaryToShort(data_Write2);
-                            //PLC_WRegister[0] = value[0];
-                            //PLC_WRegister[1] = value[1];
+                           
                         }
                         
                        
@@ -1818,6 +1808,7 @@ namespace READ_TEXT485
             }
             else 
             {
+                check_rotate = true;
                 Rotate(manual_Speed, ref rotated);
             }
            
