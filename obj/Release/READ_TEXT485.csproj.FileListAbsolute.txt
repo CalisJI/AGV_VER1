@@ -73,8 +73,6 @@ C:\Users\PC\source\repos\AGV_VER1\bin\Release\K4os.Compression.LZ4.xml
 C:\Users\PC\source\repos\AGV_VER1\bin\Release\K4os.Compression.LZ4.Streams.xml
 C:\Users\PC\source\repos\AGV_VER1\bin\Release\K4os.Hash.xxHash.xml
 C:\Users\PC\source\repos\AGV_VER1\bin\Release\LibUsbDotNet.LibUsbDotNet.pdb
-C:\Users\PC\source\repos\AGV_VER1\bin\Release\ModBus_RTU.pdb
-C:\Users\PC\source\repos\AGV_VER1\bin\Release\ModBus_RTU.xml
 C:\Users\PC\source\repos\AGV_VER1\bin\Release\MySql.Data.xml
 C:\Users\PC\source\repos\AGV_VER1\bin\Release\System.Buffers.xml
 C:\Users\PC\source\repos\AGV_VER1\bin\Release\System.Memory.xml

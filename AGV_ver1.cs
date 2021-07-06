@@ -539,7 +539,12 @@ namespace READ_TEXT485
             int baud = int.Parse(App_Config.Baud);
             Parity parity = (Parity)Parity_box.SelectedItem;
             StopBits stopBits = (StopBits)StopB_box.SelectedItem;
-            
+            MethodInvoker inv = delegate 
+            {
+                textBox6.Text = App_Config.Kp.ToString();
+                textBox7.Text = App_Config.Ki.ToString();
+                textBox8.Text = App_Config.Kd.ToString();
+            };this.Invoke(inv);
             //try
             //{
             //    serialPort1.PortName = "COM4";
@@ -719,7 +724,7 @@ namespace READ_TEXT485
                             out_put1[i] = out1[i];
                             out_put2[i] = out2[i];
                         }
-                        if (rotated && !check_rotate) 
+                        if (rotated && !check_rotate && auto) 
                         {
                             if (in_put1[0] == '1')
                             {
@@ -727,7 +732,7 @@ namespace READ_TEXT485
                             }
                             else obstacle(false);
                         }
-                        else if(!rotated &&!check_rotate)
+                        else if(!rotated &&!check_rotate && auto)
                         {
                             if (in_put1[1] == '1')
                             {
@@ -1148,7 +1153,8 @@ namespace READ_TEXT485
 
                 if (OUT> (set_speed * 1.2)||OUT<0)
                 {
-                    OUT = set_speed;                 
+                    OUT = set_speed;
+                    pre_out = OUT;
                     WRegisters16[4] = (Int16)set_speed;
                 }
                 else 
@@ -1416,8 +1422,13 @@ namespace READ_TEXT485
             Start_btn.Enabled = false;
             if (!Timer.Enabled) 
             {
+                last_error = 0;
+                last_pre_error = 0;
+                Tchar = 0;
+                pre_out = 0;
                 Timer.Enabled = true;
                 Timer.Start();
+                
             }
             //if (!BackgroundWorker1.IsBusy) 
             //{
