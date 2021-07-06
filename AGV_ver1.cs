@@ -111,29 +111,42 @@ namespace READ_TEXT485
             dem_lost++;
             if (textBox1.Text != "0" && IO_Check && textBox1.Text != "")
             {
-                out_put1[6] = '1';
-                out_put1[7] = '1';
-                PLC_WRegister[0] = BinaryToShort("" + out_put1[0]
-                    + out_put1[1]
-                    + out_put1[2]
-                    + out_put1[3]
-                    + out_put1[4]
-                    + out_put1[5]
-                    + out_put1[6]
-                    + out_put1[7]);
+                short[] value = new short[1];
+                temp1[6] = '1';
+                temp1[7] = '1';
+                build_data();
+
+                value[0] = BinaryToShort(data_write1);
+                
+                PLC_WRegister[0] = value[0];
+                //PLC_WRegister[1] = value[1];
+                //PLC_WRegister[0] = BinaryToShort("" + out_put1[0]
+                //    + out_put1[1]
+                //    + out_put1[2]
+                //    + out_put1[3]
+                //    + out_put1[4]
+                //    + out_put1[5]
+                //    + out_put1[6]
+                //    + out_put1[7]);
             }
             else if (textBox1.Text == "0" && IO_Check)
             {
-                out_put1[6] = '0';
-                out_put1[7] = '0';
-                PLC_WRegister[0] = BinaryToShort("" + out_put1[0]
-                    + out_put1[1]
-                    + out_put1[2]
-                    + out_put1[3]
-                    + out_put1[4]
-                    + out_put1[5]
-                    + out_put1[6]
-                    + out_put1[7]);
+                short[] value = new short[2];
+                temp1[6] = '0';
+                temp1[7] = '0';
+                build_data();
+                value[0] = BinaryToShort(data_write1);
+               
+                PLC_WRegister[0] = value[0];
+               // PLC_WRegister[1] = value[1];
+                //PLC_WRegister[0] = BinaryToShort("" + out_put1[0]
+                //    + out_put1[1]
+                //    + out_put1[2]
+                //    + out_put1[3]
+                //    + out_put1[4]
+                //    + out_put1[5]
+                //    + out_put1[6]
+                //    + out_put1[7]);
             }
 
 
