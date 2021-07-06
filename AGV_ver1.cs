@@ -718,11 +718,11 @@ namespace READ_TEXT485
                             out_put1[i] = out1[i];
                             out_put2[i] = out2[i];
                         }
-                        if (in_put1[0] == '1')
-                        {
-                            obstacle(true);
-                        }
-                        else obstacle(false);
+                        //if (in_put1[0] == '1')
+                        //{
+                        //    obstacle(true);
+                        //}
+                        //else obstacle(false);
                         textBox12.Text = in1 + in2;
                         textBox13.Text = out1 + out2;
                     }; this.Invoke(inv);
@@ -1125,8 +1125,7 @@ namespace READ_TEXT485
                 
                 if(OUT> (set_speed * 1.2)||OUT<0)
                 {
-                    OUT = set_speed;
-                   
+                    OUT = set_speed;                 
                     WRegisters16[4] = (Int16)set_speed;
                 }
                 else 
