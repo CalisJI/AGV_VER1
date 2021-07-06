@@ -1726,7 +1726,7 @@ namespace READ_TEXT485
         bool changed = false;
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
-            if (!Start_btn.Enabled) return;
+            if (Start_btn.Enabled) return;
             if (!changed) 
             {
                 Thread t = new Thread(() => {
