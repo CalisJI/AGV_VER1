@@ -1733,11 +1733,8 @@ namespace READ_TEXT485
                     try
                     {
                         changed = true;
-                        error = 0;
-                        last_error = 0;
-                        last_pre_error = 0;
-                        Tchar = 0;
-                        pre_out = 0;
+                        
+                       
                         OUT = 0;
                         Compare_RFID(ID);
                     }
