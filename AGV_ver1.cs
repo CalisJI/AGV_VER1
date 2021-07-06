@@ -1021,16 +1021,17 @@ namespace READ_TEXT485
                         {
                             textBox9.Text = WRegisters16[4].ToString();
                         };this.Invoke(inv);
-                        WRegisters16[3] = Convert.ToInt16(DataTable.Rows[i][4].ToString());
-                        WRegisters16[1] = Convert.ToInt16(DataTable.Rows[i][3].ToString());
                         
+                        WRegisters16[1] = Convert.ToInt16(DataTable.Rows[i][3].ToString());
+
                         if (DataTable.Rows[i][6].ToString() == "1") 
                         {
                             if (!rotated)
                             {
                                 Rotate(manual_Speed, ref rotated);
+                               
                             }
-                       
+                            WRegisters16[3] = Convert.ToInt16(DataTable.Rows[i][4].ToString());
                         }
                         else if(DataTable.Rows[i][6].ToString() == "0") 
                         {
@@ -1038,7 +1039,18 @@ namespace READ_TEXT485
                             {
                                 Rotate(manual_Speed, ref rotated);
                             }
-                          
+                            if (DataTable.Rows[i][4].ToString() == "1") 
+                            {
+                                WRegisters16[3] = 2;
+                            }
+                            else if(DataTable.Rows[i][4].ToString() == "2") 
+                            {
+                                WRegisters16[3] = 1;
+                            }
+                            else 
+                            {
+                                WRegisters16[3] = 0;
+                            }
                            
                         }
                         if(DataTable.Rows[i][7].ToString() == "1") 
@@ -1062,6 +1074,8 @@ namespace READ_TEXT485
                             //PLC_WRegister[1] = value[1];
                         }
                         
+                       
+
                     }
                 }
             }

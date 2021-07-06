@@ -43,7 +43,6 @@ F:\VISUAL PROJECT\READ_TEXT485\bin\Release\sv\ZedGraph.resources.dll
 F:\VISUAL PROJECT\READ_TEXT485\bin\Release\tr\ZedGraph.resources.dll
 F:\VISUAL PROJECT\READ_TEXT485\bin\Release\zh-cn\ZedGraph.resources.dll
 F:\VISUAL PROJECT\READ_TEXT485\bin\Release\zh-tw\ZedGraph.resources.dll
-F:\VISUAL PROJECT\READ_TEXT485\obj\Release\READ_TEXT485.csproj.AssemblyReference.cache
 F:\VISUAL PROJECT\READ_TEXT485\obj\Release\READ_TEXT485.AGV_ver1.resources
 F:\VISUAL PROJECT\READ_TEXT485\obj\Release\READ_TEXT485.Properties.Resources.resources
 F:\VISUAL PROJECT\READ_TEXT485\obj\Release\READ_TEXT485.csproj.GenerateResource.cache
