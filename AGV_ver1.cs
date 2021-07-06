@@ -231,13 +231,14 @@ namespace READ_TEXT485
                     if (temp1[5] == '1') 
                     {                       
                         WRegisters16[4] = 0;
+                        short[] value = new short[2];
+                        build_data();
+                        value[0] = BinaryToShort(data_write1);
+                        value[1] = BinaryToShort(data_Write2);
+                        PLC_WRegister[0] = value[0];
+                        PLC_WRegister[1] = value[1];
                     }
-                    short[] value = new short[2];
-                    build_data();
-                    value[0] = BinaryToShort(data_write1);
-                    value[1] = BinaryToShort(data_Write2);
-                    PLC_WRegister[0] = value[0];
-                    PLC_WRegister[1] = value[1];
+                    
                     //temp1[5] = '1';
                     check_rotate = false;
 
@@ -278,13 +279,14 @@ namespace READ_TEXT485
                     if (temp1[5] == '1')
                     {                     
                         WRegisters16[4] = 0;
+                        short[] value = new short[2];
+                        build_data();
+                        value[0] = BinaryToShort(data_write1);
+                        value[1] = BinaryToShort(data_Write2);
+                        PLC_WRegister[0] = value[0];
+                        PLC_WRegister[1] = value[1];
                     }
-                    short[] value = new short[2];
-                    build_data();
-                    value[0] = BinaryToShort(data_write1);
-                    value[1] = BinaryToShort(data_Write2);
-                    PLC_WRegister[0] = value[0];
-                    PLC_WRegister[1] = value[1];
+                   
                 }; this.Invoke(inv);
                 check_rotate = false;
             }
