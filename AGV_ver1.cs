@@ -1107,7 +1107,7 @@ namespace READ_TEXT485
 
                 T = 0.05f;
                 tickStart += T;
-                error = (float)(set_speed - (Registers[5]));
+                error = (float)Math.Abs((set_speed - (Registers[5])));
                 //last_error = 0;
                 //last_pre_error = 0;
                 Kp = float.Parse(textBox6.Text);
