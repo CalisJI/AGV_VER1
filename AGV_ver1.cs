@@ -1325,24 +1325,32 @@ namespace READ_TEXT485
         #region AUTO/MANUAL
         private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
         {
+            WRegisters16[6] = 1;    //2006 Mode Motor A
+            WRegisters16[7] = 1;    //2007 Mode Motor B
             WRegisters16[8] = 0;
             WRegisters16[9] = 0;
             WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
             WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
         }
         private void pictureBox6_MouseUp(object sender, MouseEventArgs e)
         {
+
             WRegisters16[8] = 1;
             WRegisters16[9] = 0;
             WRegisters16[10] = 0;   //2010 Speed Motor A
             WRegisters16[11] = 0;   //2011 Speed Motor B
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
         }
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
+            WRegisters16[6] = 1;    //2006 Mode Motor A
+            WRegisters16[7] = 1;    //2007 Mode Motor B
             WRegisters16[8] = 1;
             WRegisters16[9] = 1;
             WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
             WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
         }
         private void pictureBox7_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1350,6 +1358,7 @@ namespace READ_TEXT485
             WRegisters16[9] = 0;
             WRegisters16[10] = 0;   //2010 Speed Motor A
             WRegisters16[11] = 0;   //2011 Speed Motor B
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1362,8 +1371,8 @@ namespace READ_TEXT485
             WRegisters16[7] = 1;    //2007 Mode Motor B
             WRegisters16[8] = 0;    //2008 Dir Motor A
             WRegisters16[9] = 1;    //2009 Dir Motor B,  A-B: 1-0 đi tới, A-B: 0-1 đi lùi, tương tự rẻ trái phải
-            WRegisters16[10] = 300;   //2010 Speed Motor A
-            WRegisters16[11] = 300;   //2011 Speed Motor B
+            WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
+            WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
         }
 
@@ -1372,6 +1381,8 @@ namespace READ_TEXT485
            
             WRegisters16[6] = 0;    //2006 Mode Motor A
             WRegisters16[7] = 0;    //2007 Mode Motor B
+            WRegisters16[10] = 0;   //2010 Speed Motor A
+            WRegisters16[11] =0;   //2011 Speed Motor B
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             if (Timer.Enabled)
             {
@@ -1405,8 +1416,8 @@ namespace READ_TEXT485
             WRegisters16[7] = 1;    //2007 Mode Motor B
             WRegisters16[8] = 1;    //2008 Dir Motor A
             WRegisters16[9] = 0;    //2009 Dir Motor B,  A-B: 1-0 đi tới, A-B: 0-1 đi lùi, tương tự rẻ trái phải
-            WRegisters16[10] = 300;   //2010 Speed Motor A
-            WRegisters16[11] = 300;   //2011 Speed Motor B
+            WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
+            WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
             pictureBox3.BorderStyle = BorderStyle.Fixed3D;
         }
 
@@ -1415,6 +1426,8 @@ namespace READ_TEXT485
             
             WRegisters16[6] = 0;    //2006 Mode Motor A
             WRegisters16[7] = 0;    //2007 Mode Motor B
+            WRegisters16[10] = 0;   //2010 Speed Motor A
+            WRegisters16[11] = 0;   //2011 Speed Motor B
             pictureBox3.BorderStyle = BorderStyle.FixedSingle;
             if (Timer.Enabled)
             {
