@@ -156,7 +156,7 @@ namespace READ_TEXT485
             bool d = false;
             
             int so = Math.Abs(Registers[9]);
-            if ((so <= 6 && so >= 0) && Registers[0] == 1 && !begin) 
+            if ((so <= 15 && so >= 0) && Registers[0] == 1 && !begin) 
             {
                 begin = false;
             }
