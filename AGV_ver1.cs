@@ -644,12 +644,20 @@ namespace READ_TEXT485
         {
             if (detect) 
             {
-                WRegisters16[4] = 0;
+                //WRegisters16[4] = 0;
+                MethodInvoker inv = delegate 
+                {
+                    textBox9.Text = "0";
+                };this.Invoke(inv);
 
             }
             else 
             {
-                WRegisters16[4] = temp_speed;
+                //WRegisters16[4] = temp_speed;
+                MethodInvoker inv = delegate
+                {
+                    textBox9.Text = temp_speed.ToString();
+                }; this.Invoke(inv);
             }
         }
         private void Zedgraph() 
@@ -724,26 +732,26 @@ namespace READ_TEXT485
                             out_put1[i] = out1[i];
                             out_put2[i] = out2[i];
                         }
-                        //if (rotated && !check_rotate && auto) 
-                        //{
-                        //    if (in_put1[7] == '1')
-                        //    {
-                        //        obstacle(true);
-                        //    }
-                        //    else obstacle(false);
-                        //}
-                        //else if(!rotated &&!check_rotate && auto)
-                        //{
-                        //    if (in_put1[6] == '1')
-                        //    {
-                        //        obstacle(true);
-                        //    }
-                        //    else obstacle(false);
-                        //}
-                        //else                        
-                        //{
-                        
-                        //}
+                        if (rotated && !check_rotate && auto)
+                        {
+                            if (in_put1[7] == '1')
+                            {
+                                obstacle(true);
+                            }
+                            else obstacle(false);
+                        }
+                        else if (!rotated && !check_rotate && auto)
+                        {
+                            if (in_put1[6] == '1')
+                            {
+                                obstacle(true);
+                            }
+                            else obstacle(false);
+                        }
+                        else
+                        {
+
+                        }
 
                         textBox12.Text = in1 + in2;
                         textBox13.Text = out1 + out2;
@@ -1115,65 +1123,74 @@ namespace READ_TEXT485
         bool auto = true;
         public void PIDspeed()
         {
-            //var Chart = chart1.ChartAreas[0];
-            if (WRegisters16[1] != 0) 
+            try
             {
-                if (auto)
+                if (WRegisters16[1] != 0)
                 {
-                    set_speed = double.Parse(textBox9.Text);
-                }
-                else
-                {
-                    set_speed = (double)manual_Speed;
-                }
+                    if (auto)
+                    {
+                        set_speed = double.Parse(textBox9.Text);
+                    }
+                    else
+                    {
+                        set_speed = (double)manual_Speed;
+                    }
 
-                T = 0.05;
-                tickStart += T;
-                error = (double)((set_speed - (Registers[5])));
-                //last_error = 0;
-                //last_pre_error = 0;
-                Kp = double.Parse(textBox6.Text);
-                Ki = double.Parse(textBox7.Text);
-                Kd = double.Parse(textBox8.Text);
+                    T = 0.05;
+                    tickStart += T;
+                    error = (double)((set_speed - (Registers[5])));
+                    //last_error = 0;
+                    //last_pre_error = 0;
+                    Kp = double.Parse(textBox6.Text);
+                    Ki = double.Parse(textBox7.Text);
+                    Kd = double.Parse(textBox8.Text);
 
 
-                //I = integral_prior + error * T;
-                //D = (error - last_error) / T;
-                //OUT = Kp * error + Ki * I + Kd * D;
-                //last_error = error;
-                //integral_prior = I;
+                    //I = integral_prior + error * T;
+                    //D = (error - last_error) / T;
+                    //OUT = Kp * error + Ki * I + Kd * D;
+                    //last_error = error;
+                    //integral_prior = I;
 
-                P = Kp * (error - last_error);
-                I = (double)(0.5 * Ki * T * (error + last_error));
-                D = Kd / T * (error - 2 * last_error + last_pre_error);
-                OUT = pre_out + P + I + D;
-                last_pre_error = last_error;
-                last_error = error;
-                pre_out = OUT;
-
-                if (OUT> (set_speed * 1.2))
-                {
-                    OUT = set_speed * 1.2;
+                    P = Kp * (error - last_error);
+                    I = (double)(0.5 * Ki * T * (error + last_error));
+                    D = Kd / T * (error - 2 * last_error + last_pre_error);
+                    OUT = Math.Abs(pre_out + P + I + D);
+                    last_pre_error = last_error;
+                    last_error = error;
                     pre_out = OUT;
+
+                    if (OUT >= (set_speed * 1.2))
+                    {
+                        OUT = set_speed * 1.2;
+                        pre_out = OUT;
+                        //WRegisters16[4] = (Int16)OUT;
+                    }
+                    //else if (OUT < set_speed * 0.8)
+                    //{
+
+                    //    OUT = set_speed;
+                    //    pre_out = 0;
+                    //    //WRegisters16[4] = (Int16)OUT;
+                    //}
+                    else
+                    {
+                        //WRegisters16[4] = (Int16)OUT;
+                    }
                     WRegisters16[4] = (Int16)OUT;
+
+                    //Console.WriteLine(OUT);
+                    textBox5.Text = OUT.ToString();
                 }
-                else if(OUT<0)
-                {
-                    OUT = 1;
-                    pre_out = OUT;
-                    WRegisters16[4] = (Int16)OUT;
-                }
-                else 
-                {
-                    WRegisters16[4] = (Int16)OUT;
-                }
-              
-               
-                //Console.WriteLine(OUT);
-                textBox5.Text = OUT.ToString();
+
+
             }
+            catch (Exception )
+            {
+
+               
+            } //var Chart = chart1.ChartAreas[0];
            
-          
 
 
         }

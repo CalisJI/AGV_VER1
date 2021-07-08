@@ -4,8 +4,8 @@
   <Baud>115200</Baud>
   <Database>agv_data</Database>
   <Table>data2</Table>
-  <Kp>0.06</Kp>
-  <Ki>70</Ki>
+  <Kp>0.1</Kp>
+  <Ki>4</Ki>
   <Kd>0</Kd>
   <rotate>True</rotate>
 </App_Config>
