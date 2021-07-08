@@ -243,6 +243,22 @@ namespace READ_TEXT485
                         PLC_WRegister[0] = value[0];
                         PLC_WRegister[1] = value[1];
                     }
+                    else if(temp_xilanh == '0' && temp1[5] == '0') 
+                    {
+                        WRegisters16[4] = 0;
+                        MethodInvoker inv1 = delegate
+                        {
+                            textBox9.Text = WRegisters16[4].ToString();
+                        }; this.Invoke(inv1);
+                    }
+                    else if (temp_xilanh == '1' && temp1[5] == '1')
+                    {
+                        WRegisters16[4] = 0;
+                        MethodInvoker inv1 = delegate
+                        {
+                            textBox9.Text = WRegisters16[4].ToString();
+                        }; this.Invoke(inv1);
+                    }
                     //temp1[5] = '1';
                     check_rotate = false;
 
@@ -311,6 +327,22 @@ namespace READ_TEXT485
                         value[1] = BinaryToShort(data_Write2);
                         PLC_WRegister[0] = value[0];
                         PLC_WRegister[1] = value[1];
+                    }
+                    else if (temp_xilanh == '0' && temp1[5] == '0')
+                    {
+                        WRegisters16[4] = 0;
+                        MethodInvoker inv1 = delegate
+                        {
+                            textBox9.Text = WRegisters16[4].ToString();
+                        }; this.Invoke(inv1);
+                    }
+                    else if (temp_xilanh == '1' && temp1[5] == '1')
+                    {
+                        WRegisters16[4] = 0;
+                        MethodInvoker inv1 = delegate
+                        {
+                            textBox9.Text = WRegisters16[4].ToString();
+                        }; this.Invoke(inv1);
                     }
                     Configxml.UpdateSystem_Config("rotate", rotated.ToString());
                 }; this.Invoke(inv);
