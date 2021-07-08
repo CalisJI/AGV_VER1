@@ -13,8 +13,9 @@ namespace READ_TEXT485
     class MySQL_dosomething
     {
         private static MySqlConnection SQL_Connection;
+        private static string pwd = "12345678";
         public  string error_message;
-        private static string StrCon= "Server = 127.0.0.1; UId = root; Pwd = 100100; Pooling = false; Character Set=utf8";
+        private static string StrCon= "Server = 127.0.0.1; UId = root; Pwd = "+pwd+"; Pooling = false; Character Set=utf8";
         public  DataTable Get_Database_Name()
         {
             DataTable dt = new DataTable();
@@ -78,7 +79,7 @@ namespace READ_TEXT485
         {
             try
             {
-                using (SQL_Connection = new MySqlConnection("Server = 127.0.0.1;Database =" + database+"; UId = root; Pwd = 100100; Pooling = false; Character Set=utf8"))
+                using (SQL_Connection = new MySqlConnection("Server = 127.0.0.1;Database =" + database+"; UId = root; Pwd = "+pwd+"; Pooling = false; Character Set=utf8"))
                 {
                     string str = "SELECT * FROM " + table + "";
                     MySqlDataAdapter adp = new MySqlDataAdapter(str,SQL_Connection);
@@ -103,7 +104,7 @@ namespace READ_TEXT485
             try
             {
                 
-                using (SQL_Connection =new MySqlConnection("Server = 127.0.0.1;Database =" + database + "; UId = root; Pwd = 100100; Pooling = false; Character Set=utf8")) 
+                using (SQL_Connection =new MySqlConnection("Server = 127.0.0.1;Database =" + database + "; UId = root; Pwd = "+pwd+"; Pooling = false; Character Set=utf8")) 
                 {
                     SQL_Connection.Open();
                     int i = 0;
@@ -143,7 +144,7 @@ namespace READ_TEXT485
         {
             try
             {
-                SQL_Connection = new MySqlConnection("Server = 127.0.0.1;Database =" + database + "; UId = root; Pwd = 100100; Pooling = false; Character Set=utf8");
+                SQL_Connection = new MySqlConnection("Server = 127.0.0.1;Database =" + database + "; UId = root; Pwd = "+pwd+"; Pooling = false; Character Set=utf8");
                 SQL_Connection.Open();
                 MySqlCommand cmd = new MySqlCommand(command,SQL_Connection);
               

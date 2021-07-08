@@ -726,7 +726,7 @@ namespace READ_TEXT485
                         }
                         if (rotated && !check_rotate && auto) 
                         {
-                            if (in_put1[0] == '1')
+                            if (in_put1[7] == '1')
                             {
                                 obstacle(true);
                             }
@@ -734,7 +734,7 @@ namespace READ_TEXT485
                         }
                         else if(!rotated &&!check_rotate && auto)
                         {
-                            if (in_put1[1] == '1')
+                            if (in_put1[6] == '1')
                             {
                                 obstacle(true);
                             }
@@ -1104,12 +1104,12 @@ namespace READ_TEXT485
             }
 
         }
-        float error, last_error, last_pre_error, set_speed;
-        float Kp, Ki, Kd, P, I, D;
-        float T, Tchar = 0;
-        float OUT, pre_out;
-        float tickStart = 0;
-        float integral_prior = 0;
+        double error, last_error, last_pre_error, set_speed = 0;
+        double Kp, Ki, Kd, P, I, D;
+        double T, Tchar = 0;
+        double OUT, pre_out;
+        double tickStart = 0;
+        double integral_prior = 0;
 
 
         bool auto = true;
@@ -1120,21 +1120,21 @@ namespace READ_TEXT485
             {
                 if (auto)
                 {
-                    set_speed = float.Parse(textBox9.Text);
+                    set_speed = double.Parse(textBox9.Text);
                 }
                 else
                 {
-                    set_speed = (float)manual_Speed;
+                    set_speed = (double)manual_Speed;
                 }
 
-                T = 0.05f;
+                T = 0.05;
                 tickStart += T;
-                error = (float)((set_speed - (Registers[5])));
+                error = (double)((set_speed - (Registers[5])));
                 //last_error = 0;
                 //last_pre_error = 0;
-                Kp = float.Parse(textBox6.Text);
-                Ki = float.Parse(textBox7.Text);
-                Kd = float.Parse(textBox8.Text);
+                Kp = double.Parse(textBox6.Text);
+                Ki = double.Parse(textBox7.Text);
+                Kd = double.Parse(textBox8.Text);
 
 
                 //I = integral_prior + error * T;
@@ -1144,18 +1144,24 @@ namespace READ_TEXT485
                 //integral_prior = I;
 
                 P = Kp * (error - last_error);
-                I = (float)(0.5 * Ki * T * (error + last_error));
+                I = (double)(0.5 * Ki * T * (error + last_error));
                 D = Kd / T * (error - 2 * last_error + last_pre_error);
                 OUT = pre_out + P + I + D;
                 last_pre_error = last_error;
                 last_error = error;
                 pre_out = OUT;
 
-                if (OUT> (set_speed * 1.2)||OUT<0)
+                if (OUT> (set_speed * 1.2))
                 {
-                    OUT = set_speed;
+                    OUT = set_speed * 1.2;
                     pre_out = OUT;
-                    WRegisters16[4] = (Int16)set_speed;
+                    WRegisters16[4] = (Int16)OUT;
+                }
+                else if(OUT<0)
+                {
+                    OUT = 1;
+                    pre_out = OUT;
+                    WRegisters16[4] = (Int16)OUT;
                 }
                 else 
                 {
