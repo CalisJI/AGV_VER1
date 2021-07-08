@@ -1323,7 +1323,34 @@ namespace READ_TEXT485
         }
         #endregion
         #region AUTO/MANUAL
-
+        private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
+        {
+            WRegisters16[8] = 0;
+            WRegisters16[9] = 0;
+            WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
+            WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
+        }
+        private void pictureBox6_MouseUp(object sender, MouseEventArgs e)
+        {
+            WRegisters16[8] = 1;
+            WRegisters16[9] = 0;
+            WRegisters16[10] = 0;   //2010 Speed Motor A
+            WRegisters16[11] = 0;   //2011 Speed Motor B
+        }
+        private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
+        {
+            WRegisters16[8] = 1;
+            WRegisters16[9] = 1;
+            WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
+            WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
+        }
+        private void pictureBox7_MouseUp(object sender, MouseEventArgs e)
+        {
+            WRegisters16[8] = 1;
+            WRegisters16[9] = 0;
+            WRegisters16[10] = 0;   //2010 Speed Motor A
+            WRegisters16[11] = 0;   //2011 Speed Motor B
+        }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (!Timer.Enabled)
@@ -1960,7 +1987,7 @@ namespace READ_TEXT485
         private void Continue_btn_Click(object sender, EventArgs e)
         {
             chanmode = true;
-            if (temp1[5] == '1'||temp1[5]=='0')
+            if ((temp1[5] == '1' && temp_speed != 0) || (temp1[5] == '0' && temp_speed != 0))
             {
                 WRegisters16[4] = temp_speed;
                 MethodInvoker inv1 = delegate
@@ -1984,6 +2011,8 @@ namespace READ_TEXT485
             Configxml.UpdateSystem_Config("rotate", rotated.ToString());
 
         }
+
+        
 
         bool hold = false;
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

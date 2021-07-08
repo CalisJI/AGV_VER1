@@ -150,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <None Include="Source\Phải.jpg" />
+    <None Include="Source\Trái.jpg" />
     <None Include="Source\LAB.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

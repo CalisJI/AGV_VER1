@@ -103,6 +103,26 @@ namespace READ_TEXT485.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Phải {
+            get {
+                object obj = ResourceManager.GetObject("Phải", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Trái {
+            get {
+                object obj = ResourceManager.GetObject("Trái", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap up_icon1 {
             get {
                 object obj = ResourceManager.GetObject("up-icon1", resourceCulture);
