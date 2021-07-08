@@ -1422,6 +1422,7 @@ namespace READ_TEXT485
             MethodInvoker inv = delegate 
             {
                 panel3.BackColor = Color.Red;
+                panel4.BackColor = Color.White;
             };this.Invoke(inv);
         }
         private void pictureBox6_MouseUp(object sender, MouseEventArgs e)
@@ -1446,6 +1447,7 @@ namespace READ_TEXT485
             MethodInvoker inv = delegate
             {
                 panel4.BackColor = Color.Red;
+                panel3.BackColor = Color.White;
             }; this.Invoke(inv);
         }
         private void pictureBox7_MouseUp(object sender, MouseEventArgs e)
@@ -1636,6 +1638,8 @@ namespace READ_TEXT485
                 auto = false;
                 button3.Text = "Manual";
                 WRegisters16[5] = 1;
+                WRegisters16[6] = 0;    //2006 Mode Motor A
+                WRegisters16[7] = 0;    //2007 Mode Motor B
                 pictureBox1.Enabled = true;
                 pictureBox2.Enabled = true;
                 pictureBox3.Enabled = true;
@@ -1652,6 +1656,8 @@ namespace READ_TEXT485
                 auto = true;
                 button3.Text = "Auto";
                 WRegisters16[5] = 0;
+                WRegisters16[6] = 1;    //2006 Mode Motor A
+                WRegisters16[7] = 1;    //2007 Mode Motor B
                 pictureBox1.Enabled = false;
                 pictureBox2.Enabled = false;
                 pictureBox3.Enabled = false;
