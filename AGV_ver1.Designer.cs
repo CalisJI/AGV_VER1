@@ -604,7 +604,7 @@ namespace READ_TEXT485
             // 
             // Stop_btn
             // 
-            this.Stop_btn.Location = new System.Drawing.Point(20, 84);
+            this.Stop_btn.Location = new System.Drawing.Point(11, 84);
             this.Stop_btn.Name = "Stop_btn";
             this.Stop_btn.Size = new System.Drawing.Size(72, 26);
             this.Stop_btn.TabIndex = 0;
@@ -628,7 +628,7 @@ namespace READ_TEXT485
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(26, 131);
+            this.textBox15.Location = new System.Drawing.Point(17, 131);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(60, 21);
             this.textBox15.TabIndex = 0;
@@ -679,9 +679,9 @@ namespace READ_TEXT485
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 21);
+            this.button3.Location = new System.Drawing.Point(6, 21);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 33);
+            this.button3.Size = new System.Drawing.Size(82, 29);
             this.button3.TabIndex = 0;
             this.button3.Text = "Auto";
             this.button3.UseVisualStyleBackColor = true;
@@ -692,7 +692,7 @@ namespace READ_TEXT485
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Aqua;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(18, 116);
+            this.label22.Location = new System.Drawing.Point(9, 116);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(76, 12);
             this.label22.TabIndex = 1;
@@ -700,7 +700,7 @@ namespace READ_TEXT485
             // 
             // Start_btn
             // 
-            this.Start_btn.Location = new System.Drawing.Point(20, 56);
+            this.Start_btn.Location = new System.Drawing.Point(11, 54);
             this.Start_btn.Name = "Start_btn";
             this.Start_btn.Size = new System.Drawing.Size(72, 26);
             this.Start_btn.TabIndex = 0;
@@ -711,9 +711,9 @@ namespace READ_TEXT485
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Yellow;
-            this.button10.Location = new System.Drawing.Point(20, 56);
+            this.button10.Location = new System.Drawing.Point(91, 112);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(72, 26);
+            this.button10.Size = new System.Drawing.Size(72, 38);
             this.button10.TabIndex = 0;
             this.button10.Text = "Continue";
             this.button10.UseVisualStyleBackColor = false;

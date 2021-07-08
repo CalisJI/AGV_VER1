@@ -342,8 +342,7 @@ namespace READ_TEXT485
             Start_btn.Enabled = false;
             Stop_btn.Enabled = false;
             pictureBox5.Hide();
-            button10.Hide();
-            button10.Enabled = false;
+           
             string[] serial_port = SerialPort.GetPortNames();
             foreach (string item in serial_port)
             {
@@ -482,6 +481,16 @@ namespace READ_TEXT485
             else if (App_Config.rotate == "False") 
             {
                 rotated = false;
+            }
+            if (App_Config.rotate == "True") 
+            {
+                button10.Hide();
+                button10.Enabled = false;
+            }
+            else 
+            {
+                button10.Show();
+                button10.Enabled = true;
             }
             comboBox2.SelectedItem = App_Config.Table;
             GraphPane = zedGraphControl1.GraphPane;
