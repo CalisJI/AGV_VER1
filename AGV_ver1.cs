@@ -724,26 +724,26 @@ namespace READ_TEXT485
                             out_put1[i] = out1[i];
                             out_put2[i] = out2[i];
                         }
-                        if (rotated && !check_rotate && auto) 
-                        {
-                            if (in_put1[7] == '1')
-                            {
-                                obstacle(true);
-                            }
-                            else obstacle(false);
-                        }
-                        else if(!rotated &&!check_rotate && auto)
-                        {
-                            if (in_put1[6] == '1')
-                            {
-                                obstacle(true);
-                            }
-                            else obstacle(false);
-                        }
-                        else                        
-                        {
+                        //if (rotated && !check_rotate && auto) 
+                        //{
+                        //    if (in_put1[7] == '1')
+                        //    {
+                        //        obstacle(true);
+                        //    }
+                        //    else obstacle(false);
+                        //}
+                        //else if(!rotated &&!check_rotate && auto)
+                        //{
+                        //    if (in_put1[6] == '1')
+                        //    {
+                        //        obstacle(true);
+                        //    }
+                        //    else obstacle(false);
+                        //}
+                        //else                        
+                        //{
                         
-                        }
+                        //}
 
                         textBox12.Text = in1 + in2;
                         textBox13.Text = out1 + out2;
