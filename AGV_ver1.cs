@@ -1162,16 +1162,16 @@ namespace READ_TEXT485
 
                     if (OUT >= (set_speed * 1.2))
                     {
-                        OUT = set_speed * 1.2;
+                        OUT = set_speed ;
                         pre_out = OUT;
                         //WRegisters16[4] = (Int16)OUT;
                     }
-                    //else if (OUT < set_speed * 0.8)
+                    //else if (OUT < (double)WRegisters16[4] * 0.8)
                     //{
 
                     //    OUT = set_speed;
-                    //    pre_out = 0;
-                    //    //WRegisters16[4] = (Int16)OUT;
+                    //    pre_out = OUT;
+                    //    WRegisters16[4] = (Int16)OUT;
                     //}
                     else
                     {
