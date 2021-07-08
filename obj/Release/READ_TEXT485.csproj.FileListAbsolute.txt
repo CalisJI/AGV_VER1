@@ -99,3 +99,4 @@ C:\Users\PC\source\repos\AGV_VER1\obj\Release\READ_TEXT485.csproj.CoreCompileInp
 C:\Users\PC\source\repos\AGV_VER1\obj\Release\READ_TEXT485.csproj.CopyComplete
 C:\Users\PC\source\repos\AGV_VER1\obj\Release\READ_TEXT485.exe
 C:\Users\PC\source\repos\AGV_VER1\obj\Release\READ_TEXT485.pdb
+F:\VISUAL PROJECT\READ_TEXT485\obj\Release\READ_TEXT485.csproj.AssemblyReference.cache
