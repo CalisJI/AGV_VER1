@@ -214,7 +214,7 @@ namespace READ_TEXT485
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(281, 207);
+            this.zedGraphControl1.Size = new System.Drawing.Size(568, 207);
             this.zedGraphControl1.TabIndex = 12;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
             // 
