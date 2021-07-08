@@ -185,7 +185,7 @@ namespace READ_TEXT485
                 MethodInvoker inv = delegate
                 {
                     rotated = false;
-                    Start_btn.Hide();
+                   
                     button10.Show();
                     button10.Enabled = true;
                     WRegisters16[10] = 0;
@@ -257,7 +257,7 @@ namespace READ_TEXT485
                     rotated = true;
                     button10.Hide();
                     button10.Enabled = false;
-                    Start_btn.Show();
+                    
                     WRegisters16[10] = 0;
                     WRegisters16[11] = 0;
                     //WRegisters16[4] = 100;
@@ -1930,7 +1930,7 @@ namespace READ_TEXT485
         private void Continue_btn_Click(object sender, EventArgs e)
         {
             chanmode = true;
-            if (temp1[5] == '1') 
+            if (temp1[5] == '1')
             {
                 WRegisters16[4] = temp_speed;
                 MethodInvoker inv1 = delegate
@@ -1938,7 +1938,7 @@ namespace READ_TEXT485
                     textBox9.Text = WRegisters16[4].ToString();
                 }; this.Invoke(inv1);
             }
-            else 
+            else if ((temp1[5] == '1' && temp_speed == 0)||(temp1[5] == '0' && temp_speed == 0))
             {
                 check_rotate = true;
                 Rotate(manual_Speed, ref rotated);
