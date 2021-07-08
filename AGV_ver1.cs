@@ -14,8 +14,7 @@ using System.Threading;
 using ZedGraph;
 using LibUsbDotNet.Main;
 using LibUsbDotNet;
-
-
+using System.Drawing.Imaging;
 
 namespace READ_TEXT485
 {
@@ -713,6 +712,94 @@ namespace READ_TEXT485
         }
         #endregion
         #region SubFuncTion
+        private void AGV(ref Rectangle rec1,ref Rectangle rec2) 
+        {
+            rec1 = new Rectangle();
+            rec1.Location = new Point(-20,-30);
+            rec1.Size = new Size(40, 60);
+            rec2 = new Rectangle();
+            rec2.Location = new Point(-20, -30);
+            rec2.Size = new Size(40, 20);
+           
+
+
+        }
+        private void simualate_AGV(Panel panel ,int angle) 
+        {
+            try
+            {
+                
+                Graphics graphics;
+                Rectangle rectangle1 = new Rectangle();
+                //rectangle.Location = new Point(0, 0);
+                rectangle1.Size = new Size(panel.Width, panel.Height);
+
+
+
+                Rectangle rec1 = new Rectangle();
+                Rectangle rec2 = new Rectangle();
+                graphics = panel.CreateGraphics();
+                graphics.Clear(Color.White);
+                //graphics.FillRectangle(Brushes.White, rectangle);
+                Graphics e;
+                e = panel.CreateGraphics();
+                Font font = new Font("Times New Roman", 10);
+                AGV(ref rec1, ref rec2);
+                Rectangle rectangle = new Rectangle();
+                rectangle.Location = new Point(0, 0);
+                rectangle.Size = new Size(260, 160);
+                e.DrawRectangle(new Pen(Color.Red, 2), rectangle);
+                e.DrawLine(new Pen(Color.Blue), new Point(130, 0), new Point(130, 160));
+                e.DrawLine(new Pen(Color.Blue), new Point(0, 80), new Point(260, 80));
+                e.DrawString("0", font, Brushes.Red, new Point(130, 80));
+                Pen pen = new Pen(Color.Black, 3);
+                graphics.TranslateTransform(130, 80);
+                graphics.RotateTransform(angle);
+
+                graphics.DrawRectangle(pen, rec1);
+                graphics.FillRectangle(Brushes.Red, rec2);
+
+
+                //Bitmap bitmap = new Bitmap(panel.Width, panel.Height);
+                //panel.DrawToBitmap(bitmap, rectangle);
+                //if (File.Exists(Application.StartupPath + @"\AGV_simulate.bitmap"))
+                //{
+                //    File.Delete(Application.StartupPath + @"\AGV_simulate.bitmap");
+                //}
+                //bitmap.Save(Application.StartupPath + @"\AGV_simulate.bitmap", ImageFormat.Bmp);
+                //bitmap.Dispose();
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
+            
+            
+        }
+        private void save_panel(Panel panel) 
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.Size = new Size(panel.Width, panel.Height);
+            Bitmap bitmap = new Bitmap(panel.Width, panel.Height);
+            panel5.DrawToBitmap(bitmap, rectangle);
+            if (File.Exists(Application.StartupPath + @"\AGV_simulate.bitmap"))
+            {
+                File.Delete(Application.StartupPath + @"\AGV_simulate.bitmap");
+            }
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using (FileStream fs = new FileStream(Application.StartupPath + @"\AGV_simulate.bitmap", FileMode.Create, FileAccess.ReadWrite))
+                {
+                    //   RotateImage(Live_Cam_6, 45).Save(memory, ImageFormat.Jpeg);
+                    Bitmap.Save(memory, ImageFormat.Jpeg);
+                    byte[] bytes = memory.ToArray();
+                    fs.Write(bytes, 0, bytes.Length);
+                    fs.Dispose();
+
+                }
+            }
+        }
         private void obstacle(bool detect) 
         {
             if (detect) 
@@ -1331,7 +1418,11 @@ namespace READ_TEXT485
             WRegisters16[9] = 0;
             WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
             WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
-            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox6.BorderStyle = BorderStyle.Fixed3D;
+            MethodInvoker inv = delegate 
+            {
+                panel3.BackColor = Color.Red;
+            };this.Invoke(inv);
         }
         private void pictureBox6_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1341,7 +1432,7 @@ namespace READ_TEXT485
             WRegisters16[9] = 0;
             WRegisters16[10] = 0;   //2010 Speed Motor A
             WRegisters16[11] = 0;   //2011 Speed Motor B
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox6.BorderStyle = BorderStyle.FixedSingle;
         }
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1351,7 +1442,11 @@ namespace READ_TEXT485
             WRegisters16[9] = 1;
             WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
             WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
-            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox7.BorderStyle = BorderStyle.Fixed3D;
+            MethodInvoker inv = delegate
+            {
+                panel4.BackColor = Color.Red;
+            }; this.Invoke(inv);
         }
         private void pictureBox7_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1361,7 +1456,7 @@ namespace READ_TEXT485
             WRegisters16[9] = 0;
             WRegisters16[10] = 0;   //2010 Speed Motor A
             WRegisters16[11] = 0;   //2011 Speed Motor B
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox7.BorderStyle = BorderStyle.FixedSingle;
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -2027,8 +2122,50 @@ namespace READ_TEXT485
             Configxml.UpdateSystem_Config("rotate", rotated.ToString());
 
         }
+        Bitmap Bitmap = new Bitmap(260, 130);
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
 
-        
+            //Rectangle rec1 = new Rectangle();
+            //Rectangle rec2 = new Rectangle();
+            ////simualate_AGV(panel5, int.Parse(textBox15.Text));
+            //Font font = new Font("Times New Roman", 10);
+            //AGV(ref rec1, ref rec2);
+            //Rectangle rectangle = new Rectangle();
+            //rectangle.Location = new Point(panel5.Width, panel5.Height);
+            //rectangle.Size = new Size(260, 160);
+            //e.Graphics.DrawRectangle(new Pen(Color.Red, 2), rectangle);
+            //e.Graphics.DrawLine(new Pen(Color.Blue), new Point(130, 0), new Point(130, 160));
+            //e.Graphics.DrawLine(new Pen(Color.Blue), new Point(0, 80), new Point(260, 80));
+            //e.Graphics.DrawString("0", font, Brushes.Red, new Point(130, 80));
+            //Pen pen = new Pen(Color.Black, 3);
+            //e.Graphics.TranslateTransform(130, 80);
+            //e.Graphics.RotateTransform(int.Parse(textBox15.Text));
+
+            //e.Graphics.DrawRectangle(pen, rec1);
+            //e.Graphics.FillRectangle(Brushes.Red, rec2);
+            e.Graphics.DrawImage(Bitmap,Point.Empty);
+            //save_panel(panel5, bitmap);
+
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            simualate_AGV(panel5, int.Parse(textBox15.Text));
+            panel5.Paint += new PaintEventHandler(panel5_Paint);
+            
+           
+            //panel5.Refresh();
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            save_panel(panel5);
+          
+
+        }
 
         bool hold = false;
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
