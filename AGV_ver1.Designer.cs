@@ -146,6 +146,9 @@ namespace READ_TEXT485
             this.XE = new System.Windows.Forms.CheckBox();
             this.X3 = new System.Windows.Forms.CheckBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -168,6 +171,7 @@ namespace READ_TEXT485
             this.groupBox2.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -179,11 +183,12 @@ namespace READ_TEXT485
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(784, 361);
+            this.tabControl1.Size = new System.Drawing.Size(784, 401);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox12);
             this.tabPage1.Controls.Add(this.zedGraphControl1);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.groupBox4);
@@ -192,7 +197,7 @@ namespace READ_TEXT485
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(776, 335);
+            this.tabPage1.Size = new System.Drawing.Size(776, 375);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -209,7 +214,7 @@ namespace READ_TEXT485
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(576, 171);
+            this.zedGraphControl1.Size = new System.Drawing.Size(281, 207);
             this.zedGraphControl1.TabIndex = 12;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
             // 
@@ -229,7 +234,7 @@ namespace READ_TEXT485
             this.groupBox5.Controls.Add(this.textBox6);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(6, 212);
+            this.groupBox5.Location = new System.Drawing.Point(3, 252);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(194, 120);
             this.groupBox5.TabIndex = 11;
@@ -1476,11 +1481,46 @@ namespace READ_TEXT485
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
+            // groupBox12
+            // 
+            this.groupBox12.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox12.Controls.Add(this.radioButton2);
+            this.groupBox12.Controls.Add(this.radioButton1);
+            this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox12.Location = new System.Drawing.Point(3, 206);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(194, 45);
+            this.groupBox12.TabIndex = 13;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Lift Mode";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(29, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(51, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.Text = "Auto";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(112, 19);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(66, 17);
+            this.radioButton2.TabIndex = 0;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Manual";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // AGV_ver1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 361);
+            this.ClientSize = new System.Drawing.Size(784, 401);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AGV_ver1";
@@ -1518,6 +1558,8 @@ namespace READ_TEXT485
             this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1640,6 +1682,9 @@ namespace READ_TEXT485
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 

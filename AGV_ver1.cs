@@ -187,6 +187,7 @@ namespace READ_TEXT485
                     rotated = false;
                     Start_btn.Hide();
                     button10.Show();
+                    button10.Enabled = true;
                     WRegisters16[10] = 0;
                     WRegisters16[11] = 0;
                     //WRegisters16[4] = 100;
@@ -241,6 +242,7 @@ namespace READ_TEXT485
                 {
                     rotated = true;
                     button10.Hide();
+                    button10.Enabled = false;
                     Start_btn.Show();
                     WRegisters16[10] = 0;
                     WRegisters16[11] = 0;
@@ -341,6 +343,7 @@ namespace READ_TEXT485
             Stop_btn.Enabled = false;
             pictureBox5.Hide();
             button10.Hide();
+            button10.Enabled = false;
             string[] serial_port = SerialPort.GetPortNames();
             foreach (string item in serial_port)
             {
@@ -595,6 +598,7 @@ namespace READ_TEXT485
                 MethodInvoker inv = delegate 
                 {
                     button10.Hide();
+                    button10.Enabled = false;
                     Start_btn.Show();
                     
                 };this.Invoke(inv);
@@ -738,7 +742,14 @@ namespace READ_TEXT485
                             {
                                 obstacle(true);
                             }
-                            else obstacle(false);
+                            else if (button10.Enabled) 
+                            {
+                                
+                            }
+                            else 
+                            {
+                                obstacle(false);
+                            }
                         }
                         else if (!rotated && !check_rotate && auto)
                         {
@@ -746,7 +757,15 @@ namespace READ_TEXT485
                             {
                                 obstacle(true);
                             }
-                            else obstacle(false);
+                            else if (button10.Enabled)
+                            {
+
+                            }
+                            else
+                            { 
+                                obstacle(false); 
+                            
+                            }
                         }
                         else
                         {
@@ -1087,18 +1106,22 @@ namespace READ_TEXT485
                             }
                            
                         }
-                        if(DataTable.Rows[i][7].ToString() == "1") 
+                        if (radioButton1.Checked) 
                         {
-                            temp_xilanh = '1';
-                            //temp1[5] = '1';
-                           
+                            if (DataTable.Rows[i][7].ToString() == "1")
+                            {
+                                temp_xilanh = '1';
+                                //temp1[5] = '1';
+
+                            }
+                            else if (DataTable.Rows[i][7].ToString() == "0")
+                            {
+                                temp_xilanh = '0';
+                                // temp1[5] = '0';
+
+                            }
                         }
-                        else if(DataTable.Rows[i][7].ToString() == "0") 
-                        {
-                            temp_xilanh = '0';
-                           // temp1[5] = '0';
-                           
-                        }
+                        
                         
                        
 
