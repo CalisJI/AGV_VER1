@@ -1096,7 +1096,7 @@ namespace READ_TEXT485
             }
         }
         Int16 temp_speed = 0;
-        char temp_xilanh = ' ';
+        char temp_xilanh = '0';
         private void Compare_RFID(string RFID_ID)
         {
             try

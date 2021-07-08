@@ -7,5 +7,5 @@
   <Kp>0.06</Kp>
   <Ki>10</Ki>
   <Kd>0</Kd>
-  <rotate>True</rotate>
+  <rotate>False</rotate>
 </App_Config>
