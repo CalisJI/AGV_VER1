@@ -245,18 +245,18 @@ namespace READ_TEXT485
                     }
                     else if(temp_xilanh == '0' && temp1[5] == '0') 
                     {
-                        WRegisters16[4] = 0;
+                        //WRegisters16[4] = temp_speed;
                         MethodInvoker inv1 = delegate
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
+                            textBox9.Text = temp_speed.ToString();
                         }; this.Invoke(inv1);
                     }
                     else if (temp_xilanh == '1' && temp1[5] == '1')
                     {
-                        WRegisters16[4] = 0;
+                        //WRegisters16[4] = 0;
                         MethodInvoker inv1 = delegate
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
+                            textBox9.Text = temp_speed.ToString();
                         }; this.Invoke(inv1);
                     }
                     //temp1[5] = '1';
@@ -330,18 +330,16 @@ namespace READ_TEXT485
                     }
                     else if (temp_xilanh == '0' && temp1[5] == '0')
                     {
-                        WRegisters16[4] = 0;
                         MethodInvoker inv1 = delegate
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
+                            textBox9.Text = temp_speed.ToString();
                         }; this.Invoke(inv1);
                     }
                     else if (temp_xilanh == '1' && temp1[5] == '1')
                     {
-                        WRegisters16[4] = 0;
                         MethodInvoker inv1 = delegate
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
+                            textBox9.Text = temp_speed.ToString();
                         }; this.Invoke(inv1);
                     }
                     Configxml.UpdateSystem_Config("rotate", rotated.ToString());
@@ -1962,7 +1960,7 @@ namespace READ_TEXT485
         private void Continue_btn_Click(object sender, EventArgs e)
         {
             chanmode = true;
-            if (temp1[5] == '1')
+            if (temp1[5] == '1'||temp1[5]=='0')
             {
                 WRegisters16[4] = temp_speed;
                 MethodInvoker inv1 = delegate
