@@ -1335,7 +1335,8 @@ namespace READ_TEXT485
         }
         private void pictureBox6_MouseUp(object sender, MouseEventArgs e)
         {
-
+            WRegisters16[6] = 0;    //2006 Mode Motor A
+            WRegisters16[7] = 0;    //2007 Mode Motor B
             WRegisters16[8] = 1;
             WRegisters16[9] = 0;
             WRegisters16[10] = 0;   //2010 Speed Motor A
@@ -1354,6 +1355,8 @@ namespace READ_TEXT485
         }
         private void pictureBox7_MouseUp(object sender, MouseEventArgs e)
         {
+            WRegisters16[6] = 0;    //2006 Mode Motor A
+            WRegisters16[7] = 0;    //2007 Mode Motor B
             WRegisters16[8] = 1;
             WRegisters16[9] = 0;
             WRegisters16[10] = 0;   //2010 Speed Motor A
