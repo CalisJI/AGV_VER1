@@ -41,6 +41,7 @@ namespace READ_TEXT485
         App_Config App_Config;
         private static UsbDevice HID_RFID;
         private static UsbDeviceFinder UsbDeviceFinder = new UsbDeviceFinder(1133, 50498);
+        private int[] ran_engle = new int[90] ;
         UsbEndpointReader reader;
         public AGV_ver1()
         {
@@ -267,7 +268,7 @@ namespace READ_TEXT485
                     d = false;
                     if (Registers[0] == 0)
                     {
-                        int[] ran_engle = new int[] { 55,60,65,70,75,80,85, 90,95, 100,105, 110,115, 120 };
+                       
                         if (dir) 
                         {
                             incre++;
@@ -712,7 +713,10 @@ namespace READ_TEXT485
             GraphPane.AxisChange();
             panel5.Paint += new PaintEventHandler(panel5_Paint);
             //build_data();
-          
+            for (int i = 45; i < 135; i++)
+            {
+                ran_engle[i-45] = i;
+            }
 
         }
         private void ClearZelGraph() 
