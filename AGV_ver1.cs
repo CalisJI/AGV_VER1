@@ -36,6 +36,7 @@ namespace READ_TEXT485
         System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
         System.Windows.Forms.Timer Timer_main = new System.Windows.Forms.Timer();
         System.Windows.Forms.Timer RFID_timer = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer Rotate_timer = new System.Windows.Forms.Timer();
         FileSystemWatcher FileSystemWatcher = new FileSystemWatcher();
         App_Config App_Config;
         private static UsbDevice HID_RFID;
@@ -71,10 +72,16 @@ namespace READ_TEXT485
             RFID_timer.Interval = 100;
             RFID_timer.Enabled = false;
             RFID_timer.Tick += RFID_timer_Tick;
+            Rotate_timer.Interval = 60;
+            Rotate_timer.Enabled = false;
+            Rotate_timer.Tick += Rotate_timer_Tick;
             
         }
 
-       
+        private void Rotate_timer_Tick(object sender, EventArgs e)
+        {
+            panel5.Refresh();
+        }
 
         int dem = 0;
         string ID = string.Empty;
@@ -131,7 +138,7 @@ namespace READ_TEXT485
                 PLC_WRegister[0] = value[0];
              
             }
-                panel5.Refresh();
+                
             
             MethodInvoker inv = delegate 
             {
@@ -784,6 +791,11 @@ namespace READ_TEXT485
                     Timer_main.Start();
                 }
                 manual_Speed = int.Parse(textBox15.Text);
+                if (!Rotate_timer.Enabled) 
+                {
+                    Rotate_timer.Enabled = true;
+                    Rotate_timer.Start();
+                }
             }
             else
             {
@@ -827,6 +839,11 @@ namespace READ_TEXT485
             {
                 Timer_main.Stop();
                 Timer_main.Enabled = false;
+            }
+            if (Rotate_timer.Enabled) 
+            {
+                Rotate_timer.Stop();
+                Rotate_timer.Enabled = false;
             }
             if (Close ) 
             {
@@ -1831,6 +1848,7 @@ namespace READ_TEXT485
                 Timer.Start();
                 
             }
+            
             //if (!BackgroundWorker1.IsBusy) 
             //{
             //    chay = false;
