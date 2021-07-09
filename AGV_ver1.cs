@@ -73,7 +73,7 @@ namespace READ_TEXT485
             RFID_timer.Interval = 100;
             RFID_timer.Enabled = false;
             RFID_timer.Tick += RFID_timer_Tick;
-            Rotate_timer.Interval = 60;
+            Rotate_timer.Interval = 120;
             Rotate_timer.Enabled = false;
             Rotate_timer.Tick += Rotate_timer_Tick;
             

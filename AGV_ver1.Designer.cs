@@ -83,6 +83,7 @@ namespace READ_TEXT485
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.Start_btn = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -154,7 +155,6 @@ namespace READ_TEXT485
             this.XE = new System.Windows.Forms.CheckBox();
             this.X3 = new System.Windows.Forms.CheckBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.label23 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -247,7 +247,7 @@ namespace READ_TEXT485
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(200, 213);
+            this.zedGraphControl1.Location = new System.Drawing.Point(200, 206);
             this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(4);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
@@ -257,7 +257,7 @@ namespace READ_TEXT485
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(281, 158);
+            this.zedGraphControl1.Size = new System.Drawing.Size(281, 165);
             this.zedGraphControl1.TabIndex = 12;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
             // 
@@ -784,6 +784,17 @@ namespace READ_TEXT485
             this.button3.Text = "Auto";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Aqua;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(186, 161);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(20, 16);
+            this.label23.TabIndex = 1;
+            this.label23.Text = "0\'";
             // 
             // label22
             // 
@@ -1578,17 +1589,6 @@ namespace READ_TEXT485
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Aqua;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(186, 161);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(20, 16);
-            this.label23.TabIndex = 1;
-            this.label23.Text = "0\'";
             // 
             // AGV_ver1
             // 
