@@ -1784,12 +1784,14 @@ namespace READ_TEXT485
                 pictureBox2.Enabled = true;
                 pictureBox3.Enabled = true;
                 pictureBox4.Enabled = true;
+                pictureBox6.Enabled = true;
+                pictureBox7.Enabled = true;
                 //if (!BackgroundWorker1.IsBusy)
                 //{
                 //    chay = false;
                 //    BackgroundWorker1.RunWorkerAsync();
                 //}
-                
+
             }
             else if(button3.Text == "Manual") 
             {
@@ -1802,6 +1804,8 @@ namespace READ_TEXT485
                 pictureBox2.Enabled = false;
                 pictureBox3.Enabled = false;
                 pictureBox4.Enabled = false;
+                pictureBox6.Enabled = false;
+                pictureBox7.Enabled = false;
                 //if (BackgroundWorker1.IsBusy)
                 //{
                 //    chay = true;
