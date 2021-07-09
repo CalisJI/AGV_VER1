@@ -138,6 +138,7 @@ namespace READ_TEXT485
             MethodInvoker inv = delegate 
             {
                 label23.Text = goc.ToString() + "'"; ;
+                Configxml.UpdateSystem_Config("current_angle", goc.ToString());
             };this.Invoke(inv);
             if (!textBox14.Focused && !Start_btn.Enabled)
             {
@@ -242,7 +243,7 @@ namespace READ_TEXT485
                     {
                         goc = (float)so * ((float)45 / (float)15);
                         dir = true;
-                        incre = 0;
+                        incre = 14;
                     }
                     else
                     {
@@ -261,7 +262,7 @@ namespace READ_TEXT485
                     d = false;
                     if (Registers[0] == 0)
                     {
-                        int[] ran_engle = new int[] { 50,60,70,80, 90, 100, 110, 120 };
+                        int[] ran_engle = new int[] { 55,60,65,70,75,80,85, 90,95, 100,105, 110,115, 120 };
                         if (dir) 
                         {
                             incre++;
@@ -276,7 +277,7 @@ namespace READ_TEXT485
                             incre--;
                             if (incre <0)
                             {
-                                incre = 7;
+                                incre = ran_engle.Length-1;
                             }
                             goc = ran_engle[incre];
                         }
@@ -2269,6 +2270,8 @@ namespace READ_TEXT485
             Configxml.UpdateSystem_Config("Ki", Ki.ToString());
             Configxml.UpdateSystem_Config("Kd", Kd.ToString());
             Configxml.UpdateSystem_Config("rotate", rotated.ToString());
+            Configxml.UpdateSystem_Config("current_angle", goc.ToString());
+
 
         }
         Bitmap Bitmap = new Bitmap(260, 130);
