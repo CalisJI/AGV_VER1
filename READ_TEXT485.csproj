@@ -105,6 +105,7 @@
       <DependentUpon>AGV_ver1.cs</DependentUpon>
     </Compile>
     <Compile Include="App_Config.cs" />
+    <Compile Include="Caculator.cs" />
     <Compile Include="Configxml.cs" />
     <Compile Include="MySQL_dosomething.cs" />
     <Compile Include="Program.cs" />

@@ -33,10 +33,11 @@ namespace READ_TEXT485
                 App_Config.Baud = "115200";
                 App_Config.Database = "agv_data";
                 App_Config.Table = "";
-                App_Config.Kp = "0.1";
+                App_Config.Kp = "0.15";
                 App_Config.Kd = "0";
-                App_Config.Ki = "1";
+                App_Config.Ki = "4";
                 App_Config.rotate = "True";
+                App_Config.current_angle = 0;
                 XmlSerializer serializer = new XmlSerializer(typeof(App_Config));
                 Stream stream = new FileStream(Xml_path, FileMode.Create);
 

@@ -131,7 +131,11 @@ namespace READ_TEXT485
                 PLC_WRegister[0] = value[0];
              
             }
-
+            if (check_rotate) 
+            {
+                panel5.Paint += new PaintEventHandler(panel5_Paint);
+                panel5.Refresh();
+            }
 
             if (!textBox14.Focused && !Start_btn.Enabled)
             {
@@ -150,202 +154,300 @@ namespace READ_TEXT485
         }
        
         bool begin = false;
+        int temp = 0;
+        private string get_angle_value() 
+        {
+            string angle = string.Empty;
+            angle = in_put1[5].ToString() 
+                + in_put1[4].ToString()
+                + in_put1[3].ToString()
+                + in_put1[2].ToString()
+                + in_put1[1].ToString() 
+                + in_put1[0].ToString()
+                + in_put2[7].ToString()
+                + in_put2[6].ToString();
+            return angle;
+        }
+        private float current_engle() 
+        {
+            float goc = 0;
+            switch (get_angle_value())
+            {
+                case "10000000":
+                    goc = 0;
+                    break;
+                case "11000000":
+                    goc = 22.5f;
+                    break;
+                case "01000000":
+                    goc = 45;
+                    break;
+                case "01100000":
+                    goc = 67.5f;
+                    break;
+                case "00100000":
+                    goc = 90;
+                    break;
+                case "00110000":
+                    goc = 112.5f;
+                    break;
+                case "00010000":
+                    goc = 135;
+                    break;
+                case "00011000":
+                    goc = 157.5f;
+                    break;
+                case "00001000":
+                    goc = 180;
+                    break;
+                case "00001100":
+                    goc = 202.5f;
+                    break;
+                case "00000100":
+                    goc = 225;
+                    break;
+                case "00000110":
+                    goc = 247.5f;
+                    break;
+                case "00000010":
+                    goc = 270;
+                    break;
+                case "00000011":
+                    goc = 292.5f;
+                    break;
+                case "00000001":
+                    goc = 315;
+                    break;
+                case "10000001":
+                    goc = 337.5f;
+                    break;
+            }
+
+            return goc;
+        }
         private void wait_rotate()
         {
-            bool d = false;
-            
-            int so = Math.Abs(Registers[9]);
-            if ((so <= 15 && so >= 0) && Registers[0] == 1 && !begin) 
+            try
             {
-                begin = false;
-            }
-            else begin = true;
-            if (((so>=3)|| Registers[0] == 0) && begin)
-            {
-                d = false;
-                MethodInvoker inv = delegate
-                {
-                    if (!d)
-                    {
-                        pictureBox5.Show();
-                    }
+                bool d = false;
 
-                }; this.Invoke(inv);
+                int so = Math.Abs(Registers[9]);
 
-            }
-            if (so <= 1 && Registers[0] == 1 && begin && !d)  
-            {
-                d = true;
-            }
-          
-           
-            if (rotated && d) 
-            {
-                MethodInvoker inv = delegate
+                if ((so <= 15 && so >= 0) && Registers[0] == 1 && !begin)
                 {
-                    rotated = false;
-                   
-                    button10.Show();
-                    button10.Enabled = true;
-                    WRegisters16[10] = 0;
-                    WRegisters16[11] = 0;
-                    //WRegisters16[4] = 100;
-                    WRegisters16[5] = 0;
-                    auto = true;
-                    if (chanmode) 
+                    if (temp > Registers[9])
                     {
-                       // WRegisters16[5] = 0;
+                        goc = (float)so * ((float)45 / (float)15);
                     }
-                   
-                    if (!Start_btn.Enabled && !Timer.Enabled)
+                    else
                     {
-                        Timer.Enabled = true;
-                        Timer.Start();
-                        error = 0;
-                        last_error = 0;
-                        last_pre_error = 0;
-                        Tchar = 0;
-                        pre_out = 0;
-                        OUT = 0;
+                        goc = 180 - (float)so * ((float)45 / (float)15);
                     }
-                   
-                   
+                    if (!begin)
+                    {
+                        begin = false;
+                    }
+                }
+                else begin = true;
+                if (((so >= 3) || Registers[0] == 0) && begin)
+                {
+                    d = false;
+                    if (Registers[0] == 0)
+                    {
+                        Random random = new Random();
+                        int[] ran_engle = new int[] { 50, 60, 70, 80, 90, 100, 110, 120 };
+                        goc = random.Next(ran_engle.Length);
+                    }
+                    MethodInvoker inv = delegate
+                    {
+                        if (!d)
+                        {
+                            pictureBox5.Show();
+                        }
+
+                    }; this.Invoke(inv);
+
+                }
+                if (so <= 1 && Registers[0] == 1 && begin && !d)
+                {
+                    d = true;
+                }
+                temp = Registers[9];
+
+                if (rotated && d)
+                {
+                    MethodInvoker inv = delegate
+                    {
+                        rotated = false;
+
+                        button10.Show();
+                        button10.Enabled = true;
+                        WRegisters16[10] = 0;
+                        WRegisters16[11] = 0;
+                        //WRegisters16[4] = 100;
+                        WRegisters16[5] = 0;
+                        auto = true;
+                        if (chanmode)
+                        {
+                            // WRegisters16[5] = 0;
+                        }
+
+                        if (!Start_btn.Enabled && !Timer.Enabled)
+                        {
+                            Timer.Enabled = true;
+                            Timer.Start();
+                            error = 0;
+                            last_error = 0;
+                            last_pre_error = 0;
+                            Tchar = 0;
+                            pre_out = 0;
+                            OUT = 0;
+                        }
+
+
                         pictureBox5.Hide();
 
-                    if (temp_xilanh == '1' && temp1[5] == '0') 
-                    {                       
-                        WRegisters16[4] = 0;
-                        MethodInvoker inv1 = delegate
+                        if (temp_xilanh == '1' && temp1[5] == '0')
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
-                        }; this.Invoke(inv1);
-                        temp1[5] = temp_xilanh;
-                        short[] value = new short[2];
-                        build_data();
-                        value[0] = BinaryToShort(data_write1);
-                        value[1] = BinaryToShort(data_Write2);
-                        PLC_WRegister[0] = value[0];
-                        PLC_WRegister[1] = value[1];
-                    }
-                    else if (temp_xilanh == '0' && temp1[5] == '1')
-                    {
-                        WRegisters16[4] = 0;
-                        MethodInvoker inv1 = delegate
+                            WRegisters16[4] = 0;
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = WRegisters16[4].ToString();
+                            }; this.Invoke(inv1);
+                            temp1[5] = temp_xilanh;
+                            short[] value = new short[2];
+                            build_data();
+                            value[0] = BinaryToShort(data_write1);
+                            value[1] = BinaryToShort(data_Write2);
+                            PLC_WRegister[0] = value[0];
+                            PLC_WRegister[1] = value[1];
+                        }
+                        else if (temp_xilanh == '0' && temp1[5] == '1')
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
-                        }; this.Invoke(inv1);
-                        temp1[5] = temp_xilanh;
-                        short[] value = new short[2];
-                        build_data();
-                        value[0] = BinaryToShort(data_write1);
-                        value[1] = BinaryToShort(data_Write2);
-                        PLC_WRegister[0] = value[0];
-                        PLC_WRegister[1] = value[1];
-                    }
-                    else if(temp_xilanh == '0' && temp1[5] == '0') 
-                    {
-                        //WRegisters16[4] = temp_speed;
-                        MethodInvoker inv1 = delegate
+                            WRegisters16[4] = 0;
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = WRegisters16[4].ToString();
+                            }; this.Invoke(inv1);
+                            temp1[5] = temp_xilanh;
+                            short[] value = new short[2];
+                            build_data();
+                            value[0] = BinaryToShort(data_write1);
+                            value[1] = BinaryToShort(data_Write2);
+                            PLC_WRegister[0] = value[0];
+                            PLC_WRegister[1] = value[1];
+                        }
+                        else if (temp_xilanh == '0' && temp1[5] == '0')
                         {
-                            textBox9.Text = temp_speed.ToString();
-                        }; this.Invoke(inv1);
-                    }
-                    else if (temp_xilanh == '1' && temp1[5] == '1')
-                    {
-                        //WRegisters16[4] = 0;
-                        MethodInvoker inv1 = delegate
+                            //WRegisters16[4] = temp_speed;
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = temp_speed.ToString();
+                            }; this.Invoke(inv1);
+                        }
+                        else if (temp_xilanh == '1' && temp1[5] == '1')
                         {
-                            textBox9.Text = temp_speed.ToString();
-                        }; this.Invoke(inv1);
-                    }
-                    //temp1[5] = '1';
-                    check_rotate = false;
+                            //WRegisters16[4] = 0;
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = temp_speed.ToString();
+                            }; this.Invoke(inv1);
+                        }
+                        //temp1[5] = '1';
+                        check_rotate = false;
+                        goc = 180;
+                        Configxml.UpdateSystem_Config("rotate", rotated.ToString());
+                    }; this.Invoke(inv);
 
-                    Configxml.UpdateSystem_Config("rotate", rotated.ToString());
-                }; this.Invoke(inv);
-
-            }
-            else if(!rotated && d)
-            {
-                MethodInvoker inv = delegate
+                }
+                else if (!rotated && d)
                 {
-                    rotated = true;
-                    button10.Hide();
-                    button10.Enabled = false;
-                    
-                    WRegisters16[10] = 0;
-                    WRegisters16[11] = 0;
-                    //WRegisters16[4] = 100;
-                    WRegisters16[5] = 0;
-                    auto = true;
-                    if (chanmode)
+                    MethodInvoker inv = delegate
                     {
-                       // WRegisters16[5] = 0;
-                    }
-                  
-                   
-                    if (!Start_btn.Enabled && !Timer.Enabled)
-                    {
-                        Timer.Enabled = true;
-                        Timer.Start();
-                        error = 0;
-                        last_error = 0;
-                        last_pre_error = 0;
-                        Tchar = 0;
-                        pre_out = 0;
-                        OUT = 0;
-                    }
+                        rotated = true;
+                        button10.Hide();
+                        button10.Enabled = false;
 
-                    pictureBox5.Hide();
-                    if (temp_xilanh == '1' && temp1[5] == '0')
-                    {                     
-                        WRegisters16[4] = 0;
-                        MethodInvoker inv1 = delegate 
+                        WRegisters16[10] = 0;
+                        WRegisters16[11] = 0;
+                        //WRegisters16[4] = 100;
+                        WRegisters16[5] = 0;
+                        auto = true;
+                        if (chanmode)
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
-                        };this.Invoke(inv1);
-                        temp1[5] = temp_xilanh;
-                        short[] value = new short[2];
-                        build_data();
-                        value[0] = BinaryToShort(data_write1);
-                        value[1] = BinaryToShort(data_Write2);
-                        PLC_WRegister[0] = value[0];
-                        PLC_WRegister[1] = value[1];
-                    }
-                    else if (temp_xilanh == '0' && temp1[5] == '1')
-                    {
-                        WRegisters16[4] = 0;
-                        MethodInvoker inv1 = delegate
+                            // WRegisters16[5] = 0;
+                        }
+
+
+                        if (!Start_btn.Enabled && !Timer.Enabled)
                         {
-                            textBox9.Text = WRegisters16[4].ToString();
-                        }; this.Invoke(inv1);
-                        temp1[5] = temp_xilanh;
-                        short[] value = new short[2];
-                        build_data();
-                        value[0] = BinaryToShort(data_write1);
-                        value[1] = BinaryToShort(data_Write2);
-                        PLC_WRegister[0] = value[0];
-                        PLC_WRegister[1] = value[1];
-                    }
-                    else if (temp_xilanh == '0' && temp1[5] == '0')
-                    {
-                        MethodInvoker inv1 = delegate
+                            Timer.Enabled = true;
+                            Timer.Start();
+                            error = 0;
+                            last_error = 0;
+                            last_pre_error = 0;
+                            Tchar = 0;
+                            pre_out = 0;
+                            OUT = 0;
+                        }
+
+                        pictureBox5.Hide();
+                        if (temp_xilanh == '1' && temp1[5] == '0')
                         {
-                            textBox9.Text = temp_speed.ToString();
-                        }; this.Invoke(inv1);
-                    }
-                    else if (temp_xilanh == '1' && temp1[5] == '1')
-                    {
-                        MethodInvoker inv1 = delegate
+                            WRegisters16[4] = 0;
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = WRegisters16[4].ToString();
+                            }; this.Invoke(inv1);
+                            temp1[5] = temp_xilanh;
+                            short[] value = new short[2];
+                            build_data();
+                            value[0] = BinaryToShort(data_write1);
+                            value[1] = BinaryToShort(data_Write2);
+                            PLC_WRegister[0] = value[0];
+                            PLC_WRegister[1] = value[1];
+                        }
+                        else if (temp_xilanh == '0' && temp1[5] == '1')
                         {
-                            textBox9.Text = temp_speed.ToString();
-                        }; this.Invoke(inv1);
-                    }
-                    Configxml.UpdateSystem_Config("rotate", rotated.ToString());
-                }; this.Invoke(inv);
-                check_rotate = false;
+                            WRegisters16[4] = 0;
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = WRegisters16[4].ToString();
+                            }; this.Invoke(inv1);
+                            temp1[5] = temp_xilanh;
+                            short[] value = new short[2];
+                            build_data();
+                            value[0] = BinaryToShort(data_write1);
+                            value[1] = BinaryToShort(data_Write2);
+                            PLC_WRegister[0] = value[0];
+                            PLC_WRegister[1] = value[1];
+                        }
+                        else if (temp_xilanh == '0' && temp1[5] == '0')
+                        {
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = temp_speed.ToString();
+                            }; this.Invoke(inv1);
+                        }
+                        else if (temp_xilanh == '1' && temp1[5] == '1')
+                        {
+                            MethodInvoker inv1 = delegate
+                            {
+                                textBox9.Text = temp_speed.ToString();
+                            }; this.Invoke(inv1);
+                        }
+                        goc = 0;
+                        Configxml.UpdateSystem_Config("rotate", rotated.ToString());
+                    }; this.Invoke(inv);
+                    check_rotate = false;
+                }
+
             }
-           
+            catch (Exception )
+            {
+
+                Configxml.UpdateSystem_Config("current_angle", goc.ToString());
+            }
           
         }
 
@@ -505,8 +607,34 @@ namespace READ_TEXT485
                 comboBox1.Text = "SQL Error";
                 
             }
-            
-            
+            goc = App_Config.current_angle;
+            if (App_Config.rotate == "True")
+            {
+                rotated = true;
+            }
+            else if (App_Config.rotate == "False")
+            {
+                rotated = false;
+            }
+           
+            if (App_Config.current_angle > 0 && App_Config.current_angle < 30) 
+            {
+                rotated = true;
+            }
+            else if(App_Config.current_angle > 45 && App_Config.current_angle <= 250)
+            {
+                rotated = false;
+            }
+            if (rotated)
+            {
+                button10.Hide();
+                button10.Enabled = false;
+            }
+            else
+            {
+                button10.Show();
+                button10.Enabled = true;
+            }
 
             try
             {
@@ -533,24 +661,7 @@ namespace READ_TEXT485
             {
                 comboBox2.Text = "SQL Error";
             }
-            if (App_Config.rotate == "True") 
-            {
-                rotated = true;
-            }
-            else if (App_Config.rotate == "False") 
-            {
-                rotated = false;
-            }
-            if (App_Config.rotate == "True") 
-            {
-                button10.Hide();
-                button10.Enabled = false;
-            }
-            else 
-            {
-                button10.Show();
-                button10.Enabled = true;
-            }
+           
             comboBox2.SelectedItem = App_Config.Table;
             GraphPane = zedGraphControl1.GraphPane;
             GraphPane.Title.Text = "Graph of speed data over time";
@@ -567,6 +678,7 @@ namespace READ_TEXT485
             //GraphPane.YAxis.Scale.MinorStep = 10;
             //GraphPane.YAxis.Scale.MajorStep = 100;
             GraphPane.AxisChange();
+            panel5.Paint += new PaintEventHandler(panel5_Paint);
             //build_data();
           
 
@@ -734,17 +846,18 @@ namespace READ_TEXT485
                 //rectangle.Location = new Point(0, 0);
                 rectangle1.Size = new Size(panel.Width, panel.Height);
 
-
+                
 
                 Rectangle rec1 = new Rectangle();
                 Rectangle rec2 = new Rectangle();
+
                 graphics = panel.CreateGraphics();
                 graphics.Clear(Color.White);
                 //graphics.FillRectangle(Brushes.White, rectangle);
                 Graphics e;
                 e = panel.CreateGraphics();
                 Font font = new Font("Times New Roman", 10);
-                AGV(ref rec1, ref rec2);
+                //AGV(ref rec1, ref rec2);
                 Rectangle rectangle = new Rectangle();
                 rectangle.Location = new Point(0, 0);
                 rectangle.Size = new Size(260, 160);
@@ -782,7 +895,7 @@ namespace READ_TEXT485
             Rectangle rectangle = new Rectangle();
             rectangle.Size = new Size(panel.Width, panel.Height);
             Bitmap bitmap = new Bitmap(panel.Width, panel.Height);
-            panel5.DrawToBitmap(bitmap, rectangle);
+            panel.DrawToBitmap(bitmap, rectangle);
             if (File.Exists(Application.StartupPath + @"\AGV_simulate.bitmap"))
             {
                 File.Delete(Application.StartupPath + @"\AGV_simulate.bitmap");
@@ -791,8 +904,8 @@ namespace READ_TEXT485
             {
                 using (FileStream fs = new FileStream(Application.StartupPath + @"\AGV_simulate.bitmap", FileMode.Create, FileAccess.ReadWrite))
                 {
-                    //   RotateImage(Live_Cam_6, 45).Save(memory, ImageFormat.Jpeg);
-                    Bitmap.Save(memory, ImageFormat.Jpeg);
+                   
+                    bitmap.Save(memory, ImageFormat.Jpeg);
                     byte[] bytes = memory.ToArray();
                     fs.Write(bytes, 0, bytes.Length);
                     fs.Dispose();
@@ -2129,47 +2242,60 @@ namespace READ_TEXT485
 
         }
         Bitmap Bitmap = new Bitmap(260, 130);
+        int i = 0;
+        float goc = 0;
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
+            i++;
+            if (i != 0) 
+            {
+                Rectangle rec1 = new Rectangle();
+                Rectangle rec2 = new Rectangle();
+                
+                rec1.Location = new Point(-20, -30);
+                rec1.Size = new Size(40, 60);
+               
+                rec2.Location = new Point(-20, -30);
+                rec2.Size = new Size(40, 20);
+                //simualate_AGV(panel5, int.Parse(textBox15.Text));
+                Font font = new Font("Times New Roman", 10);
+                //AGV(ref rec1, ref rec2);
+                Rectangle rectangle = new Rectangle();
+                rectangle.Location = new Point(0,0);
+                rectangle.Size = new Size(260, 160);
+                e.Graphics.DrawRectangle(new Pen(Color.Red, 2), rectangle);
+                e.Graphics.DrawLine(new Pen(Color.Blue), new Point(130, 0), new Point(130, 160));
+                e.Graphics.DrawLine(new Pen(Color.Blue), new Point(0, 80), new Point(260, 80));
+                e.Graphics.DrawString("0", font, Brushes.Red, new Point(130, 80));              
+                Pen pen = new Pen(Color.Black, 2);
+                e.Graphics.TranslateTransform(panel5.Width/2, panel5.Height/2);
+                e.Graphics.RotateTransform(goc);
 
-            //Rectangle rec1 = new Rectangle();
-            //Rectangle rec2 = new Rectangle();
-            ////simualate_AGV(panel5, int.Parse(textBox15.Text));
-            //Font font = new Font("Times New Roman", 10);
-            //AGV(ref rec1, ref rec2);
-            //Rectangle rectangle = new Rectangle();
-            //rectangle.Location = new Point(panel5.Width, panel5.Height);
-            //rectangle.Size = new Size(260, 160);
-            //e.Graphics.DrawRectangle(new Pen(Color.Red, 2), rectangle);
-            //e.Graphics.DrawLine(new Pen(Color.Blue), new Point(130, 0), new Point(130, 160));
-            //e.Graphics.DrawLine(new Pen(Color.Blue), new Point(0, 80), new Point(260, 80));
-            //e.Graphics.DrawString("0", font, Brushes.Red, new Point(130, 80));
-            //Pen pen = new Pen(Color.Black, 3);
-            //e.Graphics.TranslateTransform(130, 80);
-            //e.Graphics.RotateTransform(int.Parse(textBox15.Text));
-
-            //e.Graphics.DrawRectangle(pen, rec1);
-            //e.Graphics.FillRectangle(Brushes.Red, rec2);
-            e.Graphics.DrawImage(Bitmap,Point.Empty);
-            //save_panel(panel5, bitmap);
-
+                e.Graphics.DrawRectangle(pen, rec1);
+                e.Graphics.FillRectangle(Brushes.Red, rec2);
+                e.Graphics.RotateTransform(-goc);
+                e.Graphics.TranslateTransform(-130, -80);
+               
+            }
+            
+            //panel5.DrawToBitmap(Bitmap, rectangle);
+            //e.Graphics.DrawImage(Bitmap,Point.Empty);
 
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            simualate_AGV(panel5, int.Parse(textBox15.Text));
-            panel5.Paint += new PaintEventHandler(panel5_Paint);
-            
            
-            //panel5.Refresh();
+            //simualate_AGV(panel5, int.Parse(textBox15.Text));
+            panel5.Paint += new PaintEventHandler(panel5_Paint);
+            panel5.Refresh();
 
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
+
             save_panel(panel5);
-          
 
         }
 

@@ -155,6 +155,7 @@ namespace READ_TEXT485
             this.XE = new System.Windows.Forms.CheckBox();
             this.X3 = new System.Windows.Forms.CheckBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.button12 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -615,6 +616,7 @@ namespace READ_TEXT485
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button12);
             this.groupBox3.Controls.Add(this.button11);
             this.groupBox3.Controls.Add(this.panel5);
             this.groupBox3.Controls.Add(this.panel4);
@@ -656,6 +658,7 @@ namespace READ_TEXT485
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(260, 160);
             this.panel5.TabIndex = 4;
+            //this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(panel5_Paint);
             // 
             // panel4
             // 
@@ -1589,6 +1592,16 @@ namespace READ_TEXT485
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(83, 172);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(25, 23);
+            this.button12.TabIndex = 5;
+            this.button12.Text = "button11";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // AGV_ver1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1766,6 +1779,7 @@ namespace READ_TEXT485
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 
