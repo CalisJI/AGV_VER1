@@ -40,7 +40,6 @@ namespace READ_TEXT485
                 App_Config.current_angle = 0;
                 XmlSerializer serializer = new XmlSerializer(typeof(App_Config));
                 Stream stream = new FileStream(Xml_path, FileMode.Create);
-
                 XmlWriter writer = new XmlTextWriter(stream, Encoding.UTF8);
                 serializer.Serialize(writer, App_Config);
                 writer.Close();
