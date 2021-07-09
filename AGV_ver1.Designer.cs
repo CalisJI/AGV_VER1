@@ -70,7 +70,6 @@ namespace READ_TEXT485
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -155,7 +154,7 @@ namespace READ_TEXT485
             this.XE = new System.Windows.Forms.CheckBox();
             this.X3 = new System.Windows.Forms.CheckBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.button12 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -616,8 +615,6 @@ namespace READ_TEXT485
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Controls.Add(this.button11);
             this.groupBox3.Controls.Add(this.panel5);
             this.groupBox3.Controls.Add(this.panel4);
             this.groupBox3.Controls.Add(this.panel3);
@@ -631,6 +628,7 @@ namespace READ_TEXT485
             this.groupBox3.Controls.Add(this.pictureBox2);
             this.groupBox3.Controls.Add(this.pictureBox1);
             this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.Start_btn);
             this.groupBox3.Controls.Add(this.button10);
@@ -642,23 +640,12 @@ namespace READ_TEXT485
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Auto/Manual";
             // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(175, 159);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(40, 23);
-            this.button11.TabIndex = 5;
-            this.button11.Text = "button11";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
             // panel5
             // 
             this.panel5.Location = new System.Drawing.Point(11, 196);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(260, 160);
             this.panel5.TabIndex = 4;
-            //this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(panel5_Paint);
             // 
             // panel4
             // 
@@ -711,7 +698,7 @@ namespace READ_TEXT485
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(17, 172);
+            this.textBox15.Location = new System.Drawing.Point(23, 172);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(60, 21);
             this.textBox15.TabIndex = 0;
@@ -1592,15 +1579,16 @@ namespace READ_TEXT485
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // button12
+            // label23
             // 
-            this.button12.Location = new System.Drawing.Point(83, 172);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(25, 23);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "button11";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Aqua;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(186, 161);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(20, 16);
+            this.label23.TabIndex = 1;
+            this.label23.Text = "0\'";
             // 
             // AGV_ver1
             // 
@@ -1778,8 +1766,7 @@ namespace READ_TEXT485
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label label23;
     }
 }
 

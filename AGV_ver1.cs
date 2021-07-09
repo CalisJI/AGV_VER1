@@ -136,7 +136,10 @@ namespace READ_TEXT485
                 panel5.Paint += new PaintEventHandler(panel5_Paint);
                 panel5.Refresh();
             }
-
+            MethodInvoker inv = delegate 
+            {
+                label23.Text = goc.ToString() + "'"; ;
+            };this.Invoke(inv);
             if (!textBox14.Focused && !Start_btn.Enabled)
             {
                 textBox14.Focus();
@@ -225,12 +228,13 @@ namespace READ_TEXT485
 
             return goc;
         }
+        int incre = 0;
         private void wait_rotate()
         {
             try
             {
                 bool d = false;
-
+                bool dir = false;
                 int so = Math.Abs(Registers[9]);
 
                 if ((so <= 15 && so >= 0) && Registers[0] == 1 && !begin)
@@ -238,10 +242,14 @@ namespace READ_TEXT485
                     if (temp > Registers[9])
                     {
                         goc = (float)so * ((float)45 / (float)15);
+                        dir = true;
+                        incre = 0;
                     }
                     else
                     {
                         goc = 180 - (float)so * ((float)45 / (float)15);
+                        dir = false;
+                        incre = 8;
                     }
                     if (!begin)
                     {
@@ -254,9 +262,27 @@ namespace READ_TEXT485
                     d = false;
                     if (Registers[0] == 0)
                     {
-                        Random random = new Random();
-                        int[] ran_engle = new int[] { 50, 60, 70, 80, 90, 100, 110, 120 };
-                        goc = random.Next(ran_engle.Length);
+                        int[] ran_engle = new int[] { 50,60,70,80, 90, 100, 110, 120 };
+                        if (dir) 
+                        {
+                            incre++;
+                            if (incre >= ran_engle.Length) 
+                            {
+                                incre = 0;
+                            }
+                            goc = ran_engle[incre];
+                        }
+                        else 
+                        {
+                            incre--;
+                            if (incre <0)
+                            {
+                                incre = 7;
+                            }
+                            goc = ran_engle[incre];
+                        }
+                        
+                        
                     }
                     MethodInvoker inv = delegate
                     {
@@ -608,6 +634,7 @@ namespace READ_TEXT485
                 
             }
             goc = App_Config.current_angle;
+            label23.Text = goc.ToString() + "'";
             if (App_Config.rotate == "True")
             {
                 rotated = true;
@@ -2246,9 +2273,7 @@ namespace READ_TEXT485
         float goc = 0;
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
-            i++;
-            if (i != 0) 
-            {
+          
                 Rectangle rec1 = new Rectangle();
                 Rectangle rec2 = new Rectangle();
                 
@@ -2276,8 +2301,7 @@ namespace READ_TEXT485
                 e.Graphics.RotateTransform(-goc);
                 e.Graphics.TranslateTransform(-130, -80);
                
-            }
-            
+           
             //panel5.DrawToBitmap(Bitmap, rectangle);
             //e.Graphics.DrawImage(Bitmap,Point.Empty);
 
@@ -2292,12 +2316,7 @@ namespace READ_TEXT485
 
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-
-            save_panel(panel5);
-
-        }
+        
 
         bool hold = false;
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
