@@ -131,8 +131,6 @@ namespace READ_TEXT485
                 PLC_WRegister[0] = value[0];
              
             }
-           
-                panel5.Paint += new PaintEventHandler(panel5_Paint);
                 panel5.Refresh();
             
             MethodInvoker inv = delegate 

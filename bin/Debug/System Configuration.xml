@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<App_Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <COM>COM1</COM>
+  <Baud>115200</Baud>
+  <Database>agv_data</Database>
+  <Table />
+  <Kp>0.15</Kp>
+  <Ki>4</Ki>
+  <Kd>0</Kd>
+  <rotate>True</rotate>
+  <current_angle>30</current_angle>
+</App_Config>
