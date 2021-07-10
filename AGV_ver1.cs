@@ -77,16 +77,19 @@ namespace READ_TEXT485
             
         }
         int time = 0;
+        float temp_goc = 0;
         private void Rotate_timer_Tick(object sender, EventArgs e)
         {
             time++;
             if (WRegisters16[8] == 0 && WRegisters16[9] == 0 && WRegisters16[5] == 1)
             {
-                goc = goc - (float)Caculator.current_angle(manual_Speed, time * 0.12);
+                goc = (float)Caculator.current_angle(manual_Speed, time * 0.12) + temp_goc;
+               
             }
             else if (WRegisters16[8] == 1 && WRegisters16[9] == 1 && WRegisters16[5] == 1) 
             {
-                goc = goc + (float)Caculator.current_angle(manual_Speed, time * 0.12);
+                goc = (float)Caculator.current_angle(manual_Speed, time * 0.12)+ temp_goc;
+                
             }
             panel5.Refresh();
         }
@@ -399,6 +402,8 @@ namespace READ_TEXT485
                         {
                             Rotate_timer.Stop();
                             Rotate_timer.Enabled = false;
+                            temp_goc = goc;
+
                         }
                         Configxml.UpdateSystem_Config("rotate", rotated.ToString());
                     }; this.Invoke(inv);
@@ -485,6 +490,7 @@ namespace READ_TEXT485
                         {
                             Rotate_timer.Stop();
                             Rotate_timer.Enabled = false;
+                            temp_goc = goc;
                         }
                         Configxml.UpdateSystem_Config("rotate", rotated.ToString());
                     }; this.Invoke(inv);
@@ -866,6 +872,7 @@ namespace READ_TEXT485
             {
                 Rotate_timer.Stop();
                 Rotate_timer.Enabled = false;
+                temp_goc = goc;
             }
             if (Close ) 
             {
@@ -1634,6 +1641,7 @@ namespace READ_TEXT485
                 //time = 0;
                 Rotate_timer.Stop();
                 Rotate_timer.Enabled = false;
+                temp_goc = goc;
                
             }
         }
@@ -1672,6 +1680,7 @@ namespace READ_TEXT485
                 time = 0;
                 Rotate_timer.Stop();
                 Rotate_timer.Enabled = false;
+                temp_goc = goc;
 
             }
         }
