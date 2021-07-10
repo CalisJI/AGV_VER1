@@ -24,7 +24,7 @@ namespace READ_TEXT485
         public double current_angle(int RPM,double timer) 
         {
             double angle;
-            angle = ((double)(RPM * Math.PI * 0.13 * timer * 360) / 60) / Math.PI * 0.28;
+            angle = ((double)(RPM * Math.PI * 0.13 * timer * 360) / 60) / Math.PI * 0.32;
             return angle;
         }
     }
