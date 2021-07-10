@@ -21,5 +21,11 @@ namespace READ_TEXT485
             ang = (Math.Atan2(corner_y - y1, corner_x - x1) - Math.Atan2(y2 - y1, x2 - x1)) * (double)(180 / Math.PI);
             return ang;
         }
+        public double current_angle(int RPM,double timer) 
+        {
+            double angle;
+            angle = ((double)(RPM * Math.PI * 0.13 * timer * 360) / 60) / Math.PI * 0.28;
+            return angle;
+        }
     }
 }

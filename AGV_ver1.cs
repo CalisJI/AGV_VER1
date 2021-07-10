@@ -39,10 +39,8 @@ namespace READ_TEXT485
         System.Windows.Forms.Timer Rotate_timer = new System.Windows.Forms.Timer();
         FileSystemWatcher FileSystemWatcher = new FileSystemWatcher();
         App_Config App_Config;
-        private static UsbDevice HID_RFID;
-        private static UsbDeviceFinder UsbDeviceFinder = new UsbDeviceFinder(1133, 50498);
-        private int[] ran_engle = new int[90] ;
-        UsbEndpointReader reader;
+        Caculator Caculator = new Caculator();
+        private int[] ran_engle = new int[90] ;    
         public AGV_ver1()
         {
             InitializeComponent();
@@ -78,9 +76,18 @@ namespace READ_TEXT485
             Rotate_timer.Tick += Rotate_timer_Tick;
             
         }
-
+        int time = 0;
         private void Rotate_timer_Tick(object sender, EventArgs e)
         {
+            time++;
+            if (WRegisters16[8] == 0 && WRegisters16[9] == 0 && WRegisters16[5] == 1)
+            {
+                goc = goc - (float)Caculator.current_angle(manual_Speed, time * 0.12);
+            }
+            else if (WRegisters16[8] == 1 && WRegisters16[9] == 0 && WRegisters16[5] == 1) 
+            {
+                goc = goc + (float)Caculator.current_angle(manual_Speed, time * 0.12);
+            }
             panel5.Refresh();
         }
 
@@ -242,21 +249,21 @@ namespace READ_TEXT485
                 bool d = false;
                 bool dir = false;
                 int so = Math.Abs(Registers[9]);
-
+                
                 if ((so <= 15 && so >= 0) && Registers[0] == 1 && !begin)
                 {
-                    if (temp > Registers[9])
-                    {
-                        goc = (float)so * ((float)45 / (float)15);
-                        dir = true;
-                        incre = 14;
-                    }
-                    else
-                    {
-                        goc = 180 - (float)so * ((float)45 / (float)15);
-                        dir = false;
-                        incre = 8;
-                    }
+                    //if (temp > Registers[9])
+                    //{
+                    //    goc = (float)so * ((float)45 / (float)15);
+                    //    dir = true;
+                    //    incre = 14;
+                    //}
+                    //else
+                    //{
+                    //    goc = 180 - (float)so * ((float)45 / (float)15);
+                    //    dir = false;
+                    //    incre = 8;
+                    //}
                     if (!begin)
                     {
                         begin = false;
@@ -266,30 +273,30 @@ namespace READ_TEXT485
                 if (((so >= 3) || Registers[0] == 0) && begin)
                 {
                     d = false;
-                    if (Registers[0] == 0)
-                    {
+                    //if (Registers[0] == 0)
+                    //{
                        
-                        if (dir) 
-                        {
-                            incre++;
-                            if (incre >= ran_engle.Length) 
-                            {
-                                incre = 0;
-                            }
-                            goc = ran_engle[incre];
-                        }
-                        else 
-                        {
-                            incre--;
-                            if (incre <0)
-                            {
-                                incre = ran_engle.Length-1;
-                            }
-                            goc = ran_engle[incre];
-                        }
+                    //    if (dir) 
+                    //    {
+                    //        incre++;
+                    //        if (incre >= ran_engle.Length) 
+                    //        {
+                    //            incre = 0;
+                    //        }
+                    //        goc = ran_engle[incre];
+                    //    }
+                    //    else 
+                    //    {
+                    //        incre--;
+                    //        if (incre <0)
+                    //        {
+                    //            incre = ran_engle.Length-1;
+                    //        }
+                    //        goc = ran_engle[incre];
+                    //    }
                         
                         
-                    }
+                    //}
                     MethodInvoker inv = delegate
                     {
                         if (!d)
@@ -387,7 +394,12 @@ namespace READ_TEXT485
                         }
                         //temp1[5] = '1';
                         check_rotate = false;
-                        goc = 180;
+                        //goc = 180;
+                        if (Rotate_timer.Enabled)
+                        {
+                            Rotate_timer.Stop();
+                            Rotate_timer.Enabled = false;
+                        }
                         Configxml.UpdateSystem_Config("rotate", rotated.ToString());
                     }; this.Invoke(inv);
 
@@ -468,7 +480,12 @@ namespace READ_TEXT485
                                 textBox9.Text = temp_speed.ToString();
                             }; this.Invoke(inv1);
                         }
-                        goc = 0;
+                        //goc = 0;
+                        if (Rotate_timer.Enabled)
+                        {
+                            Rotate_timer.Stop();
+                            Rotate_timer.Enabled = false;
+                        }
                         Configxml.UpdateSystem_Config("rotate", rotated.ToString());
                     }; this.Invoke(inv);
                     check_rotate = false;
@@ -795,11 +812,12 @@ namespace READ_TEXT485
                     Timer_main.Start();
                 }
                 manual_Speed = int.Parse(textBox15.Text);
-                if (!Rotate_timer.Enabled) 
-                {
-                    Rotate_timer.Enabled = true;
-                    Rotate_timer.Start();
-                }
+                //if (!Rotate_timer.Enabled) 
+                //{
+                //    time = 0;
+                //    Rotate_timer.Enabled = true;
+                //    Rotate_timer.Start();
+                //}
             }
             else
             {
@@ -1396,6 +1414,12 @@ namespace READ_TEXT485
                             {
                                 check_rotate = true;
                                 Rotate(manual_Speed, ref rotated);
+                                if (!Rotate_timer.Enabled) 
+                                {
+                                    time = 0;
+                                    Rotate_timer.Enabled = true;
+                                    Rotate_timer.Start();
+                                }
                                
                             }
                             WRegisters16[3] = Convert.ToInt16(DataTable.Rows[i][4].ToString());
@@ -1406,6 +1430,12 @@ namespace READ_TEXT485
                             {
                                 check_rotate = true;
                                 Rotate(manual_Speed, ref rotated);
+                                if (!Rotate_timer.Enabled)
+                                {
+                                    time = 0;
+                                    Rotate_timer.Enabled = true;
+                                    Rotate_timer.Start();
+                                }
                             }
                             if (DataTable.Rows[i][4].ToString() == "1") 
                             {
@@ -1578,6 +1608,12 @@ namespace READ_TEXT485
             WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
             WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
             pictureBox6.BorderStyle = BorderStyle.Fixed3D;
+            if (!Rotate_timer.Enabled) 
+            {
+                time = 0;
+                Rotate_timer.Enabled = true;
+                Rotate_timer.Start();
+            }
             MethodInvoker inv = delegate 
             {
                 panel3.BackColor = Color.Red;
@@ -1593,6 +1629,13 @@ namespace READ_TEXT485
             WRegisters16[10] = 0;   //2010 Speed Motor A
             WRegisters16[11] = 0;   //2011 Speed Motor B
             pictureBox6.BorderStyle = BorderStyle.FixedSingle;
+            if (Rotate_timer.Enabled)
+            {
+                time = 0;
+                Rotate_timer.Stop();
+                Rotate_timer.Enabled = false;
+               
+            }
         }
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1603,6 +1646,12 @@ namespace READ_TEXT485
             WRegisters16[10] = (short)manual_Speed;   //2010 Speed Motor A
             WRegisters16[11] = (short)manual_Speed;   //2011 Speed Motor B
             pictureBox7.BorderStyle = BorderStyle.Fixed3D;
+            if (!Rotate_timer.Enabled)
+            {
+                time = 0;
+                Rotate_timer.Enabled = true;
+                Rotate_timer.Start();
+            }
             MethodInvoker inv = delegate
             {
                 panel4.BackColor = Color.Red;
@@ -1618,6 +1667,13 @@ namespace READ_TEXT485
             WRegisters16[10] = 0;   //2010 Speed Motor A
             WRegisters16[11] = 0;   //2011 Speed Motor B
             pictureBox7.BorderStyle = BorderStyle.FixedSingle;
+            if (Rotate_timer.Enabled)
+            {
+                time = 0;
+                Rotate_timer.Stop();
+                Rotate_timer.Enabled = false;
+
+            }
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1810,7 +1866,11 @@ namespace READ_TEXT485
                 //    chay = false;
                 //    BackgroundWorker1.RunWorkerAsync();
                 //}
-
+                if (!Start_btn.Enabled) 
+                {
+                    Stop_btn.PerformClick();
+                }
+                
             }
             else if(button3.Text == "Manual") 
             {
@@ -2280,6 +2340,15 @@ namespace READ_TEXT485
             {
                 check_rotate = true;
                 Rotate(manual_Speed, ref rotated);
+                if (check_rotate) 
+                {
+                    if (!Rotate_timer.Enabled) 
+                    {
+                        time = 0;
+                        Rotate_timer.Enabled = true;
+                        Rotate_timer.Start();
+                    }
+                }
             }
            
         }

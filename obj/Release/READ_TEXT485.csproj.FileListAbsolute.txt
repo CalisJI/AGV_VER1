@@ -102,3 +102,4 @@ C:\Users\PC\source\repos\AGV_VER1\obj\Release\READ_TEXT485.pdb
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Release\ModBus_RTU.pdb
 C:\Users\PC\Source\Repos\AGV_VER1\bin\Release\ModBus_RTU.xml
 C:\Users\PC\Source\Repos\AGV_VER1\obj\Release\READ_TEXT485.csproj.AssemblyReference.cache
+F:\VISUAL PROJECT\READ_TEXT485\obj\Release\READ_TEXT485.csproj.AssemblyReference.cache
