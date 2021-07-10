@@ -36,19 +36,6 @@ namespace READ_TEXT485
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Reset_Fault_btn = new System.Windows.Forms.Button();
@@ -87,17 +74,6 @@ namespace READ_TEXT485
             this.label22 = new System.Windows.Forms.Label();
             this.Start_btn = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Discon_btn = new System.Windows.Forms.Button();
-            this.Connect_btn = new System.Windows.Forms.Button();
-            this.StopB_box = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Parity_box = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Baud_box = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ComP_box = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
@@ -155,12 +131,37 @@ namespace READ_TEXT485
             this.XE = new System.Windows.Forms.CheckBox();
             this.X3 = new System.Windows.Forms.CheckBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Discon_btn = new System.Windows.Forms.Button();
+            this.Connect_btn = new System.Windows.Forms.Button();
+            this.StopB_box = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Parity_box = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Baud_box = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ComP_box = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -168,7 +169,6 @@ namespace READ_TEXT485
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -180,13 +180,16 @@ namespace READ_TEXT485
             this.groupBox2.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -197,11 +200,8 @@ namespace READ_TEXT485
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox12);
-            this.tabPage1.Controls.Add(this.zedGraphControl1);
-            this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -215,10 +215,10 @@ namespace READ_TEXT485
             this.groupBox12.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox12.Controls.Add(this.radioButton2);
             this.groupBox12.Controls.Add(this.radioButton1);
-            this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox12.Location = new System.Drawing.Point(3, 206);
+            this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox12.Location = new System.Drawing.Point(3, 294);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(194, 45);
+            this.groupBox12.Size = new System.Drawing.Size(178, 77);
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Lift Mode";
@@ -227,9 +227,10 @@ namespace READ_TEXT485
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(112, 19);
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(5, 44);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(66, 17);
+            this.radioButton2.Size = new System.Drawing.Size(107, 29);
             this.radioButton2.TabIndex = 0;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Manual";
@@ -238,17 +239,18 @@ namespace READ_TEXT485
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(29, 19);
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(5, 19);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(51, 17);
+            this.radioButton1.Size = new System.Drawing.Size(78, 29);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.Text = "Auto";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(200, 206);
-            this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.zedGraphControl1.Location = new System.Drawing.Point(279, 229);
+            this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
             this.zedGraphControl1.ScrollMaxX = 0D;
@@ -257,148 +259,9 @@ namespace READ_TEXT485
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(281, 165);
+            this.zedGraphControl1.Size = new System.Drawing.Size(291, 135);
             this.zedGraphControl1.TabIndex = 12;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.Silver;
-            this.groupBox5.Controls.Add(this.textBox13);
-            this.groupBox5.Controls.Add(this.textBox12);
-            this.groupBox5.Controls.Add(this.textBox9);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.textBox8);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.textBox7);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(3, 252);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(194, 120);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "PID Speed Controller";
-            // 
-            // textBox13
-            // 
-            this.textBox13.BackColor = System.Drawing.SystemColors.InfoText;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.ForeColor = System.Drawing.Color.Lime;
-            this.textBox13.Location = new System.Drawing.Point(50, 98);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(139, 20);
-            this.textBox13.TabIndex = 0;
-            this.textBox13.Text = "0";
-            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
-            // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.SystemColors.InfoText;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.ForeColor = System.Drawing.Color.Lime;
-            this.textBox12.Location = new System.Drawing.Point(50, 75);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(139, 20);
-            this.textBox12.TabIndex = 0;
-            this.textBox12.Text = "0";
-            this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(140, 50);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(49, 22);
-            this.textBox9.TabIndex = 0;
-            this.textBox9.Text = "0";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(77, 55);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Set Speed";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(30, 50);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(41, 22);
-            this.textBox8.TabIndex = 0;
-            this.textBox8.Text = "0";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(6, 99);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(43, 15);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Output";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(6, 53);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(22, 15);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Kd";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(96, 22);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(29, 22);
-            this.textBox7.TabIndex = 0;
-            this.textBox7.Text = "1";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(77, 25);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(18, 15);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Ki";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(6, 76);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(34, 15);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "Input";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(30, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(40, 22);
-            this.textBox6.TabIndex = 0;
-            this.textBox6.Text = "0.1";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(22, 15);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Kp";
             // 
             // groupBox4
             // 
@@ -423,9 +286,9 @@ namespace READ_TEXT485
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(200, 3);
+            this.groupBox4.Location = new System.Drawing.Point(3, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(281, 203);
+            this.groupBox4.Size = new System.Drawing.Size(178, 288);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Status";
@@ -433,7 +296,7 @@ namespace READ_TEXT485
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Lime;
-            this.panel2.Location = new System.Drawing.Point(240, 101);
+            this.panel2.Location = new System.Drawing.Point(86, 255);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(29, 22);
             this.panel2.TabIndex = 4;
@@ -441,9 +304,9 @@ namespace READ_TEXT485
             // Reset_Fault_btn
             // 
             this.Reset_Fault_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reset_Fault_btn.Location = new System.Drawing.Point(148, 101);
+            this.Reset_Fault_btn.Location = new System.Drawing.Point(6, 244);
             this.Reset_Fault_btn.Name = "Reset_Fault_btn";
-            this.Reset_Fault_btn.Size = new System.Drawing.Size(75, 23);
+            this.Reset_Fault_btn.Size = new System.Drawing.Size(74, 38);
             this.Reset_Fault_btn.TabIndex = 3;
             this.Reset_Fault_btn.Text = "Reset Fault";
             this.Reset_Fault_btn.UseVisualStyleBackColor = true;
@@ -452,49 +315,49 @@ namespace READ_TEXT485
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(80, 102);
+            this.progressBar1.Location = new System.Drawing.Point(86, 102);
             this.progressBar1.Maximum = 1;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(62, 22);
+            this.progressBar1.Size = new System.Drawing.Size(86, 22);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 2;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(216, 74);
+            this.textBox10.Location = new System.Drawing.Point(86, 216);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(60, 22);
+            this.textBox10.Size = new System.Drawing.Size(86, 22);
             this.textBox10.TabIndex = 0;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(216, 46);
+            this.textBox4.Location = new System.Drawing.Point(86, 188);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(60, 22);
+            this.textBox4.Size = new System.Drawing.Size(86, 22);
             this.textBox4.TabIndex = 0;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(216, 18);
+            this.textBox5.Location = new System.Drawing.Point(86, 157);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(60, 22);
+            this.textBox5.Size = new System.Drawing.Size(86, 22);
             this.textBox5.TabIndex = 0;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(80, 129);
+            this.textBox11.Location = new System.Drawing.Point(86, 129);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(154, 22);
+            this.textBox11.Size = new System.Drawing.Size(86, 22);
             this.textBox11.TabIndex = 0;
             this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(240, 129);
+            this.textBox14.Location = new System.Drawing.Point(131, 255);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(29, 22);
             this.textBox14.TabIndex = 0;
@@ -502,19 +365,19 @@ namespace READ_TEXT485
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(80, 74);
+            this.textBox3.Location = new System.Drawing.Point(86, 74);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(60, 22);
+            this.textBox3.Size = new System.Drawing.Size(86, 22);
             this.textBox3.TabIndex = 0;
             this.textBox3.Text = "0";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(80, 44);
+            this.textBox2.Location = new System.Drawing.Point(86, 44);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(60, 22);
+            this.textBox2.Size = new System.Drawing.Size(86, 22);
             this.textBox2.TabIndex = 0;
             // 
             // label9
@@ -522,7 +385,7 @@ namespace READ_TEXT485
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Aqua;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(4, 105);
+            this.label9.Location = new System.Drawing.Point(6, 105);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 12);
             this.label9.TabIndex = 1;
@@ -530,10 +393,10 @@ namespace READ_TEXT485
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(80, 18);
+            this.textBox1.Location = new System.Drawing.Point(86, 17);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(60, 22);
+            this.textBox1.Size = new System.Drawing.Size(86, 22);
             this.textBox1.TabIndex = 0;
             // 
             // label15
@@ -541,7 +404,7 @@ namespace READ_TEXT485
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Aqua;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(144, 77);
+            this.label15.Location = new System.Drawing.Point(6, 219);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(39, 12);
             this.label15.TabIndex = 1;
@@ -552,7 +415,7 @@ namespace READ_TEXT485
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Aqua;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(144, 21);
+            this.label10.Location = new System.Drawing.Point(6, 163);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 12);
             this.label10.TabIndex = 1;
@@ -563,7 +426,7 @@ namespace READ_TEXT485
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Aqua;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 132);
+            this.label18.Location = new System.Drawing.Point(6, 132);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(47, 12);
             this.label18.TabIndex = 1;
@@ -574,7 +437,7 @@ namespace READ_TEXT485
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Aqua;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(144, 49);
+            this.label8.Location = new System.Drawing.Point(6, 191);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 12);
             this.label8.TabIndex = 1;
@@ -585,7 +448,7 @@ namespace READ_TEXT485
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Aqua;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 77);
+            this.label7.Location = new System.Drawing.Point(6, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 12);
             this.label7.TabIndex = 1;
@@ -616,70 +479,72 @@ namespace READ_TEXT485
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.panel5);
+            this.groupBox3.Controls.Add(this.textBox15);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.zedGraphControl1);
             this.groupBox3.Controls.Add(this.panel4);
             this.groupBox3.Controls.Add(this.panel3);
             this.groupBox3.Controls.Add(this.pictureBox5);
             this.groupBox3.Controls.Add(this.Stop_btn);
             this.groupBox3.Controls.Add(this.pictureBox4);
-            this.groupBox3.Controls.Add(this.textBox15);
             this.groupBox3.Controls.Add(this.pictureBox7);
             this.groupBox3.Controls.Add(this.pictureBox6);
             this.groupBox3.Controls.Add(this.pictureBox3);
             this.groupBox3.Controls.Add(this.pictureBox2);
             this.groupBox3.Controls.Add(this.pictureBox1);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.Start_btn);
             this.groupBox3.Controls.Add(this.button10);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(487, 10);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(187, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(281, 361);
+            this.groupBox3.Size = new System.Drawing.Size(581, 365);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Auto/Manual";
             // 
             // panel5
             // 
-            this.panel5.Location = new System.Drawing.Point(11, 196);
+            this.panel5.Controls.Add(this.label23);
+            this.panel5.Location = new System.Drawing.Point(11, 199);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(260, 160);
             this.panel5.TabIndex = 4;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(226, 157);
+            this.panel4.Location = new System.Drawing.Point(294, 158);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(50, 20);
+            this.panel4.Size = new System.Drawing.Size(15, 63);
             this.panel4.TabIndex = 3;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(114, 157);
+            this.panel3.Location = new System.Drawing.Point(555, 160);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(50, 20);
+            this.panel3.Size = new System.Drawing.Size(15, 63);
             this.panel3.TabIndex = 3;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Yellow;
             this.pictureBox5.Image = global::READ_TEXT485.Properties.Resources.LAB;
-            this.pictureBox5.Location = new System.Drawing.Point(175, 61);
+            this.pictureBox5.Location = new System.Drawing.Point(407, 94);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox5.Size = new System.Drawing.Size(50, 45);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 2;
             this.pictureBox5.TabStop = false;
             // 
             // Stop_btn
             // 
-            this.Stop_btn.Location = new System.Drawing.Point(11, 84);
+            this.Stop_btn.BackColor = System.Drawing.Color.Red;
+            this.Stop_btn.Location = new System.Drawing.Point(143, 95);
             this.Stop_btn.Name = "Stop_btn";
-            this.Stop_btn.Size = new System.Drawing.Size(72, 26);
+            this.Stop_btn.Size = new System.Drawing.Size(110, 73);
             this.Stop_btn.TabIndex = 0;
             this.Stop_btn.Text = "Stop";
-            this.Stop_btn.UseVisualStyleBackColor = true;
+            this.Stop_btn.UseVisualStyleBackColor = false;
             this.Stop_btn.Click += new System.EventHandler(this.Stop_btn_Click);
             // 
             // pictureBox4
@@ -687,9 +552,9 @@ namespace READ_TEXT485
             this.pictureBox4.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox4.Image = global::READ_TEXT485.Properties.Resources.image;
-            this.pictureBox4.Location = new System.Drawing.Point(226, 56);
+            this.pictureBox4.Location = new System.Drawing.Point(482, 77);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox4.Size = new System.Drawing.Size(88, 78);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
@@ -698,9 +563,9 @@ namespace READ_TEXT485
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(23, 172);
+            this.textBox15.Location = new System.Drawing.Point(127, 173);
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(60, 21);
+            this.textBox15.Size = new System.Drawing.Size(60, 24);
             this.textBox15.TabIndex = 0;
             this.textBox15.Text = "300";
             this.textBox15.TextChanged += new System.EventHandler(this.textBox15_TextChanged);
@@ -710,9 +575,9 @@ namespace READ_TEXT485
             this.pictureBox7.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox7.Image = global::READ_TEXT485.Properties.Resources.Phải;
-            this.pictureBox7.Location = new System.Drawing.Point(226, 111);
+            this.pictureBox7.Location = new System.Drawing.Point(311, 158);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(50, 42);
+            this.pictureBox7.Size = new System.Drawing.Size(71, 63);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 1;
             this.pictureBox7.TabStop = false;
@@ -724,12 +589,13 @@ namespace READ_TEXT485
             this.pictureBox6.BackColor = System.Drawing.Color.Yellow;
             this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox6.Image = global::READ_TEXT485.Properties.Resources.Trái;
-            this.pictureBox6.Location = new System.Drawing.Point(114, 112);
+            this.pictureBox6.Location = new System.Drawing.Point(482, 160);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(50, 42);
+            this.pictureBox6.Size = new System.Drawing.Size(71, 63);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 1;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseDown);
             this.pictureBox6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseUp);
             // 
@@ -738,9 +604,9 @@ namespace READ_TEXT485
             this.pictureBox3.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox3.Image = global::READ_TEXT485.Properties.Resources.down_icon__1_2;
-            this.pictureBox3.Location = new System.Drawing.Point(170, 103);
+            this.pictureBox3.Location = new System.Drawing.Point(388, 145);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox3.Size = new System.Drawing.Size(88, 78);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
@@ -752,9 +618,9 @@ namespace READ_TEXT485
             this.pictureBox2.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Image = global::READ_TEXT485.Properties.Resources.image__1_1;
-            this.pictureBox2.Location = new System.Drawing.Point(114, 56);
+            this.pictureBox2.Location = new System.Drawing.Point(294, 77);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(88, 78);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -766,9 +632,9 @@ namespace READ_TEXT485
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::READ_TEXT485.Properties.Resources.up_icon1;
-            this.pictureBox1.Location = new System.Drawing.Point(170, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(388, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(88, 78);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -777,12 +643,13 @@ namespace READ_TEXT485
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(6, 21);
+            this.button3.BackColor = System.Drawing.Color.Blue;
+            this.button3.Location = new System.Drawing.Point(27, 18);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 29);
+            this.button3.Size = new System.Drawing.Size(110, 73);
             this.button3.TabIndex = 0;
             this.button3.Text = "Auto";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label23
@@ -790,7 +657,7 @@ namespace READ_TEXT485
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Aqua;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(172, 161);
+            this.label23.Location = new System.Drawing.Point(178, 6);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(20, 16);
             this.label23.TabIndex = 1;
@@ -800,145 +667,34 @@ namespace READ_TEXT485
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Aqua;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(9, 157);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(13, 176);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(76, 12);
+            this.label22.Size = new System.Drawing.Size(108, 16);
             this.label22.TabIndex = 1;
             this.label22.Text = "Manual Speed";
             // 
             // Start_btn
             // 
-            this.Start_btn.Location = new System.Drawing.Point(11, 54);
+            this.Start_btn.BackColor = System.Drawing.Color.Lime;
+            this.Start_btn.Location = new System.Drawing.Point(143, 19);
             this.Start_btn.Name = "Start_btn";
-            this.Start_btn.Size = new System.Drawing.Size(72, 26);
+            this.Start_btn.Size = new System.Drawing.Size(110, 73);
             this.Start_btn.TabIndex = 0;
             this.Start_btn.Text = "Start";
-            this.Start_btn.UseVisualStyleBackColor = true;
+            this.Start_btn.UseVisualStyleBackColor = false;
             this.Start_btn.Click += new System.EventHandler(this.Start_btn_Click);
             // 
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Yellow;
-            this.button10.Location = new System.Drawing.Point(11, 116);
+            this.button10.Location = new System.Drawing.Point(27, 95);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(72, 38);
+            this.button10.Size = new System.Drawing.Size(110, 73);
             this.button10.TabIndex = 0;
             this.button10.Text = "Continue";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.Continue_btn_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox1.Controls.Add(this.Discon_btn);
-            this.groupBox1.Controls.Add(this.Connect_btn);
-            this.groupBox1.Controls.Add(this.StopB_box);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.Parity_box);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.Baud_box);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.ComP_box);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 203);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connection";
-            // 
-            // Discon_btn
-            // 
-            this.Discon_btn.Location = new System.Drawing.Point(100, 134);
-            this.Discon_btn.Name = "Discon_btn";
-            this.Discon_btn.Size = new System.Drawing.Size(94, 50);
-            this.Discon_btn.TabIndex = 2;
-            this.Discon_btn.Text = "Disconnect";
-            this.Discon_btn.UseVisualStyleBackColor = true;
-            this.Discon_btn.Click += new System.EventHandler(this.Discon_btn_Click);
-            // 
-            // Connect_btn
-            // 
-            this.Connect_btn.Location = new System.Drawing.Point(6, 134);
-            this.Connect_btn.Name = "Connect_btn";
-            this.Connect_btn.Size = new System.Drawing.Size(94, 50);
-            this.Connect_btn.TabIndex = 2;
-            this.Connect_btn.Text = "Connect AGV";
-            this.Connect_btn.UseVisualStyleBackColor = true;
-            this.Connect_btn.Click += new System.EventHandler(this.Connect_btn_Click);
-            // 
-            // StopB_box
-            // 
-            this.StopB_box.FormattingEnabled = true;
-            this.StopB_box.Location = new System.Drawing.Point(94, 106);
-            this.StopB_box.Name = "StopB_box";
-            this.StopB_box.Size = new System.Drawing.Size(100, 23);
-            this.StopB_box.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 15);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "StopBits";
-            // 
-            // Parity_box
-            // 
-            this.Parity_box.FormattingEnabled = true;
-            this.Parity_box.Location = new System.Drawing.Point(94, 77);
-            this.Parity_box.Name = "Parity_box";
-            this.Parity_box.Size = new System.Drawing.Size(100, 23);
-            this.Parity_box.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 15);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Parity";
-            // 
-            // Baud_box
-            // 
-            this.Baud_box.FormattingEnabled = true;
-            this.Baud_box.Location = new System.Drawing.Point(94, 48);
-            this.Baud_box.Name = "Baud_box";
-            this.Baud_box.Size = new System.Drawing.Size(100, 23);
-            this.Baud_box.TabIndex = 0;
-            this.Baud_box.SelectedIndexChanged += new System.EventHandler(this.Baud_box_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Baud rate";
-            // 
-            // ComP_box
-            // 
-            this.ComP_box.FormattingEnabled = true;
-            this.ComP_box.Location = new System.Drawing.Point(94, 19);
-            this.ComP_box.Name = "ComP_box";
-            this.ComP_box.Size = new System.Drawing.Size(100, 23);
-            this.ComP_box.TabIndex = 0;
-            this.ComP_box.DropDown += new System.EventHandler(this.ComP_box_DropDown);
-            this.ComP_box.SelectedIndexChanged += new System.EventHandler(this.ComP_box_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Comport";
             // 
             // tabPage2
             // 
@@ -965,14 +721,14 @@ namespace READ_TEXT485
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(360, 323);
+            this.groupBox6.Size = new System.Drawing.Size(358, 363);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Data Source";
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(57, 74);
+            this.button7.Location = new System.Drawing.Point(53, 86);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 6;
@@ -984,10 +740,10 @@ namespace READ_TEXT485
             // 
             this.groupBox7.Controls.Add(this.groupBox9);
             this.groupBox7.Controls.Add(this.groupBox8);
-            this.groupBox7.Location = new System.Drawing.Point(138, 0);
+            this.groupBox7.Location = new System.Drawing.Point(134, 0);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox7.Size = new System.Drawing.Size(216, 106);
+            this.groupBox7.Size = new System.Drawing.Size(218, 146);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Config";
@@ -997,19 +753,19 @@ namespace READ_TEXT485
             this.groupBox9.Controls.Add(this.button5);
             this.groupBox9.Controls.Add(this.button6);
             this.groupBox9.Controls.Add(this.button1);
-            this.groupBox9.Location = new System.Drawing.Point(6, 56);
+            this.groupBox9.Location = new System.Drawing.Point(6, 74);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox9.Size = new System.Drawing.Size(204, 41);
+            this.groupBox9.Size = new System.Drawing.Size(204, 66);
             this.groupBox9.TabIndex = 7;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Values";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(8, 12);
+            this.button5.Location = new System.Drawing.Point(0, 12);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(58, 23);
+            this.button5.Size = new System.Drawing.Size(66, 48);
             this.button5.TabIndex = 4;
             this.button5.Text = "Delete Selected";
             this.button5.UseVisualStyleBackColor = true;
@@ -1019,7 +775,7 @@ namespace READ_TEXT485
             // 
             this.button6.Location = new System.Drawing.Point(136, 12);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(58, 23);
+            this.button6.Size = new System.Drawing.Size(66, 48);
             this.button6.TabIndex = 4;
             this.button6.Text = "Add";
             this.button6.UseVisualStyleBackColor = true;
@@ -1027,9 +783,9 @@ namespace READ_TEXT485
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(72, 12);
+            this.button1.Location = new System.Drawing.Point(68, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 23);
+            this.button1.Size = new System.Drawing.Size(66, 48);
             this.button1.TabIndex = 4;
             this.button1.Text = "Update";
             this.button1.UseVisualStyleBackColor = true;
@@ -1039,10 +795,10 @@ namespace READ_TEXT485
             // 
             this.groupBox8.Controls.Add(this.button2);
             this.groupBox8.Controls.Add(this.button4);
-            this.groupBox8.Location = new System.Drawing.Point(8, 16);
+            this.groupBox8.Location = new System.Drawing.Point(8, 19);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox8.Size = new System.Drawing.Size(202, 40);
+            this.groupBox8.Size = new System.Drawing.Size(202, 48);
             this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Table";
@@ -1051,7 +807,7 @@ namespace READ_TEXT485
             // 
             this.button2.Location = new System.Drawing.Point(6, 13);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 23);
+            this.button2.Size = new System.Drawing.Size(84, 35);
             this.button2.TabIndex = 4;
             this.button2.Text = "Create";
             this.button2.UseVisualStyleBackColor = true;
@@ -1061,7 +817,7 @@ namespace READ_TEXT485
             // 
             this.button4.Location = new System.Drawing.Point(121, 13);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(84, 35);
             this.button4.TabIndex = 4;
             this.button4.Text = "Drop";
             this.button4.UseVisualStyleBackColor = true;
@@ -1071,9 +827,9 @@ namespace READ_TEXT485
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 112);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 152);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(354, 208);
+            this.dataGridView1.Size = new System.Drawing.Size(352, 208);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
@@ -1100,7 +856,7 @@ namespace READ_TEXT485
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(62, 19);
+            this.comboBox1.Location = new System.Drawing.Point(61, 19);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(70, 21);
             this.comboBox1.TabIndex = 1;
@@ -1123,7 +879,7 @@ namespace READ_TEXT485
             this.panel1.Controls.Add(this.label21);
             this.panel1.Location = new System.Drawing.Point(370, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 330);
+            this.panel1.Size = new System.Drawing.Size(400, 363);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -1139,22 +895,22 @@ namespace READ_TEXT485
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button9);
-            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(776, 375);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "I/O";
+            this.tabPage3.Text = "Setting";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(245, 35);
+            this.button9.Location = new System.Drawing.Point(100, 311);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.Size = new System.Drawing.Size(87, 44);
             this.button9.TabIndex = 2;
             this.button9.Text = "WRITE";
             this.button9.UseVisualStyleBackColor = true;
@@ -1162,9 +918,9 @@ namespace READ_TEXT485
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(245, 6);
+            this.button8.Location = new System.Drawing.Point(6, 311);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.Size = new System.Drawing.Size(87, 44);
             this.button8.TabIndex = 2;
             this.button8.Text = "READ";
             this.button8.UseVisualStyleBackColor = true;
@@ -1173,11 +929,17 @@ namespace READ_TEXT485
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Yellow;
             this.groupBox2.Controls.Add(this.groupBox11);
+            this.groupBox2.Controls.Add(this.textBox13);
             this.groupBox2.Controls.Add(this.groupBox10);
+            this.groupBox2.Controls.Add(this.textBox12);
+            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.button8);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(8, 6);
+            this.groupBox2.Location = new System.Drawing.Point(216, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(231, 239);
+            this.groupBox2.Size = new System.Drawing.Size(359, 361);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input/Coil";
@@ -1201,9 +963,9 @@ namespace READ_TEXT485
             this.groupBox11.Controls.Add(this.Y2);
             this.groupBox11.Controls.Add(this.Y3);
             this.groupBox11.Controls.Add(this.YB);
-            this.groupBox11.Location = new System.Drawing.Point(117, 19);
+            this.groupBox11.Location = new System.Drawing.Point(185, 22);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(108, 210);
+            this.groupBox11.Size = new System.Drawing.Size(157, 210);
             this.groupBox11.TabIndex = 2;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Output";
@@ -1211,9 +973,10 @@ namespace READ_TEXT485
             // Y4
             // 
             this.Y4.AutoSize = true;
-            this.Y4.Location = new System.Drawing.Point(16, 115);
+            this.Y4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y4.Location = new System.Drawing.Point(16, 110);
             this.Y4.Name = "Y4";
-            this.Y4.Size = new System.Drawing.Size(41, 17);
+            this.Y4.Size = new System.Drawing.Size(50, 24);
             this.Y4.TabIndex = 0;
             this.Y4.Text = "Y4";
             this.Y4.UseVisualStyleBackColor = true;
@@ -1222,9 +985,10 @@ namespace READ_TEXT485
             // YF
             // 
             this.YF.AutoSize = true;
-            this.YF.Location = new System.Drawing.Point(61, 184);
+            this.YF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YF.Location = new System.Drawing.Point(84, 179);
             this.YF.Name = "YF";
-            this.YF.Size = new System.Drawing.Size(41, 17);
+            this.YF.Size = new System.Drawing.Size(51, 24);
             this.YF.TabIndex = 0;
             this.YF.Text = "YF";
             this.YF.UseVisualStyleBackColor = true;
@@ -1233,9 +997,10 @@ namespace READ_TEXT485
             // Y7
             // 
             this.Y7.AutoSize = true;
-            this.Y7.Location = new System.Drawing.Point(16, 184);
+            this.Y7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y7.Location = new System.Drawing.Point(16, 179);
             this.Y7.Name = "Y7";
-            this.Y7.Size = new System.Drawing.Size(41, 17);
+            this.Y7.Size = new System.Drawing.Size(50, 24);
             this.Y7.TabIndex = 0;
             this.Y7.Text = "Y7";
             this.Y7.UseVisualStyleBackColor = true;
@@ -1244,9 +1009,10 @@ namespace READ_TEXT485
             // YD
             // 
             this.YD.AutoSize = true;
-            this.YD.Location = new System.Drawing.Point(61, 138);
+            this.YD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YD.Location = new System.Drawing.Point(84, 133);
             this.YD.Name = "YD";
-            this.YD.Size = new System.Drawing.Size(43, 17);
+            this.YD.Size = new System.Drawing.Size(53, 24);
             this.YD.TabIndex = 0;
             this.YD.Text = "YD";
             this.YD.UseVisualStyleBackColor = true;
@@ -1255,9 +1021,10 @@ namespace READ_TEXT485
             // Y6
             // 
             this.Y6.AutoSize = true;
-            this.Y6.Location = new System.Drawing.Point(16, 161);
+            this.Y6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y6.Location = new System.Drawing.Point(16, 156);
             this.Y6.Name = "Y6";
-            this.Y6.Size = new System.Drawing.Size(41, 17);
+            this.Y6.Size = new System.Drawing.Size(50, 24);
             this.Y6.TabIndex = 0;
             this.Y6.Text = "Y6";
             this.Y6.UseVisualStyleBackColor = true;
@@ -1266,9 +1033,10 @@ namespace READ_TEXT485
             // Y0
             // 
             this.Y0.AutoSize = true;
-            this.Y0.Location = new System.Drawing.Point(16, 23);
+            this.Y0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y0.Location = new System.Drawing.Point(16, 18);
             this.Y0.Name = "Y0";
-            this.Y0.Size = new System.Drawing.Size(41, 17);
+            this.Y0.Size = new System.Drawing.Size(50, 24);
             this.Y0.TabIndex = 0;
             this.Y0.Text = "Y0";
             this.Y0.UseVisualStyleBackColor = true;
@@ -1277,9 +1045,10 @@ namespace READ_TEXT485
             // Y8
             // 
             this.Y8.AutoSize = true;
-            this.Y8.Location = new System.Drawing.Point(61, 23);
+            this.Y8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y8.Location = new System.Drawing.Point(84, 18);
             this.Y8.Name = "Y8";
-            this.Y8.Size = new System.Drawing.Size(41, 17);
+            this.Y8.Size = new System.Drawing.Size(50, 24);
             this.Y8.TabIndex = 0;
             this.Y8.Text = "Y8";
             this.Y8.UseVisualStyleBackColor = true;
@@ -1288,9 +1057,10 @@ namespace READ_TEXT485
             // YE
             // 
             this.YE.AutoSize = true;
-            this.YE.Location = new System.Drawing.Point(61, 161);
+            this.YE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YE.Location = new System.Drawing.Point(84, 156);
             this.YE.Name = "YE";
-            this.YE.Size = new System.Drawing.Size(42, 17);
+            this.YE.Size = new System.Drawing.Size(52, 24);
             this.YE.TabIndex = 0;
             this.YE.Text = "YE";
             this.YE.UseVisualStyleBackColor = true;
@@ -1299,9 +1069,10 @@ namespace READ_TEXT485
             // Y5
             // 
             this.Y5.AutoSize = true;
-            this.Y5.Location = new System.Drawing.Point(16, 138);
+            this.Y5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y5.Location = new System.Drawing.Point(16, 133);
             this.Y5.Name = "Y5";
-            this.Y5.Size = new System.Drawing.Size(41, 17);
+            this.Y5.Size = new System.Drawing.Size(50, 24);
             this.Y5.TabIndex = 0;
             this.Y5.Text = "Y5";
             this.Y5.UseVisualStyleBackColor = true;
@@ -1310,9 +1081,10 @@ namespace READ_TEXT485
             // Y1
             // 
             this.Y1.AutoSize = true;
-            this.Y1.Location = new System.Drawing.Point(16, 46);
+            this.Y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y1.Location = new System.Drawing.Point(16, 41);
             this.Y1.Name = "Y1";
-            this.Y1.Size = new System.Drawing.Size(41, 17);
+            this.Y1.Size = new System.Drawing.Size(50, 24);
             this.Y1.TabIndex = 0;
             this.Y1.Text = "Y1";
             this.Y1.UseVisualStyleBackColor = true;
@@ -1321,9 +1093,10 @@ namespace READ_TEXT485
             // Y9
             // 
             this.Y9.AutoSize = true;
-            this.Y9.Location = new System.Drawing.Point(61, 46);
+            this.Y9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y9.Location = new System.Drawing.Point(84, 41);
             this.Y9.Name = "Y9";
-            this.Y9.Size = new System.Drawing.Size(41, 17);
+            this.Y9.Size = new System.Drawing.Size(50, 24);
             this.Y9.TabIndex = 0;
             this.Y9.Text = "Y9";
             this.Y9.UseVisualStyleBackColor = true;
@@ -1332,9 +1105,10 @@ namespace READ_TEXT485
             // YC
             // 
             this.YC.AutoSize = true;
-            this.YC.Location = new System.Drawing.Point(61, 115);
+            this.YC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YC.Location = new System.Drawing.Point(84, 110);
             this.YC.Name = "YC";
-            this.YC.Size = new System.Drawing.Size(42, 17);
+            this.YC.Size = new System.Drawing.Size(52, 24);
             this.YC.TabIndex = 0;
             this.YC.Text = "YC";
             this.YC.UseVisualStyleBackColor = true;
@@ -1343,9 +1117,10 @@ namespace READ_TEXT485
             // YA
             // 
             this.YA.AutoSize = true;
-            this.YA.Location = new System.Drawing.Point(61, 69);
+            this.YA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YA.Location = new System.Drawing.Point(84, 64);
             this.YA.Name = "YA";
-            this.YA.Size = new System.Drawing.Size(42, 17);
+            this.YA.Size = new System.Drawing.Size(52, 24);
             this.YA.TabIndex = 0;
             this.YA.Text = "YA";
             this.YA.UseVisualStyleBackColor = true;
@@ -1354,9 +1129,10 @@ namespace READ_TEXT485
             // Y2
             // 
             this.Y2.AutoSize = true;
-            this.Y2.Location = new System.Drawing.Point(16, 69);
+            this.Y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y2.Location = new System.Drawing.Point(16, 64);
             this.Y2.Name = "Y2";
-            this.Y2.Size = new System.Drawing.Size(41, 17);
+            this.Y2.Size = new System.Drawing.Size(50, 24);
             this.Y2.TabIndex = 0;
             this.Y2.Text = "Y2";
             this.Y2.UseVisualStyleBackColor = true;
@@ -1365,9 +1141,10 @@ namespace READ_TEXT485
             // Y3
             // 
             this.Y3.AutoSize = true;
-            this.Y3.Location = new System.Drawing.Point(16, 92);
+            this.Y3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Y3.Location = new System.Drawing.Point(16, 87);
             this.Y3.Name = "Y3";
-            this.Y3.Size = new System.Drawing.Size(41, 17);
+            this.Y3.Size = new System.Drawing.Size(50, 24);
             this.Y3.TabIndex = 0;
             this.Y3.Text = "Y3";
             this.Y3.UseVisualStyleBackColor = true;
@@ -1376,9 +1153,10 @@ namespace READ_TEXT485
             // YB
             // 
             this.YB.AutoSize = true;
-            this.YB.Location = new System.Drawing.Point(61, 92);
+            this.YB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YB.Location = new System.Drawing.Point(84, 87);
             this.YB.Name = "YB";
-            this.YB.Size = new System.Drawing.Size(42, 17);
+            this.YB.Size = new System.Drawing.Size(52, 24);
             this.YB.TabIndex = 0;
             this.YB.Text = "YB";
             this.YB.UseVisualStyleBackColor = true;
@@ -1403,9 +1181,9 @@ namespace READ_TEXT485
             this.groupBox10.Controls.Add(this.XD);
             this.groupBox10.Controls.Add(this.XE);
             this.groupBox10.Controls.Add(this.X3);
-            this.groupBox10.Location = new System.Drawing.Point(6, 19);
+            this.groupBox10.Location = new System.Drawing.Point(6, 22);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(103, 210);
+            this.groupBox10.Size = new System.Drawing.Size(157, 210);
             this.groupBox10.TabIndex = 2;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Input";
@@ -1414,9 +1192,10 @@ namespace READ_TEXT485
             // 
             this.XC.AutoSize = true;
             this.XC.Enabled = false;
-            this.XC.Location = new System.Drawing.Point(59, 115);
+            this.XC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XC.Location = new System.Drawing.Point(85, 109);
             this.XC.Name = "XC";
-            this.XC.Size = new System.Drawing.Size(42, 17);
+            this.XC.Size = new System.Drawing.Size(52, 24);
             this.XC.TabIndex = 0;
             this.XC.Text = "XC";
             this.XC.UseVisualStyleBackColor = true;
@@ -1425,9 +1204,10 @@ namespace READ_TEXT485
             // 
             this.X8.AutoSize = true;
             this.X8.Enabled = false;
-            this.X8.Location = new System.Drawing.Point(59, 23);
+            this.X8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X8.Location = new System.Drawing.Point(85, 17);
             this.X8.Name = "X8";
-            this.X8.Size = new System.Drawing.Size(41, 17);
+            this.X8.Size = new System.Drawing.Size(50, 24);
             this.X8.TabIndex = 0;
             this.X8.Text = "X8";
             this.X8.UseVisualStyleBackColor = true;
@@ -1436,9 +1216,10 @@ namespace READ_TEXT485
             // 
             this.X0.AutoSize = true;
             this.X0.Enabled = false;
-            this.X0.Location = new System.Drawing.Point(14, 23);
+            this.X0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X0.Location = new System.Drawing.Point(12, 19);
             this.X0.Name = "X0";
-            this.X0.Size = new System.Drawing.Size(41, 17);
+            this.X0.Size = new System.Drawing.Size(50, 24);
             this.X0.TabIndex = 0;
             this.X0.Text = "X0";
             this.X0.UseVisualStyleBackColor = true;
@@ -1447,9 +1228,10 @@ namespace READ_TEXT485
             // 
             this.X9.AutoSize = true;
             this.X9.Enabled = false;
-            this.X9.Location = new System.Drawing.Point(59, 46);
+            this.X9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X9.Location = new System.Drawing.Point(85, 40);
             this.X9.Name = "X9";
-            this.X9.Size = new System.Drawing.Size(41, 17);
+            this.X9.Size = new System.Drawing.Size(50, 24);
             this.X9.TabIndex = 0;
             this.X9.Text = "X9";
             this.X9.UseVisualStyleBackColor = true;
@@ -1458,9 +1240,10 @@ namespace READ_TEXT485
             // 
             this.X7.AutoSize = true;
             this.X7.Enabled = false;
-            this.X7.Location = new System.Drawing.Point(14, 184);
+            this.X7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X7.Location = new System.Drawing.Point(12, 180);
             this.X7.Name = "X7";
-            this.X7.Size = new System.Drawing.Size(41, 17);
+            this.X7.Size = new System.Drawing.Size(50, 24);
             this.X7.TabIndex = 0;
             this.X7.Text = "X7";
             this.X7.UseVisualStyleBackColor = true;
@@ -1469,9 +1252,10 @@ namespace READ_TEXT485
             // 
             this.X1.AutoSize = true;
             this.X1.Enabled = false;
-            this.X1.Location = new System.Drawing.Point(14, 46);
+            this.X1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X1.Location = new System.Drawing.Point(12, 42);
             this.X1.Name = "X1";
-            this.X1.Size = new System.Drawing.Size(41, 17);
+            this.X1.Size = new System.Drawing.Size(50, 24);
             this.X1.TabIndex = 0;
             this.X1.Text = "X1";
             this.X1.UseVisualStyleBackColor = true;
@@ -1480,9 +1264,10 @@ namespace READ_TEXT485
             // 
             this.XA.AutoSize = true;
             this.XA.Enabled = false;
-            this.XA.Location = new System.Drawing.Point(59, 69);
+            this.XA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XA.Location = new System.Drawing.Point(85, 63);
             this.XA.Name = "XA";
-            this.XA.Size = new System.Drawing.Size(42, 17);
+            this.XA.Size = new System.Drawing.Size(52, 24);
             this.XA.TabIndex = 0;
             this.XA.Text = "XA";
             this.XA.UseVisualStyleBackColor = true;
@@ -1491,9 +1276,10 @@ namespace READ_TEXT485
             // 
             this.XF.AutoSize = true;
             this.XF.Enabled = false;
-            this.XF.Location = new System.Drawing.Point(59, 184);
+            this.XF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XF.Location = new System.Drawing.Point(85, 178);
             this.XF.Name = "XF";
-            this.XF.Size = new System.Drawing.Size(41, 17);
+            this.XF.Size = new System.Drawing.Size(51, 24);
             this.XF.TabIndex = 0;
             this.XF.Text = "XF";
             this.XF.UseVisualStyleBackColor = true;
@@ -1502,9 +1288,10 @@ namespace READ_TEXT485
             // 
             this.X6.AutoSize = true;
             this.X6.Enabled = false;
-            this.X6.Location = new System.Drawing.Point(14, 161);
+            this.X6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X6.Location = new System.Drawing.Point(12, 157);
             this.X6.Name = "X6";
-            this.X6.Size = new System.Drawing.Size(41, 17);
+            this.X6.Size = new System.Drawing.Size(50, 24);
             this.X6.TabIndex = 0;
             this.X6.Text = "X6";
             this.X6.UseVisualStyleBackColor = true;
@@ -1513,9 +1300,10 @@ namespace READ_TEXT485
             // 
             this.XB.AutoSize = true;
             this.XB.Enabled = false;
-            this.XB.Location = new System.Drawing.Point(59, 92);
+            this.XB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XB.Location = new System.Drawing.Point(85, 86);
             this.XB.Name = "XB";
-            this.XB.Size = new System.Drawing.Size(42, 17);
+            this.XB.Size = new System.Drawing.Size(52, 24);
             this.XB.TabIndex = 0;
             this.XB.Text = "XB";
             this.XB.UseVisualStyleBackColor = true;
@@ -1524,9 +1312,10 @@ namespace READ_TEXT485
             // 
             this.X5.AutoSize = true;
             this.X5.Enabled = false;
-            this.X5.Location = new System.Drawing.Point(14, 138);
+            this.X5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X5.Location = new System.Drawing.Point(12, 134);
             this.X5.Name = "X5";
-            this.X5.Size = new System.Drawing.Size(41, 17);
+            this.X5.Size = new System.Drawing.Size(50, 24);
             this.X5.TabIndex = 0;
             this.X5.Text = "X5";
             this.X5.UseVisualStyleBackColor = true;
@@ -1535,9 +1324,10 @@ namespace READ_TEXT485
             // 
             this.X2.AutoSize = true;
             this.X2.Enabled = false;
-            this.X2.Location = new System.Drawing.Point(14, 69);
+            this.X2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X2.Location = new System.Drawing.Point(12, 65);
             this.X2.Name = "X2";
-            this.X2.Size = new System.Drawing.Size(41, 17);
+            this.X2.Size = new System.Drawing.Size(50, 24);
             this.X2.TabIndex = 0;
             this.X2.Text = "X2";
             this.X2.UseVisualStyleBackColor = true;
@@ -1546,9 +1336,10 @@ namespace READ_TEXT485
             // 
             this.X4.AutoSize = true;
             this.X4.Enabled = false;
-            this.X4.Location = new System.Drawing.Point(14, 115);
+            this.X4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X4.Location = new System.Drawing.Point(12, 111);
             this.X4.Name = "X4";
-            this.X4.Size = new System.Drawing.Size(41, 17);
+            this.X4.Size = new System.Drawing.Size(50, 24);
             this.X4.TabIndex = 0;
             this.X4.Text = "X4";
             this.X4.UseVisualStyleBackColor = true;
@@ -1557,9 +1348,10 @@ namespace READ_TEXT485
             // 
             this.XD.AutoSize = true;
             this.XD.Enabled = false;
-            this.XD.Location = new System.Drawing.Point(59, 138);
+            this.XD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XD.Location = new System.Drawing.Point(85, 132);
             this.XD.Name = "XD";
-            this.XD.Size = new System.Drawing.Size(43, 17);
+            this.XD.Size = new System.Drawing.Size(53, 24);
             this.XD.TabIndex = 0;
             this.XD.Text = "XD";
             this.XD.UseVisualStyleBackColor = true;
@@ -1568,9 +1360,10 @@ namespace READ_TEXT485
             // 
             this.XE.AutoSize = true;
             this.XE.Enabled = false;
-            this.XE.Location = new System.Drawing.Point(59, 161);
+            this.XE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XE.Location = new System.Drawing.Point(85, 155);
             this.XE.Name = "XE";
-            this.XE.Size = new System.Drawing.Size(42, 17);
+            this.XE.Size = new System.Drawing.Size(52, 24);
             this.XE.TabIndex = 0;
             this.XE.Text = "XE";
             this.XE.UseVisualStyleBackColor = true;
@@ -1579,9 +1372,10 @@ namespace READ_TEXT485
             // 
             this.X3.AutoSize = true;
             this.X3.Enabled = false;
-            this.X3.Location = new System.Drawing.Point(14, 92);
+            this.X3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X3.Location = new System.Drawing.Point(12, 88);
             this.X3.Name = "X3";
-            this.X3.Size = new System.Drawing.Size(41, 17);
+            this.X3.Size = new System.Drawing.Size(50, 24);
             this.X3.TabIndex = 0;
             this.X3.Text = "X3";
             this.X3.UseVisualStyleBackColor = true;
@@ -1589,6 +1383,285 @@ namespace READ_TEXT485
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.Silver;
+            this.groupBox5.Controls.Add(this.textBox9);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.textBox8);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.textBox7);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.textBox6);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(578, 9);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(202, 162);
+            this.groupBox5.TabIndex = 12;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "PID Speed Controller";
+            // 
+            // textBox13
+            // 
+            this.textBox13.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox13.ForeColor = System.Drawing.Color.Lime;
+            this.textBox13.Location = new System.Drawing.Point(100, 279);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(141, 26);
+            this.textBox13.TabIndex = 0;
+            this.textBox13.Text = "0";
+            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
+            // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.ForeColor = System.Drawing.Color.Lime;
+            this.textBox12.Location = new System.Drawing.Point(100, 247);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(141, 26);
+            this.textBox12.TabIndex = 0;
+            this.textBox12.Text = "0";
+            this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            // 
+            // textBox9
+            // 
+            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.Location = new System.Drawing.Point(97, 110);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(61, 24);
+            this.textBox9.TabIndex = 0;
+            this.textBox9.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 115);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(85, 18);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Set Speed";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(54, 80);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(104, 24);
+            this.textBox8.TabIndex = 0;
+            this.textBox8.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(14, 282);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(64, 20);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Output";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(6, 84);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(28, 18);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Kd";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(54, 50);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(104, 24);
+            this.textBox7.TabIndex = 0;
+            this.textBox7.Text = "1";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 54);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 18);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Ki";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(14, 250);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(51, 20);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Input";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(54, 20);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(104, 24);
+            this.textBox6.TabIndex = 0;
+            this.textBox6.Text = "0.1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 24);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 18);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Kp";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(776, 375);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Map";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox1.Controls.Add(this.Discon_btn);
+            this.groupBox1.Controls.Add(this.Connect_btn);
+            this.groupBox1.Controls.Add(this.StopB_box);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.Parity_box);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.Baud_box);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.ComP_box);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBox1.Location = new System.Drawing.Point(8, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupBox1.Size = new System.Drawing.Size(202, 361);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Connection";
+            // 
+            // Discon_btn
+            // 
+            this.Discon_btn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.Discon_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Discon_btn.Location = new System.Drawing.Point(6, 274);
+            this.Discon_btn.Name = "Discon_btn";
+            this.Discon_btn.Size = new System.Drawing.Size(185, 81);
+            this.Discon_btn.TabIndex = 2;
+            this.Discon_btn.Text = "Disconnect";
+            this.Discon_btn.UseVisualStyleBackColor = false;
+            this.Discon_btn.Click += new System.EventHandler(this.Discon_btn_Click);
+            // 
+            // Connect_btn
+            // 
+            this.Connect_btn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Connect_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Connect_btn.ForeColor = System.Drawing.Color.Black;
+            this.Connect_btn.Location = new System.Drawing.Point(6, 192);
+            this.Connect_btn.Name = "Connect_btn";
+            this.Connect_btn.Size = new System.Drawing.Size(185, 81);
+            this.Connect_btn.TabIndex = 2;
+            this.Connect_btn.Text = "Connect AGV";
+            this.Connect_btn.UseVisualStyleBackColor = false;
+            this.Connect_btn.Click += new System.EventHandler(this.Connect_btn_Click);
+            // 
+            // StopB_box
+            // 
+            this.StopB_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StopB_box.FormattingEnabled = true;
+            this.StopB_box.Location = new System.Drawing.Point(94, 146);
+            this.StopB_box.Name = "StopB_box";
+            this.StopB_box.Size = new System.Drawing.Size(100, 32);
+            this.StopB_box.TabIndex = 0;
+            this.StopB_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StopB_box_MouseDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "StopBits";
+            // 
+            // Parity_box
+            // 
+            this.Parity_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Parity_box.FormattingEnabled = true;
+            this.Parity_box.Location = new System.Drawing.Point(94, 105);
+            this.Parity_box.Name = "Parity_box";
+            this.Parity_box.Size = new System.Drawing.Size(100, 32);
+            this.Parity_box.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Parity";
+            // 
+            // Baud_box
+            // 
+            this.Baud_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Baud_box.FormattingEnabled = true;
+            this.Baud_box.Location = new System.Drawing.Point(94, 62);
+            this.Baud_box.Name = "Baud_box";
+            this.Baud_box.Size = new System.Drawing.Size(100, 32);
+            this.Baud_box.TabIndex = 0;
+            this.Baud_box.SelectedIndexChanged += new System.EventHandler(this.Baud_box_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Baud rate";
+            // 
+            // ComP_box
+            // 
+            this.ComP_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComP_box.FormattingEnabled = true;
+            this.ComP_box.Location = new System.Drawing.Point(94, 19);
+            this.ComP_box.Name = "ComP_box";
+            this.ComP_box.Size = new System.Drawing.Size(100, 32);
+            this.ComP_box.TabIndex = 0;
+            this.ComP_box.SelectedIndexChanged += new System.EventHandler(this.ComP_box_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Comport";
             // 
             // AGV_ver1
             // 
@@ -1606,12 +1679,12 @@ namespace READ_TEXT485
             this.tabPage1.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -1619,8 +1692,6 @@ namespace READ_TEXT485
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -1632,10 +1703,15 @@ namespace READ_TEXT485
             this.panel1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1644,15 +1720,6 @@ namespace READ_TEXT485
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button Reset_Fault_btn;
         private System.Windows.Forms.ProgressBar progressBar1;
@@ -1675,17 +1742,6 @@ namespace READ_TEXT485
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button Discon_btn;
-        private System.Windows.Forms.Button Connect_btn;
-        private System.Windows.Forms.ComboBox StopB_box;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox Parity_box;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox Baud_box;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox ComP_box;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Stop_btn;
         private System.Windows.Forms.Button Start_btn;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1710,8 +1766,6 @@ namespace READ_TEXT485
         private System.Windows.Forms.Panel panel2;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox Y4;
@@ -1746,8 +1800,6 @@ namespace READ_TEXT485
         private System.Windows.Forms.CheckBox X9;
         private System.Windows.Forms.CheckBox X8;
         private System.Windows.Forms.CheckBox Y7;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.GroupBox groupBox11;
@@ -1767,6 +1819,31 @@ namespace READ_TEXT485
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button Discon_btn;
+        private System.Windows.Forms.Button Connect_btn;
+        private System.Windows.Forms.ComboBox StopB_box;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox Parity_box;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox Baud_box;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox ComP_box;
+        private System.Windows.Forms.Label label1;
     }
 }
 

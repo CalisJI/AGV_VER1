@@ -4,9 +4,10 @@
   <Baud>115200</Baud>
   <Database>agv_data</Database>
   <Table />
-  <Kp>0.150000005960464</Kp>
+  <Kp>0.15</Kp>
   <Ki>4</Ki>
   <Kd>0</Kd>
   <rotate>True</rotate>
-  <current_angle>46.4256</current_angle>
+  <current_angle>0</current_angle>
+  <manual_speed>300</manual_speed>
 </App_Config>

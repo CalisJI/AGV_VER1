@@ -57,6 +57,8 @@ namespace READ_TEXT485
             pictureBox2.Enabled = false;
             pictureBox3.Enabled = false;
             pictureBox4.Enabled = false;
+            pictureBox6.Enabled = false;
+            pictureBox7.Enabled = false;
             BackgroundWorker1.DoWork += BackgroundWorker1_DoWork;
             BackgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             BackgroundWorker1.WorkerSupportsCancellation = true;
@@ -83,13 +85,13 @@ namespace READ_TEXT485
             time++;
             if (WRegisters16[8] == 0 && WRegisters16[9] == 0 && WRegisters16[5] == 1)
             {
-                goc = - (float)Caculator.current_angle(manual_Speed, time * 0.05) + temp_goc;
+                goc = (float)Math.Round((- Caculator.current_angle(manual_Speed, time * 0.045) + temp_goc),2);
                
             }
             else if (WRegisters16[8] == 1 && WRegisters16[9] == 1 && WRegisters16[5] == 1) 
             {
-                goc = (float)Caculator.current_angle(manual_Speed, time * 0.05)+ temp_goc;
-                
+                goc = (float)Math.Round((Caculator.current_angle(manual_Speed, time * 0.045) + temp_goc), 2);
+
             }
             MethodInvoker inv = delegate ()
             {
@@ -259,18 +261,7 @@ namespace READ_TEXT485
                 
                 if ((so <= 15 && so >= 0) && Registers[0] == 1 && !begin)
                 {
-                    //if (temp > Registers[9])
-                    //{
-                    //    goc = (float)so * ((float)45 / (float)15);
-                    //    dir = true;
-                    //    incre = 14;
-                    //}
-                    //else
-                    //{
-                    //    goc = 180 - (float)so * ((float)45 / (float)15);
-                    //    dir = false;
-                    //    incre = 8;
-                    //}
+                   
                     if (!begin)
                     {
                         begin = false;
@@ -280,30 +271,7 @@ namespace READ_TEXT485
                 if (((so >= 3) || Registers[0] == 0) && begin)
                 {
                     d = false;
-                    //if (Registers[0] == 0)
-                    //{
-                       
-                    //    if (dir) 
-                    //    {
-                    //        incre++;
-                    //        if (incre >= ran_engle.Length) 
-                    //        {
-                    //            incre = 0;
-                    //        }
-                    //        goc = ran_engle[incre];
-                    //    }
-                    //    else 
-                    //    {
-                    //        incre--;
-                    //        if (incre <0)
-                    //        {
-                    //            incre = ran_engle.Length-1;
-                    //        }
-                    //        goc = ran_engle[incre];
-                    //    }
-                        
-                        
-                    //}
+                    
                     MethodInvoker inv = delegate
                     {
                         if (!d)
@@ -326,7 +294,7 @@ namespace READ_TEXT485
                     {
                         rotated = false;
 
-                        button10.Show();
+                        //button10.Show();
                         button10.Enabled = true;
                         WRegisters16[10] = 0;
                         WRegisters16[11] = 0;
@@ -418,7 +386,7 @@ namespace READ_TEXT485
                     MethodInvoker inv = delegate
                     {
                         rotated = true;
-                        button10.Hide();
+                        //button10.Hide();
                         button10.Enabled = false;
 
                         WRegisters16[10] = 0;
@@ -554,7 +522,7 @@ namespace READ_TEXT485
 
 
         }
-
+        int manual_Speed = 100;
         private void Form1_Load(object sender, EventArgs e)
         {
             Connect_btn.Enabled = true;
@@ -667,6 +635,13 @@ namespace READ_TEXT485
                 
             }
             goc = App_Config.current_angle;
+            temp_goc = goc;
+            manual_Speed = App_Config.manual_speed;
+            MethodInvoker inv = delegate 
+            {
+                textBox15.Text = App_Config.manual_speed.ToString();
+
+            };this.Invoke(inv);
             label23.Text = goc.ToString() + "'";
             if (App_Config.rotate == "True")
             {
@@ -687,12 +662,12 @@ namespace READ_TEXT485
             }
             if (rotated)
             {
-                button10.Hide();
+               //button10.Hide();
                 button10.Enabled = false;
             }
             else
             {
-                button10.Show();
+                //button10.Show();
                 button10.Enabled = true;
             }
 
@@ -740,10 +715,7 @@ namespace READ_TEXT485
             GraphPane.AxisChange();
             panel5.Paint += new PaintEventHandler(panel5_Paint);
             //build_data();
-            for (int i = 45; i < 135; i++)
-            {
-                ran_engle[i-45] = i;
-            }
+            
 
         }
         private void ClearZelGraph() 
@@ -846,7 +818,7 @@ namespace READ_TEXT485
                 //if (serialPort1.IsOpen) serialPort1.Close();
                 MethodInvoker inv = delegate 
                 {
-                    button10.Hide();
+                    //button10.Hide();
                     button10.Enabled = false;
                     Start_btn.Show();
                     
@@ -2317,12 +2289,13 @@ namespace READ_TEXT485
             };
             this.Invoke(inv);
         }
-        int manual_Speed = 100;
+        
         private void textBox15_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 manual_Speed = int.Parse(textBox15.Text);
+                Configxml.UpdateSystem_Config("manual_speed", manual_Speed.ToString());
             }
             catch (Exception )
             {
@@ -2424,7 +2397,35 @@ namespace READ_TEXT485
 
         }
 
-        
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComP_box_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Baud_box_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StopB_box_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
 
         bool hold = false;
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

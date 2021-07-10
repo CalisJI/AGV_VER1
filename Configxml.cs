@@ -38,6 +38,7 @@ namespace READ_TEXT485
                 App_Config.Ki = "4";
                 App_Config.rotate = "True";
                 App_Config.current_angle = 0;
+                App_Config.manual_speed = 300;
                 XmlSerializer serializer = new XmlSerializer(typeof(App_Config));
                 Stream stream = new FileStream(Xml_path, FileMode.Create);
                 XmlWriter writer = new XmlTextWriter(stream, Encoding.UTF8);

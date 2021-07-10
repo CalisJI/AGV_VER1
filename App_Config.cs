@@ -17,6 +17,7 @@ namespace READ_TEXT485
         public string Kd { get; set; }
         public string rotate { get; set; }
         public float current_angle { get; set; }
+        public int manual_speed { get; set; }
 
     }
 }
