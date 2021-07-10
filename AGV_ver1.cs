@@ -84,7 +84,7 @@ namespace READ_TEXT485
             {
                 goc = goc - (float)Caculator.current_angle(manual_Speed, time * 0.12);
             }
-            else if (WRegisters16[8] == 1 && WRegisters16[9] == 0 && WRegisters16[5] == 1) 
+            else if (WRegisters16[8] == 1 && WRegisters16[9] == 1 && WRegisters16[5] == 1) 
             {
                 goc = goc + (float)Caculator.current_angle(manual_Speed, time * 0.12);
             }
@@ -1631,7 +1631,7 @@ namespace READ_TEXT485
             pictureBox6.BorderStyle = BorderStyle.FixedSingle;
             if (Rotate_timer.Enabled)
             {
-                time = 0;
+                //time = 0;
                 Rotate_timer.Stop();
                 Rotate_timer.Enabled = false;
                
