@@ -790,7 +790,7 @@ namespace READ_TEXT485
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Aqua;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(186, 161);
+            this.label23.Location = new System.Drawing.Point(172, 161);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(20, 16);
             this.label23.TabIndex = 1;
