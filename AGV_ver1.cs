@@ -83,12 +83,12 @@ namespace READ_TEXT485
             time++;
             if (WRegisters16[8] == 0 && WRegisters16[9] == 0 && WRegisters16[5] == 1)
             {
-                goc = - (float)Caculator.current_angle(manual_Speed, time * 0.06) + temp_goc;
+                goc = - (float)Caculator.current_angle(manual_Speed, time * 0.04) + temp_goc;
                
             }
             else if (WRegisters16[8] == 1 && WRegisters16[9] == 1 && WRegisters16[5] == 1) 
             {
-                goc = (float)Caculator.current_angle(manual_Speed, time * 0.06)+ temp_goc;
+                goc = (float)Caculator.current_angle(manual_Speed, time * 0.04)+ temp_goc;
                 
             }
             MethodInvoker inv = delegate ()
