@@ -107,6 +107,7 @@
     <Compile Include="App_Config.cs" />
     <Compile Include="Caculator.cs" />
     <Compile Include="Configxml.cs" />
+    <Compile Include="Mapping.cs" />
     <Compile Include="MySQL_dosomething.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

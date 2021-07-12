@@ -13,7 +13,7 @@ namespace READ_TEXT485
     class MySQL_dosomething
     {
         private static MySqlConnection SQL_Connection;
-        private static string pwd = "100100";
+        private static string pwd = "12345678";
         public  string error_message;
         private static string StrCon= "Server = 127.0.0.1; UId = root; Pwd = "+pwd+"; Pooling = false; Character Set=utf8";
         public  DataTable Get_Database_Name()

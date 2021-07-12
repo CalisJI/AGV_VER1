@@ -16,6 +16,7 @@ using LibUsbDotNet.Main;
 using LibUsbDotNet;
 using System.Drawing.Imaging;
 
+
 namespace READ_TEXT485
 {
     public partial class AGV_ver1 : Form
@@ -40,6 +41,8 @@ namespace READ_TEXT485
         FileSystemWatcher FileSystemWatcher = new FileSystemWatcher();
         App_Config App_Config;
         Caculator Caculator = new Caculator();
+        Shape Shape = new Shape();
+        Mapping Mapping = new Mapping();
         private int[] ran_engle = new int[90] ;    
         public AGV_ver1()
         {
@@ -76,8 +79,9 @@ namespace READ_TEXT485
             Rotate_timer.Interval = 120;
             Rotate_timer.Enabled = false;
             Rotate_timer.Tick += Rotate_timer_Tick;
-            
+           
         }
+       
         int time = 0;
         float temp_goc = 0;
         private void Rotate_timer_Tick(object sender, EventArgs e)
@@ -529,6 +533,8 @@ namespace READ_TEXT485
             Discon_btn.Enabled = false;
             Start_btn.Enabled = false;
             Stop_btn.Enabled = false;
+            btn_add_point.Enabled = false;
+            btn_Match_point.Enabled = false;
             pictureBox5.Hide();
            
             string[] serial_port = SerialPort.GetPortNames();
@@ -580,7 +586,12 @@ namespace READ_TEXT485
             //FileSystemWatcher.Filter = "*.txt";
             //FileSystemWatcher.Changed += FileSystemWatcher_Changed;
             //FileSystemWatcher.EnableRaisingEvents = true;
-             App_Config = Configxml.GetSystem_Config();
+            App_Config = Configxml.GetSystem_Config();
+            Mapping = Configxml.GetMapping(App_Config.Table);
+            All_Rec = Mapping.Rectangles;
+            All_Point = Mapping.Egde;
+            Route = Mapping.Route;
+            panel6.Refresh();
             if (App_Config.COM == "") ComP_box.SelectedIndex = 0;
             else if (App_Config.COM != "") 
             {
@@ -2024,31 +2035,14 @@ namespace READ_TEXT485
                 ComP_box.Items.Add(item);
             }
         }
-
+        int[,] Get_Location;
         private void button7_Click(object sender, EventArgs e)
         {
             
             if (DataTable == null) return;
-            panel1.Dispose();
-            this.panel1 = new Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.panel1.Location = new System.Drawing.Point(370, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 330);
-            this.panel1.TabIndex = 0;
-            this.tabPage2.Controls.Add(this.panel1);
-            this.panel1.Controls.Add(this.label21);
-
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(351, 3);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(27, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "X:Y";
-            panel1.MouseDown += panel1_MouseDown;
+            All_Rec.Clear();
             int[,] temp = new int[DataTable.Rows.Count, 2];
+            Get_Location = new int[DataTable.Rows.Count, 2];
             for (int i = 0; i < DataTable.Rows.Count; i++)
             {
                 for (int j = 0; j < 2; j++)
@@ -2056,16 +2050,20 @@ namespace READ_TEXT485
                     temp[i, j] = int.Parse(DataTable.Rows[i][j+1].ToString());
                 }
             }
-            for (int i = 0; i < DataTable.Rows.Count-1; i++)
+            Get_Location = temp;
+            for (int i = 0; i < DataTable.Rows.Count; i++)
             {
-                int x1 = ( temp[i, 0] );
-                int x2 = ( temp[i+1, 0]);
-                int y1 = (panel1.Height - temp[i, 1] );
-                int y2 = (panel1.Height - temp[i + 1, 1]);
-                Draw(x1.ToString(), y1.ToString(), x2.ToString(), y2.ToString(),i+1);
+                int x1 = ( temp[i, 0] );            
+                int y1 = ( temp[i, 1] );
+                in_rec = Ex_rec.Ex_Rectangle(15, 15, x1, y1);
+                ex_rec = Ex_rec.Ex_Rectangle(20, 20, x1, y1); // Create new Rectangle
+                All_Rec.Add(in_rec);
+                All_Rec.Add(ex_rec);
             }
-
-           
+            Mapping.Rectangles = All_Rec;
+            panel6.Refresh();          
+            Configxml.Update_Mapping(Mapping, table);
+            
         }
 
         private void textBox12_TextChanged(object sender, EventArgs e)
@@ -2276,20 +2274,7 @@ namespace READ_TEXT485
             Configxml.UpdateSystem_Config("Baud", Baud_box.Text);
          
         }
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            int x = e.Location.X;
-            int y = panel1.Height- e.Location.Y;
-            MethodInvoker inv = delegate 
-            {
-                int X = panel1.Width - label21.Size.Width-10;
-                label21.Location = new Point(X, 3);
-                label21.Text = "" + x.ToString() + ":" + y.ToString() + "";
-            };
-            this.Invoke(inv);
-        }
-        
+ 
         private void textBox15_TextChanged(object sender, EventArgs e)
         {
             try
@@ -2396,35 +2381,225 @@ namespace READ_TEXT485
             panel5.Refresh();
 
         }
+        Shape Ex_rec = new Shape();
+        Shape In_rec = new Shape();
+        Rectangle ex_rec;
+        Rectangle in_rec;
+        List<Rectangle> All_Rec = new List<Rectangle>();
+        List<Point> All_Point = new List<Point>();
+        bool flag = false;
+        List<string> Route = new List<string>();
+        bool flag_match = false;
+        bool hit = false;
+        private void panel6_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (flag) 
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    in_rec = Ex_rec.Ex_Rectangle(15, 15, e.X, e.Y);
+                    ex_rec = Ex_rec.Ex_Rectangle(20, 20, e.X, e.Y); // Create new Rectangle
+                    All_Rec.Add(in_rec);
+                    All_Rec.Add(ex_rec);
+                    Mapping.Rectangles = All_Rec;
+                    panel6.Refresh();
+                }
+                else if(e.Button == MouseButtons.Right) 
+                {
+                    Rectangle[] rec = new Rectangle[2];
+                    foreach (var item in All_Rec)
+                    {
+                        if (item.Width == 20) 
+                        {
+                            if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)))
+                            {
 
-        private void pictureBox6_Click(object sender, EventArgs e)
+                                if((item.X + item.Width / 2) == e.X) 
+                                {
+                                    rec[0] = item;
+                                }
+                            }
+                        }
+                        else if (item.Width == 10) 
+                        {
+                            if ((item.X + item.Width / 2) == e.X) 
+                            {
+                                rec[1] = item;
+                            }
+                        }
+                        
+                    }
+                    All_Rec.Remove(rec[0]);
+                    All_Rec.Remove(rec[1]);
+                    Mapping.Rectangles = All_Rec;
+                    panel6.Refresh();
+                }
+            }
+            else if (flag_match) 
+            {
+                if(e.Button == MouseButtons.Left) 
+                {
+                    int f = 0;
+                    foreach (var item in Mapping.Rectangles)
+                    {
+                        if (f % 2 != 0)
+                        {
+                            if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && !hit)
+                            {
+                                All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
+                                string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
+                                if (get != string.Empty) 
+                                {
+                                    if(!Route.Contains(get))
+                                    {
+                                        Route.Add(get);
+                                    }                                  
+                                }
+                                hit = true;
+                            }
+                            else if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && hit)
+                            {
+                                All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
+                                string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
+                                if (get != string.Empty)
+                                {
+                                    if (!Route.Contains(get))
+                                    {
+                                        Route.Add(get);
+                                    }
+                                }
+                                hit = false;
+                            }
+                          
+                        }
+
+                        f++;
+                    }
+                    Mapping.Egde = All_Point;
+                    Mapping.Route = Route;
+                    panel6.Refresh();
+                    
+                }
+               
+            }
+            
+            
+        }
+        private string get_ID(int X,int Y) 
+        {
+            string get = string.Empty;
+            for (int ge = 0; ge < Get_Location.GetLength(0); ge++)
+            {
+               
+                if (X == Get_Location[ge, 0] && Y == Get_Location[ge, 1])
+                {
+                    get= ge.ToString();
+                }
+ 
+            }
+            return get;
+        }
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+            int i = 0;
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            //for (int a = 20; a < panel6.Width; a+=20)
+            //{
+            //    e.Graphics.DrawLine(new Pen(Color.Blue, 0.5f), new Point(a, 0), new Point(a, panel6.Height));
+            //}
+            //for (int a = 20; a < panel6.Height; a+=20)
+            //{
+            //    e.Graphics.DrawLine(new Pen(Color.Blue, 0.5f), new Point(0, a), new Point(panel6.Width, a));
+            //}
+            foreach(var item in Mapping.Rectangles) 
+            {              
+                if (i % 2 == 0) 
+                {
+                    e.Graphics.FillRectangle(Brushes.Green, item);
+                }
+                else 
+                {
+                    e.Graphics.DrawRectangle(new Pen(Color.Black, 1), item);
+                }
+                i++;
+            }
+
+            if (Mapping.Egde.Count % 2 == 0 && Mapping.Egde.Count > 1)  
+            {
+                for (int j = 0; j < Mapping.Egde.Count; j = j + 2)
+                {
+                    Pen pen = new Pen(Brushes.Red, 4f);
+                    pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+                    e.Graphics.DrawLine(pen, Mapping.Egde[j], Mapping.Egde[j + 1]);
+                }
+            }
+            else if(Mapping.Egde.Count % 2 == 1 && Mapping.Egde.Count > 1) 
+            {
+                for (int j = 0; j < Mapping.Egde.Count-1; j = j + 2)
+                {
+                    Pen pen = new Pen(Brushes.Red,4f);
+                    pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+                    e.Graphics.DrawLine(pen, Mapping.Egde[j], Mapping.Egde[j + 1]);
+                }
+            }
+
+
+            string tct = string.Empty;
+            string txt = string.Empty;
+            MethodInvoker inv = delegate
+            {
+                if (Route.Count < 1) return;
+                for (int s = 0; s < Route.Count; s++)
+                {
+                    //textBox16.AppendText(Route[i] + "-->");
+                    txt = Route[s] + "-->";
+                    tct += txt;
+                }
+                tct = tct.Substring(0, tct.Length - 3);
+                textBox16.Text = tct;
+            }; this.Invoke(inv);
+
+
+        }
+
+        private void panel6_MouseUp(object sender, MouseEventArgs e)
         {
 
         }
 
-        private void ComP_box_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void btn_edit_map_Click(object sender, EventArgs e)
         {
+            if(btn_edit_map.Text=="Edit Map") 
+            {
+               
+                btn_edit_map.Text = "Done";
+                btn_add_point.Enabled = true;
+                btn_Match_point.Enabled = true;
 
+            }
+            else if (btn_edit_map.Text == "Done") 
+            {
+                flag = false;
+                flag_match = false;
+                btn_edit_map.Text = "Edit Map";
+                Mapping.Rectangles = All_Rec;
+                Configxml.Update_Mapping(Mapping,table);
+                
+                btn_add_point.Enabled = false;
+                btn_Match_point.Enabled = false;
+            }
         }
 
-        private void Baud_box_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void btn_add_point_Click(object sender, EventArgs e)
         {
-
+            flag = true;
+            flag_match = false;
         }
 
-        private void label14_Click(object sender, EventArgs e)
+        private void btn_Match_point_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StopB_box_MouseDown(object sender, MouseEventArgs e)
-        {
-
+            flag = false;
+            flag_match = true;
         }
 
         bool hold = false;
@@ -2440,25 +2615,16 @@ namespace READ_TEXT485
                 DataTable = mySQL.Read_data(databases, table);               
                 hold = true;              
                 Configxml.UpdateSystem_Config("Table", table);
-                panel1.Dispose();
-                this.panel1 = new Panel();
-                this.label21 = new System.Windows.Forms.Label();
-                this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-                this.panel1.Location = new System.Drawing.Point(370, 3);
-                this.panel1.Name = "panel1";
-                this.panel1.Size = new System.Drawing.Size(400, 330);
-                this.panel1.TabIndex = 0;
-                this.tabPage2.Controls.Add(this.panel1);
-                this.panel1.Controls.Add(this.label21);
+                Configxml.Create_MapFile(table);
+                All_Rec.Clear();
+                All_Point.Clear();
+                Route.Clear();
+                App_Config = Configxml.GetSystem_Config();
+                Mapping = Configxml.GetMapping(App_Config.Table);
+                All_Rec = Mapping.Rectangles;
+                All_Point = Mapping.Egde;
+                Route = Mapping.Route;
                 
-                this.label21.AutoSize = true;
-                this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.label21.Location = new System.Drawing.Point(351, 3);
-                this.label21.Name = "label21";
-                this.label21.Size = new System.Drawing.Size(27, 13);
-                this.label21.TabIndex = 0;
-                this.label21.Text = "X:Y";
-                panel1.MouseDown += panel1_MouseDown;
                 if (mySQL.error_message != string.Empty) throw new Exception();
                 
             }
@@ -2617,25 +2783,6 @@ namespace READ_TEXT485
             }
         }
         #endregion
-        #region Drawing Move Point
-        private void Draw(string x1, string y1,string x2,string y2,int point) 
-        {
-            Graphics graphics;
-            StringFormat sf = new StringFormat();
-            sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
-            SolidBrush solidBrush = new SolidBrush(Color.Red);
-            graphics = panel1.CreateGraphics();
-            Pen pen = new Pen(Color.Lime, 3);
-            int Y1 = panel1.Height - int.Parse(y1);
-            int Y2 = panel1.Height - int.Parse(y2);
-            graphics.DrawLine(pen, int.Parse(x1), int.Parse(y1), int.Parse(x2), int.Parse(y2));
-            graphics.DrawString("["+point.ToString()+"](" + x1 + "," + Y1.ToString() + ")", this.Font, solidBrush, int.Parse(x1), int.Parse(y1),sf);
-            graphics.DrawString("["+(point+1).ToString()+"](" + x2 + "," + Y2.ToString() + ")", this.Font, solidBrush, int.Parse(x2), int.Parse(y2), sf);
-            //graphics.DrawLine(pen, 0, 0, 200, 200);
-
-            
-        }
-
-        #endregion
+       
     }
 }

@@ -15,6 +15,13 @@ namespace READ_TEXT485
     class Configxml
     {
         private static string Xml_path = Application.StartupPath + @"\" + "System Configuration.xml";
+       
+
+        public static string Create_MapFile(string FileName)
+        {
+            string MapFile = Application.StartupPath + @"\" + FileName + ".xml";
+            return MapFile;
+        }
         public static App_Config GetSystem_Config() 
         {
             if (File.Exists(Xml_path)) 
@@ -32,7 +39,7 @@ namespace READ_TEXT485
                 App_Config.COM = "COM1";
                 App_Config.Baud = "115200";
                 App_Config.Database = "agv_data";
-                App_Config.Table = "";
+                App_Config.Table = "data1";
                 App_Config.Kp = "0.15";
                 App_Config.Kd = "0";
                 App_Config.Ki = "4";
@@ -48,6 +55,34 @@ namespace READ_TEXT485
                 return App_Config;
             }
         }
+        public static  Mapping GetMapping(string Mapping_path) 
+        {
+            if (File.Exists(Create_MapFile(Mapping_path)))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
+                Stream stream = new FileStream(Create_MapFile(Mapping_path), FileMode.Open);
+                Mapping Mapping = (Mapping)serializer.Deserialize(stream);
+                stream.Close();
+                return Mapping;
+            }
+            else 
+            {
+                App_Config App_Config = new App_Config();
+                App_Config = Configxml.GetSystem_Config();
+                Mapping Mapping = new Mapping();
+                Mapping.Rectangles = new List<System.Drawing.Rectangle>();
+                Mapping.Egde = new List<System.Drawing.Point>();
+                Mapping.Route = new List<string>();
+                XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
+                Stream stream = new FileStream(Create_MapFile(App_Config.Table), FileMode.Create);
+                XmlWriter writer = new XmlTextWriter(stream, Encoding.UTF8);
+                serializer.Serialize(writer, Mapping);
+                writer.Close();
+                stream.Close();
+                return Mapping;
+            }
+        }
+
         public static void UpdateSystem_Config(string nodeName, string value)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -58,7 +93,15 @@ namespace READ_TEXT485
                 if (node.Name == nodeName) node.InnerText = value;
             }
             xmlDoc.Save(Xml_path);
-
+        }
+        public static void Update_Mapping(Mapping mapping, string Mappfile_path) 
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
+            using (TextWriter tw = new StreamWriter(Create_MapFile(Mappfile_path)))
+            {
+                serializer.Serialize(tw, mapping);
+                tw.Close();
+            }
         }
     }
 }
