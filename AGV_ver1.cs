@@ -529,6 +529,7 @@ namespace READ_TEXT485
         int manual_Speed = 100;
         private void Form1_Load(object sender, EventArgs e)
         {
+            //this.TopMost = true;
             Connect_btn.Enabled = true;
             Discon_btn.Enabled = false;
             Start_btn.Enabled = false;
@@ -707,7 +708,16 @@ namespace READ_TEXT485
             {
                 comboBox2.Text = "SQL Error";
             }
-           
+            string[,] temp = new string[DataTable.Rows.Count, 3];
+            Get_Location = new string[DataTable.Rows.Count, 3];
+            for (int i = 0; i < DataTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    temp[i, j] = DataTable.Rows[i][j].ToString();
+                }
+            }
+            Get_Location = temp;
             comboBox2.SelectedItem = App_Config.Table;
             GraphPane = zedGraphControl1.GraphPane;
             GraphPane.Title.Text = "Graph of speed data over time";
@@ -726,7 +736,8 @@ namespace READ_TEXT485
             GraphPane.AxisChange();
             panel5.Paint += new PaintEventHandler(panel5_Paint);
             //build_data();
-            
+            panel6.Paint += new PaintEventHandler(panel6_Paint);
+
 
         }
         private void ClearZelGraph() 
@@ -893,83 +904,6 @@ namespace READ_TEXT485
            
 
 
-        }
-        private void simualate_AGV(Panel panel ,int angle) 
-        {
-            try
-            {
-                
-                Graphics graphics;
-                Rectangle rectangle1 = new Rectangle();
-                //rectangle.Location = new Point(0, 0);
-                rectangle1.Size = new Size(panel.Width, panel.Height);
-
-                
-
-                Rectangle rec1 = new Rectangle();
-                Rectangle rec2 = new Rectangle();
-
-                graphics = panel.CreateGraphics();
-                graphics.Clear(Color.White);
-                //graphics.FillRectangle(Brushes.White, rectangle);
-                Graphics e;
-                e = panel.CreateGraphics();
-                Font font = new Font("Times New Roman", 10);
-                //AGV(ref rec1, ref rec2);
-                Rectangle rectangle = new Rectangle();
-                rectangle.Location = new Point(0, 0);
-                rectangle.Size = new Size(260, 160);
-                e.DrawRectangle(new Pen(Color.Red, 2), rectangle);
-                e.DrawLine(new Pen(Color.Blue), new Point(130, 0), new Point(130, 160));
-                e.DrawLine(new Pen(Color.Blue), new Point(0, 80), new Point(260, 80));
-                e.DrawString("0", font, Brushes.Red, new Point(130, 80));
-                Pen pen = new Pen(Color.Black, 3);
-                graphics.TranslateTransform(130, 80);
-                graphics.RotateTransform(angle);
-
-                graphics.DrawRectangle(pen, rec1);
-                graphics.FillRectangle(Brushes.Red, rec2);
-
-
-                //Bitmap bitmap = new Bitmap(panel.Width, panel.Height);
-                //panel.DrawToBitmap(bitmap, rectangle);
-                //if (File.Exists(Application.StartupPath + @"\AGV_simulate.bitmap"))
-                //{
-                //    File.Delete(Application.StartupPath + @"\AGV_simulate.bitmap");
-                //}
-                //bitmap.Save(Application.StartupPath + @"\AGV_simulate.bitmap", ImageFormat.Bmp);
-                //bitmap.Dispose();
-            }
-            catch (Exception ex)
-            {
-
-                
-            }
-            
-            
-        }
-        private void save_panel(Panel panel) 
-        {
-            Rectangle rectangle = new Rectangle();
-            rectangle.Size = new Size(panel.Width, panel.Height);
-            Bitmap bitmap = new Bitmap(panel.Width, panel.Height);
-            panel.DrawToBitmap(bitmap, rectangle);
-            if (File.Exists(Application.StartupPath + @"\AGV_simulate.bitmap"))
-            {
-                File.Delete(Application.StartupPath + @"\AGV_simulate.bitmap");
-            }
-            using (MemoryStream memory = new MemoryStream())
-            {
-                using (FileStream fs = new FileStream(Application.StartupPath + @"\AGV_simulate.bitmap", FileMode.Create, FileAccess.ReadWrite))
-                {
-                   
-                    bitmap.Save(memory, ImageFormat.Jpeg);
-                    byte[] bytes = memory.ToArray();
-                    fs.Write(bytes, 0, bytes.Length);
-                    fs.Dispose();
-
-                }
-            }
         }
         private void obstacle(bool detect) 
         {
@@ -2035,7 +1969,7 @@ namespace READ_TEXT485
                 ComP_box.Items.Add(item);
             }
         }
-        int[,] Get_Location;
+        string[,] Get_Location;
         private void button7_Click(object sender, EventArgs e)
         {
             
@@ -2043,20 +1977,21 @@ namespace READ_TEXT485
             All_Rec.Clear();
             All_Point.Clear();
             Route.Clear();
-            int[,] temp = new int[DataTable.Rows.Count, 2];
-            Get_Location = new int[DataTable.Rows.Count, 2];
+            string[,] temp = new string[DataTable.Rows.Count, 3];
+            Get_Location = new string[DataTable.Rows.Count, 3];
             for (int i = 0; i < DataTable.Rows.Count; i++)
             {
-                for (int j = 0; j < 2; j++)
+                for (int j = 0; j < 3; j++)
                 {
-                    temp[i, j] = int.Parse(DataTable.Rows[i][j+1].ToString());
+                    temp[i, j] = DataTable.Rows[i][j].ToString();
+                    
                 }
             }
             Get_Location = temp;
             for (int i = 0; i < DataTable.Rows.Count; i++)
             {
-                int x1 = ( temp[i, 0] );            
-                int y1 = ( temp[i, 1] );
+                int x1 =int.Parse( temp[i, 1] );            
+                int y1 =int.Parse( temp[i, 2] );
                 in_rec = Ex_rec.Ex_Rectangle(15, 15, x1, y1);
                 ex_rec = Ex_rec.Ex_Rectangle(20, 20, x1, y1); // Create new Rectangle
                 All_Rec.Add(in_rec);
@@ -2336,53 +2271,46 @@ namespace READ_TEXT485
 
 
         }
-        Bitmap Bitmap = new Bitmap(260, 130);
+      
         int i = 0;
         float goc = 0;
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
-          
-                Rectangle rec1 = new Rectangle();
-                Rectangle rec2 = new Rectangle();
-                
-                rec1.Location = new Point(-20, -30);
-                rec1.Size = new Size(40, 60);
-               
-                rec2.Location = new Point(-20, -30);
-                rec2.Size = new Size(40, 20);
-                //simualate_AGV(panel5, int.Parse(textBox15.Text));
-                Font font = new Font("Times New Roman", 10);
-                //AGV(ref rec1, ref rec2);
-                Rectangle rectangle = new Rectangle();
-                rectangle.Location = new Point(0,0);
-                rectangle.Size = new Size(260, 160);
-                e.Graphics.DrawRectangle(new Pen(Color.Red, 2), rectangle);
-                e.Graphics.DrawLine(new Pen(Color.Blue), new Point(130, 0), new Point(130, 160));
-                e.Graphics.DrawLine(new Pen(Color.Blue), new Point(0, 80), new Point(260, 80));
-                e.Graphics.DrawString("0", font, Brushes.Red, new Point(130, 80));              
-                Pen pen = new Pen(Color.Black, 2);
-                e.Graphics.TranslateTransform(panel5.Width/2, panel5.Height/2);
-                e.Graphics.RotateTransform(goc);
 
-                e.Graphics.DrawRectangle(pen, rec1);
-                e.Graphics.FillRectangle(Brushes.Red, rec2);
-                e.Graphics.RotateTransform(-goc);
-                e.Graphics.TranslateTransform(-130, -80);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Rectangle rec1 = new Rectangle();
+            Rectangle rec2 = new Rectangle();
+                
+            rec1.Location = new Point(-20, -30);
+            rec1.Size = new Size(40, 60);
+               
+            rec2.Location = new Point(-20, -30);
+            rec2.Size = new Size(40, 20);
+            //simualate_AGV(panel5, int.Parse(textBox15.Text));
+            Font font = new Font("Times New Roman", 10);
+            //AGV(ref rec1, ref rec2);
+            Rectangle rectangle = new Rectangle();
+            rectangle.Location = new Point(0,0);
+            rectangle.Size = new Size(panel5.Width, panel5.Height);
+            e.Graphics.DrawRectangle(new Pen(Color.Red, 2), rectangle);
+            e.Graphics.DrawLine(new Pen(Color.Blue), new Point(panel5.Width/2, 0), new Point(panel5.Width/2, panel5.Height));
+            e.Graphics.DrawLine(new Pen(Color.Blue), new Point(0, panel5.Height/2), new Point(panel5.Width, panel5.Height/2));
+            e.Graphics.DrawString("0", font, Brushes.Red, new Point(panel5.Width/2, panel5.Height/2));              
+            Pen pen = new Pen(Color.Black, 2);
+            e.Graphics.TranslateTransform(panel5.Width/2, panel5.Height/2);
+            e.Graphics.RotateTransform(goc);
+
+            e.Graphics.DrawRectangle(pen, rec1);
+            e.Graphics.FillRectangle(Brushes.Red, rec2);
+            e.Graphics.RotateTransform(-goc);
+            e.Graphics.TranslateTransform(-panel5.Width/2, -panel5.Height/2);
                
            
             //panel5.DrawToBitmap(Bitmap, rectangle);
             //e.Graphics.DrawImage(Bitmap,Point.Empty);
 
         }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-           
-            //simualate_AGV(panel5, int.Parse(textBox15.Text));
-            panel5.Paint += new PaintEventHandler(panel5_Paint);
-            panel5.Refresh();
-
-        }
+        
         Shape Ex_rec = new Shape();
         Shape In_rec = new Shape();
         Rectangle ex_rec;
@@ -2491,11 +2419,10 @@ namespace READ_TEXT485
             for (int ge = 0; ge < Get_Location.GetLength(0); ge++)
             {
                
-                if (X == Get_Location[ge, 0] && Y == Get_Location[ge, 1])
+                if (X.ToString() == Get_Location[ge, 1] && Y.ToString() == Get_Location[ge, 2])
                 {
                     get= ge.ToString();
                 }
- 
             }
             return get;
         }
@@ -2515,11 +2442,21 @@ namespace READ_TEXT485
             {              
                 if (i % 2 == 0) 
                 {
-                    e.Graphics.FillRectangle(Brushes.Green, item);
+                    e.Graphics.FillRectangle(Brushes.Black, item);
                 }
                 else 
                 {
-                    e.Graphics.DrawRectangle(new Pen(Color.Black, 1), item);
+                    e.Graphics.DrawRectangle(new Pen(Color.Blue, 1), item);
+                    for (int d = 0; d < Get_Location.GetLength(0); d++)
+                    {
+                        if (item.X + item.Width / 2 == int.Parse(Get_Location[d, 1]) && item.Y + item.Height / 2 == int.Parse(Get_Location[d, 2])) 
+                        {
+                            string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
+                           
+                            Font font = new Font("Times New Roman", 10);
+                            e.Graphics.DrawString("("+get+")", font, Brushes.Red, new Point(item.X, item.Y - 15));
+                        }
+                    }
                 }
                 i++;
             }
@@ -2528,7 +2465,7 @@ namespace READ_TEXT485
             {
                 for (int j = 0; j < Mapping.Egde.Count; j = j + 2)
                 {
-                    Pen pen = new Pen(Brushes.Red, 4f);
+                    Pen pen = new Pen(Brushes.Yellow, 4f);
                     pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
                     e.Graphics.DrawLine(pen, Mapping.Egde[j], Mapping.Egde[j + 1]);
                 }
@@ -2537,13 +2474,11 @@ namespace READ_TEXT485
             {
                 for (int j = 0; j < Mapping.Egde.Count-1; j = j + 2)
                 {
-                    Pen pen = new Pen(Brushes.Red,4f);
+                    Pen pen = new Pen(Brushes.Yellow,4f);
                     pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
                     e.Graphics.DrawLine(pen, Mapping.Egde[j], Mapping.Egde[j + 1]);
                 }
             }
-
-
             string tct = string.Empty;
             string txt = string.Empty;
             string tet = string.Empty;
@@ -2565,9 +2500,7 @@ namespace READ_TEXT485
                         txt = "";
                         tct += txt;
                         tet = Route[s] + "-->";
-                    }                 
-                    
-                   
+                    }                                  
                 }
                 tct = tct.Substring(0, tct.Length - 3);
                 textBox16.Text = tct;
@@ -2599,6 +2532,16 @@ namespace READ_TEXT485
             }
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btn_Match_point_Click(object sender, EventArgs e)
         {
             flag = false;
@@ -2627,13 +2570,13 @@ namespace READ_TEXT485
                 All_Rec = Mapping.Rectangles;
                 All_Point = Mapping.Egde;
                 Route = Mapping.Route;
-                int[,] temp = new int[DataTable.Rows.Count, 2];
-                Get_Location = new int[DataTable.Rows.Count, 2];
+                string[,] temp = new string[DataTable.Rows.Count, 3];
+                Get_Location = new string[DataTable.Rows.Count, 3];
                 for (int i = 0; i < DataTable.Rows.Count; i++)
                 {
-                    for (int j = 0; j < 2; j++)
+                    for (int j = 0; j < 3; j++)
                     {
-                        temp[i, j] = int.Parse(DataTable.Rows[i][j + 1].ToString());
+                        temp[i, j] = DataTable.Rows[i][j].ToString();
                     }
                 }
                 Get_Location = temp;

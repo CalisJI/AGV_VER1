@@ -193,7 +193,7 @@ namespace READ_TEXT485
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(784, 402);
+            this.tabControl1.Size = new System.Drawing.Size(800, 480);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -204,7 +204,7 @@ namespace READ_TEXT485
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(776, 376);
+            this.tabPage1.Size = new System.Drawing.Size(792, 454);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -215,7 +215,7 @@ namespace READ_TEXT485
             this.groupBox12.Controls.Add(this.radioButton2);
             this.groupBox12.Controls.Add(this.radioButton1);
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox12.Location = new System.Drawing.Point(3, 294);
+            this.groupBox12.Location = new System.Drawing.Point(6, 371);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(178, 77);
             this.groupBox12.TabIndex = 13;
@@ -271,7 +271,7 @@ namespace READ_TEXT485
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(3, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(178, 288);
+            this.groupBox4.Size = new System.Drawing.Size(178, 365);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Status";
@@ -279,17 +279,17 @@ namespace READ_TEXT485
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Lime;
-            this.panel2.Location = new System.Drawing.Point(86, 255);
+            this.panel2.Location = new System.Drawing.Point(8, 268);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(29, 22);
+            this.panel2.Size = new System.Drawing.Size(164, 17);
             this.panel2.TabIndex = 4;
             // 
             // Reset_Fault_btn
             // 
             this.Reset_Fault_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reset_Fault_btn.Location = new System.Drawing.Point(6, 244);
+            this.Reset_Fault_btn.Location = new System.Drawing.Point(8, 291);
             this.Reset_Fault_btn.Name = "Reset_Fault_btn";
-            this.Reset_Fault_btn.Size = new System.Drawing.Size(74, 38);
+            this.Reset_Fault_btn.Size = new System.Drawing.Size(164, 68);
             this.Reset_Fault_btn.TabIndex = 3;
             this.Reset_Fault_btn.Text = "Reset Fault";
             this.Reset_Fault_btn.UseVisualStyleBackColor = true;
@@ -340,7 +340,7 @@ namespace READ_TEXT485
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(131, 255);
+            this.textBox14.Location = new System.Drawing.Point(143, 240);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(29, 22);
             this.textBox14.TabIndex = 0;
@@ -481,7 +481,7 @@ namespace READ_TEXT485
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(187, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(581, 365);
+            this.groupBox3.Size = new System.Drawing.Size(602, 445);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Auto/Manual";
@@ -489,9 +489,9 @@ namespace READ_TEXT485
             // panel5
             // 
             this.panel5.Controls.Add(this.label23);
-            this.panel5.Location = new System.Drawing.Point(11, 199);
+            this.panel5.Location = new System.Drawing.Point(6, 270);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(260, 160);
+            this.panel5.Size = new System.Drawing.Size(270, 172);
             this.panel5.TabIndex = 4;
             // 
             // label23
@@ -507,9 +507,10 @@ namespace READ_TEXT485
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(127, 173);
+            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox15.Location = new System.Drawing.Point(158, 236);
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(60, 24);
+            this.textBox15.Size = new System.Drawing.Size(60, 29);
             this.textBox15.TabIndex = 0;
             this.textBox15.Text = "300";
             this.textBox15.TextChanged += new System.EventHandler(this.textBox15_TextChanged);
@@ -518,16 +519,17 @@ namespace READ_TEXT485
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Aqua;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(13, 176);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(7, 239);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(108, 16);
+            this.label22.Size = new System.Drawing.Size(145, 24);
             this.label22.TabIndex = 1;
             this.label22.Text = "Manual Speed";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(279, 229);
+            this.zedGraphControl1.Location = new System.Drawing.Point(284, 270);
             this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
@@ -537,31 +539,31 @@ namespace READ_TEXT485
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(291, 135);
+            this.zedGraphControl1.Size = new System.Drawing.Size(313, 170);
             this.zedGraphControl1.TabIndex = 12;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(294, 158);
+            this.panel4.Location = new System.Drawing.Point(311, 248);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(15, 63);
+            this.panel4.Size = new System.Drawing.Size(88, 13);
             this.panel4.TabIndex = 3;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(555, 160);
+            this.panel3.Location = new System.Drawing.Point(499, 248);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(15, 63);
+            this.panel3.Size = new System.Drawing.Size(88, 13);
             this.panel3.TabIndex = 3;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Yellow;
             this.pictureBox5.Image = global::READ_TEXT485.Properties.Resources.LAB;
-            this.pictureBox5.Location = new System.Drawing.Point(407, 94);
+            this.pictureBox5.Location = new System.Drawing.Point(418, 107);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(50, 45);
+            this.pictureBox5.Size = new System.Drawing.Size(62, 60);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 2;
             this.pictureBox5.TabStop = false;
@@ -569,9 +571,9 @@ namespace READ_TEXT485
             // Stop_btn
             // 
             this.Stop_btn.BackColor = System.Drawing.Color.Red;
-            this.Stop_btn.Location = new System.Drawing.Point(143, 95);
+            this.Stop_btn.Location = new System.Drawing.Point(158, 120);
             this.Stop_btn.Name = "Stop_btn";
-            this.Stop_btn.Size = new System.Drawing.Size(110, 73);
+            this.Stop_btn.Size = new System.Drawing.Size(129, 92);
             this.Stop_btn.TabIndex = 0;
             this.Stop_btn.Text = "Stop";
             this.Stop_btn.UseVisualStyleBackColor = false;
@@ -582,7 +584,7 @@ namespace READ_TEXT485
             this.pictureBox4.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox4.Image = global::READ_TEXT485.Properties.Resources.image;
-            this.pictureBox4.Location = new System.Drawing.Point(482, 77);
+            this.pictureBox4.Location = new System.Drawing.Point(499, 98);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(88, 78);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -596,9 +598,9 @@ namespace READ_TEXT485
             this.pictureBox7.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox7.Image = global::READ_TEXT485.Properties.Resources.Phải;
-            this.pictureBox7.Location = new System.Drawing.Point(311, 158);
+            this.pictureBox7.Location = new System.Drawing.Point(311, 182);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(71, 63);
+            this.pictureBox7.Size = new System.Drawing.Size(88, 63);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 1;
             this.pictureBox7.TabStop = false;
@@ -610,9 +612,9 @@ namespace READ_TEXT485
             this.pictureBox6.BackColor = System.Drawing.Color.Yellow;
             this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox6.Image = global::READ_TEXT485.Properties.Resources.Trái;
-            this.pictureBox6.Location = new System.Drawing.Point(482, 160);
+            this.pictureBox6.Location = new System.Drawing.Point(499, 182);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(71, 63);
+            this.pictureBox6.Size = new System.Drawing.Size(88, 63);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 1;
             this.pictureBox6.TabStop = false;
@@ -624,9 +626,9 @@ namespace READ_TEXT485
             this.pictureBox3.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox3.Image = global::READ_TEXT485.Properties.Resources.down_icon__1_2;
-            this.pictureBox3.Location = new System.Drawing.Point(388, 145);
+            this.pictureBox3.Location = new System.Drawing.Point(405, 175);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(88, 78);
+            this.pictureBox3.Size = new System.Drawing.Size(88, 87);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
@@ -638,12 +640,13 @@ namespace READ_TEXT485
             this.pictureBox2.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Image = global::READ_TEXT485.Properties.Resources.image__1_1;
-            this.pictureBox2.Location = new System.Drawing.Point(294, 77);
+            this.pictureBox2.Location = new System.Drawing.Point(311, 98);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(88, 78);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
             this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseUp);
             // 
@@ -652,9 +655,9 @@ namespace READ_TEXT485
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::READ_TEXT485.Properties.Resources.up_icon1;
-            this.pictureBox1.Location = new System.Drawing.Point(388, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(405, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(88, 78);
+            this.pictureBox1.Size = new System.Drawing.Size(88, 87);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -664,9 +667,9 @@ namespace READ_TEXT485
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Blue;
-            this.button3.Location = new System.Drawing.Point(27, 18);
+            this.button3.Location = new System.Drawing.Point(11, 19);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 73);
+            this.button3.Size = new System.Drawing.Size(129, 92);
             this.button3.TabIndex = 0;
             this.button3.Text = "Auto";
             this.button3.UseVisualStyleBackColor = false;
@@ -675,9 +678,9 @@ namespace READ_TEXT485
             // Start_btn
             // 
             this.Start_btn.BackColor = System.Drawing.Color.Lime;
-            this.Start_btn.Location = new System.Drawing.Point(143, 19);
+            this.Start_btn.Location = new System.Drawing.Point(158, 19);
             this.Start_btn.Name = "Start_btn";
-            this.Start_btn.Size = new System.Drawing.Size(110, 73);
+            this.Start_btn.Size = new System.Drawing.Size(129, 92);
             this.Start_btn.TabIndex = 0;
             this.Start_btn.Text = "Start";
             this.Start_btn.UseVisualStyleBackColor = false;
@@ -686,9 +689,9 @@ namespace READ_TEXT485
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Yellow;
-            this.button10.Location = new System.Drawing.Point(27, 95);
+            this.button10.Location = new System.Drawing.Point(11, 120);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(110, 73);
+            this.button10.Size = new System.Drawing.Size(129, 92);
             this.button10.TabIndex = 0;
             this.button10.Text = "Continue";
             this.button10.UseVisualStyleBackColor = false;
@@ -702,7 +705,7 @@ namespace READ_TEXT485
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(776, 376);
+            this.tabPage3.Size = new System.Drawing.Size(792, 454);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Setting";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1453,7 +1456,7 @@ namespace READ_TEXT485
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(776, 376);
+            this.tabPage2.Size = new System.Drawing.Size(792, 454);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Move Point";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1492,19 +1495,19 @@ namespace READ_TEXT485
             this.groupBox9.Controls.Add(this.button5);
             this.groupBox9.Controls.Add(this.button6);
             this.groupBox9.Controls.Add(this.button1);
-            this.groupBox9.Location = new System.Drawing.Point(6, 73);
+            this.groupBox9.Location = new System.Drawing.Point(6, 105);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox9.Size = new System.Drawing.Size(211, 287);
+            this.groupBox9.Size = new System.Drawing.Size(211, 255);
             this.groupBox9.TabIndex = 7;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Values";
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(6, 232);
+            this.button7.Location = new System.Drawing.Point(110, 182);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(199, 43);
+            this.button7.Size = new System.Drawing.Size(95, 67);
             this.button7.TabIndex = 6;
             this.button7.Text = "Draw Map";
             this.button7.UseVisualStyleBackColor = true;
@@ -1512,9 +1515,9 @@ namespace READ_TEXT485
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(6, 144);
+            this.button2.Location = new System.Drawing.Point(110, 19);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(199, 43);
+            this.button2.Size = new System.Drawing.Size(95, 67);
             this.button2.TabIndex = 4;
             this.button2.Text = "Create New Table";
             this.button2.UseVisualStyleBackColor = true;
@@ -1522,9 +1525,9 @@ namespace READ_TEXT485
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(6, 188);
+            this.button4.Location = new System.Drawing.Point(110, 100);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(199, 43);
+            this.button4.Size = new System.Drawing.Size(95, 67);
             this.button4.TabIndex = 4;
             this.button4.Text = "Drop Table";
             this.button4.UseVisualStyleBackColor = true;
@@ -1532,9 +1535,9 @@ namespace READ_TEXT485
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(6, 12);
+            this.button5.Location = new System.Drawing.Point(6, 19);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(199, 43);
+            this.button5.Size = new System.Drawing.Size(95, 67);
             this.button5.TabIndex = 4;
             this.button5.Text = "Delete Selected";
             this.button5.UseVisualStyleBackColor = true;
@@ -1542,9 +1545,9 @@ namespace READ_TEXT485
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(6, 100);
+            this.button6.Location = new System.Drawing.Point(6, 182);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(199, 43);
+            this.button6.Size = new System.Drawing.Size(95, 67);
             this.button6.TabIndex = 4;
             this.button6.Text = "Add Value";
             this.button6.UseVisualStyleBackColor = true;
@@ -1552,9 +1555,9 @@ namespace READ_TEXT485
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 56);
+            this.button1.Location = new System.Drawing.Point(6, 100);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 43);
+            this.button1.Size = new System.Drawing.Size(95, 67);
             this.button1.TabIndex = 4;
             this.button1.Text = "Update Value";
             this.button1.UseVisualStyleBackColor = true;
@@ -1582,39 +1585,41 @@ namespace READ_TEXT485
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(3, 49);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(16, 76);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(39, 13);
+            this.label17.Size = new System.Drawing.Size(49, 16);
             this.label17.TabIndex = 2;
             this.label17.Text = "Table";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(2, 22);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(61, 13);
+            this.label16.Size = new System.Drawing.Size(76, 16);
             this.label16.TabIndex = 2;
             this.label16.Text = "Database";
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(72, 19);
+            this.comboBox1.Location = new System.Drawing.Point(78, 19);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(139, 21);
+            this.comboBox1.Size = new System.Drawing.Size(138, 32);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.comboBox1_MouseDown);
             // 
             // comboBox2
             // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(72, 46);
+            this.comboBox2.Location = new System.Drawing.Point(78, 67);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(138, 21);
+            this.comboBox2.Size = new System.Drawing.Size(138, 32);
             this.comboBox2.TabIndex = 1;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             this.comboBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.comboBox2_MouseDown);
@@ -1628,7 +1633,7 @@ namespace READ_TEXT485
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(776, 376);
+            this.tabPage4.Size = new System.Drawing.Size(792, 454);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Map";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1636,7 +1641,7 @@ namespace READ_TEXT485
             // btn_Match_point
             // 
             this.btn_Match_point.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn_Match_point.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Match_point.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Match_point.Location = new System.Drawing.Point(705, 68);
             this.btn_Match_point.Name = "btn_Match_point";
             this.btn_Match_point.Size = new System.Drawing.Size(68, 56);
@@ -1648,7 +1653,7 @@ namespace READ_TEXT485
             // btn_edit_map
             // 
             this.btn_edit_map.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btn_edit_map.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_edit_map.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_edit_map.Location = new System.Drawing.Point(705, 6);
             this.btn_edit_map.Name = "btn_edit_map";
             this.btn_edit_map.Size = new System.Drawing.Size(68, 56);
@@ -1664,7 +1669,6 @@ namespace READ_TEXT485
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(693, 370);
             this.panel6.TabIndex = 0;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             this.panel6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseDown);
             this.panel6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseUp);
             // 
@@ -1676,9 +1680,9 @@ namespace READ_TEXT485
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 402);
+            this.ClientSize = new System.Drawing.Size(800, 480);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AGV_ver1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AGV Controller";
