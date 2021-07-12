@@ -1637,9 +1637,9 @@ namespace READ_TEXT485
             // 
             this.btn_Match_point.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_Match_point.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Match_point.Location = new System.Drawing.Point(672, 64);
+            this.btn_Match_point.Location = new System.Drawing.Point(705, 68);
             this.btn_Match_point.Name = "btn_Match_point";
-            this.btn_Match_point.Size = new System.Drawing.Size(96, 52);
+            this.btn_Match_point.Size = new System.Drawing.Size(68, 56);
             this.btn_Match_point.TabIndex = 1;
             this.btn_Match_point.Text = "Match Point";
             this.btn_Match_point.UseVisualStyleBackColor = false;
@@ -1649,9 +1649,9 @@ namespace READ_TEXT485
             // 
             this.btn_edit_map.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btn_edit_map.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_edit_map.Location = new System.Drawing.Point(672, 6);
+            this.btn_edit_map.Location = new System.Drawing.Point(705, 6);
             this.btn_edit_map.Name = "btn_edit_map";
-            this.btn_edit_map.Size = new System.Drawing.Size(96, 52);
+            this.btn_edit_map.Size = new System.Drawing.Size(68, 56);
             this.btn_edit_map.TabIndex = 1;
             this.btn_edit_map.Text = "Edit Map";
             this.btn_edit_map.UseVisualStyleBackColor = false;
@@ -1662,7 +1662,7 @@ namespace READ_TEXT485
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel6.Location = new System.Drawing.Point(6, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(660, 370);
+            this.panel6.Size = new System.Drawing.Size(693, 370);
             this.panel6.TabIndex = 0;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             this.panel6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseDown);
