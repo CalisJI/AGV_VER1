@@ -138,14 +138,16 @@ namespace READ_TEXT485
             this.button8 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label21 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -155,9 +157,6 @@ namespace READ_TEXT485
             this.btn_edit_map = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.btn_add_point = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -822,6 +821,7 @@ namespace READ_TEXT485
             this.ComP_box.Name = "ComP_box";
             this.ComP_box.Size = new System.Drawing.Size(100, 32);
             this.ComP_box.TabIndex = 0;
+            this.ComP_box.DropDown += new System.EventHandler(this.ComP_box_DropDown);
             this.ComP_box.SelectedIndexChanged += new System.EventHandler(this.ComP_box_SelectedIndexChanged);
             // 
             // label1
@@ -1477,15 +1477,12 @@ namespace READ_TEXT485
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Data Source";
             // 
-            // button7
+            // textBox16
             // 
-            this.button7.Location = new System.Drawing.Point(6, 232);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(199, 43);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Draw Map";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.textBox16.Location = new System.Drawing.Point(267, 19);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(489, 20);
+            this.textBox16.TabIndex = 8;
             // 
             // groupBox9
             // 
@@ -1502,6 +1499,36 @@ namespace READ_TEXT485
             this.groupBox9.TabIndex = 7;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Values";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(6, 232);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(199, 43);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "Draw Map";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 144);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(199, 43);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Create New Table";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 188);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(199, 43);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Drop Table";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -1533,26 +1560,6 @@ namespace READ_TEXT485
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 144);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(199, 43);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Create New Table";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 188);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(199, 43);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Drop Table";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1561,6 +1568,16 @@ namespace READ_TEXT485
             this.dataGridView1.Size = new System.Drawing.Size(533, 314);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(220, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(41, 13);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Route";
             // 
             // label17
             // 
@@ -1605,7 +1622,6 @@ namespace READ_TEXT485
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.btn_Match_point);
-            this.tabPage4.Controls.Add(this.btn_add_point);
             this.tabPage4.Controls.Add(this.btn_edit_map);
             this.tabPage4.Controls.Add(this.panel6);
             this.tabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1621,7 +1637,7 @@ namespace READ_TEXT485
             // 
             this.btn_Match_point.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_Match_point.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Match_point.Location = new System.Drawing.Point(672, 122);
+            this.btn_Match_point.Location = new System.Drawing.Point(672, 64);
             this.btn_Match_point.Name = "btn_Match_point";
             this.btn_Match_point.Size = new System.Drawing.Size(96, 52);
             this.btn_Match_point.TabIndex = 1;
@@ -1655,35 +1671,6 @@ namespace READ_TEXT485
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
-            // btn_add_point
-            // 
-            this.btn_add_point.BackColor = System.Drawing.Color.Yellow;
-            this.btn_add_point.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add_point.Location = new System.Drawing.Point(672, 64);
-            this.btn_add_point.Name = "btn_add_point";
-            this.btn_add_point.Size = new System.Drawing.Size(96, 52);
-            this.btn_add_point.TabIndex = 1;
-            this.btn_add_point.Text = "Add Point";
-            this.btn_add_point.UseVisualStyleBackColor = false;
-            this.btn_add_point.Click += new System.EventHandler(this.btn_add_point_Click);
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(267, 19);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(489, 20);
-            this.textBox16.TabIndex = 8;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(220, 22);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(41, 13);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Route";
             // 
             // AGV_ver1
             // 
@@ -1862,7 +1849,6 @@ namespace READ_TEXT485
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btn_edit_map;
         private System.Windows.Forms.Button btn_Match_point;
-        private System.Windows.Forms.Button btn_add_point;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label21;
     }

@@ -3,84 +3,84 @@
   <Rectangles>
     <Rectangle>
       <Location>
-        <X>13</X>
+        <X>93</X>
         <Y>13</Y>
       </Location>
       <Size>
         <Width>15</Width>
         <Height>15</Height>
       </Size>
-      <X>13</X>
+      <X>93</X>
       <Y>13</Y>
       <Width>15</Width>
       <Height>15</Height>
     </Rectangle>
     <Rectangle>
       <Location>
-        <X>10</X>
+        <X>90</X>
         <Y>10</Y>
       </Location>
       <Size>
         <Width>20</Width>
         <Height>20</Height>
       </Size>
-      <X>10</X>
+      <X>90</X>
       <Y>10</Y>
       <Width>20</Width>
       <Height>20</Height>
     </Rectangle>
     <Rectangle>
       <Location>
-        <X>38</X>
+        <X>13</X>
         <Y>53</Y>
       </Location>
       <Size>
         <Width>15</Width>
         <Height>15</Height>
       </Size>
-      <X>38</X>
+      <X>13</X>
       <Y>53</Y>
       <Width>15</Width>
       <Height>15</Height>
     </Rectangle>
     <Rectangle>
       <Location>
-        <X>35</X>
+        <X>10</X>
         <Y>50</Y>
       </Location>
       <Size>
         <Width>20</Width>
         <Height>20</Height>
       </Size>
-      <X>35</X>
+      <X>10</X>
       <Y>50</Y>
       <Width>20</Width>
       <Height>20</Height>
     </Rectangle>
     <Rectangle>
       <Location>
-        <X>53</X>
+        <X>143</X>
         <Y>63</Y>
       </Location>
       <Size>
         <Width>15</Width>
         <Height>15</Height>
       </Size>
-      <X>53</X>
+      <X>143</X>
       <Y>63</Y>
       <Width>15</Width>
       <Height>15</Height>
     </Rectangle>
     <Rectangle>
       <Location>
-        <X>50</X>
+        <X>140</X>
         <Y>60</Y>
       </Location>
       <Size>
         <Width>20</Width>
         <Height>20</Height>
       </Size>
-      <X>50</X>
+      <X>140</X>
       <Y>60</Y>
       <Width>20</Width>
       <Height>20</Height>
@@ -88,62 +88,60 @@
     <Rectangle>
       <Location>
         <X>73</X>
-        <Y>13</Y>
+        <Y>93</Y>
       </Location>
       <Size>
         <Width>15</Width>
         <Height>15</Height>
       </Size>
       <X>73</X>
-      <Y>13</Y>
+      <Y>93</Y>
       <Width>15</Width>
       <Height>15</Height>
     </Rectangle>
     <Rectangle>
       <Location>
         <X>70</X>
-        <Y>10</Y>
+        <Y>90</Y>
       </Location>
       <Size>
         <Width>20</Width>
         <Height>20</Height>
       </Size>
       <X>70</X>
-      <Y>10</Y>
+      <Y>90</Y>
+      <Width>20</Width>
+      <Height>20</Height>
+    </Rectangle>
+    <Rectangle>
+      <Location>
+        <X>93</X>
+        <Y>53</Y>
+      </Location>
+      <Size>
+        <Width>15</Width>
+        <Height>15</Height>
+      </Size>
+      <X>93</X>
+      <Y>53</Y>
+      <Width>15</Width>
+      <Height>15</Height>
+    </Rectangle>
+    <Rectangle>
+      <Location>
+        <X>90</X>
+        <Y>50</Y>
+      </Location>
+      <Size>
+        <Width>20</Width>
+        <Height>20</Height>
+      </Size>
+      <X>90</X>
+      <Y>50</Y>
       <Width>20</Width>
       <Height>20</Height>
     </Rectangle>
   </Rectangles>
-  <Egde>
-    <Point>
-      <X>20</X>
-      <Y>20</Y>
-    </Point>
-    <Point>
-      <X>45</X>
-      <Y>60</Y>
-    </Point>
-    <Point>
-      <X>45</X>
-      <Y>60</Y>
-    </Point>
-    <Point>
-      <X>60</X>
-      <Y>70</Y>
-    </Point>
-    <Point>
-      <X>60</X>
-      <Y>70</Y>
-    </Point>
-    <Point>
-      <X>80</X>
-      <Y>20</Y>
-    </Point>
-  </Egde>
-  <Route>
-    <string>0</string>
-    <string>1</string>
-    <string>2</string>
-    <string>3</string>
-  </Route>
+  <Egde />
+  <Route />
 </Mapping>

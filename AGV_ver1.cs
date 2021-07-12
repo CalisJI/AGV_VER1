@@ -533,7 +533,7 @@ namespace READ_TEXT485
             Discon_btn.Enabled = false;
             Start_btn.Enabled = false;
             Stop_btn.Enabled = false;
-            btn_add_point.Enabled = false;
+         
             btn_Match_point.Enabled = false;
             pictureBox5.Hide();
            
@@ -2041,6 +2041,8 @@ namespace READ_TEXT485
             
             if (DataTable == null) return;
             All_Rec.Clear();
+            All_Point.Clear();
+            Route.Clear();
             int[,] temp = new int[DataTable.Rows.Count, 2];
             Get_Location = new int[DataTable.Rows.Count, 2];
             for (int i = 0; i < DataTable.Rows.Count; i++)
@@ -2450,10 +2452,10 @@ namespace READ_TEXT485
                                 string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
                                 if (get != string.Empty) 
                                 {
-                                    if(!Route.Contains(get))
-                                    {
+                                    //if(!Route.Contains(get))
+                                    //{
                                         Route.Add(get);
-                                    }                                  
+                                    //}                                  
                                 }
                                 hit = true;
                             }
@@ -2463,10 +2465,10 @@ namespace READ_TEXT485
                                 string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
                                 if (get != string.Empty)
                                 {
-                                    if (!Route.Contains(get))
-                                    {
+                                    //if (!Route.Contains(get))
+                                    //{
                                         Route.Add(get);
-                                    }
+                                    //}
                                 }
                                 hit = false;
                             }
@@ -2481,9 +2483,7 @@ namespace READ_TEXT485
                     
                 }
                
-            }
-            
-            
+            }          
         }
         private string get_ID(int X,int Y) 
         {
@@ -2546,6 +2546,7 @@ namespace READ_TEXT485
 
             string tct = string.Empty;
             string txt = string.Empty;
+            string tet = string.Empty;
             MethodInvoker inv = delegate
             {
                 if (Route.Count < 1) return;
@@ -2553,13 +2554,24 @@ namespace READ_TEXT485
                 {
                     //textBox16.AppendText(Route[i] + "-->");
                     txt = Route[s] + "-->";
-                    tct += txt;
+                    if (tet != txt) 
+                    {
+                        txt = Route[s] + "-->";
+                        tct += txt;
+                        tet = txt;
+                    }
+                    else 
+                    {
+                        txt = "";
+                        tct += txt;
+                        tet = Route[s] + "-->";
+                    }                 
+                    
+                   
                 }
                 tct = tct.Substring(0, tct.Length - 3);
                 textBox16.Text = tct;
             }; this.Invoke(inv);
-
-
         }
 
         private void panel6_MouseUp(object sender, MouseEventArgs e)
@@ -2572,8 +2584,7 @@ namespace READ_TEXT485
             if(btn_edit_map.Text=="Edit Map") 
             {
                
-                btn_edit_map.Text = "Done";
-                btn_add_point.Enabled = true;
+                btn_edit_map.Text = "Done";             
                 btn_Match_point.Enabled = true;
 
             }
@@ -2584,16 +2595,8 @@ namespace READ_TEXT485
                 btn_edit_map.Text = "Edit Map";
                 Mapping.Rectangles = All_Rec;
                 Configxml.Update_Mapping(Mapping,table);
-                
-                btn_add_point.Enabled = false;
                 btn_Match_point.Enabled = false;
             }
-        }
-
-        private void btn_add_point_Click(object sender, EventArgs e)
-        {
-            flag = true;
-            flag_match = false;
         }
 
         private void btn_Match_point_Click(object sender, EventArgs e)
@@ -2624,7 +2627,16 @@ namespace READ_TEXT485
                 All_Rec = Mapping.Rectangles;
                 All_Point = Mapping.Egde;
                 Route = Mapping.Route;
-                
+                int[,] temp = new int[DataTable.Rows.Count, 2];
+                Get_Location = new int[DataTable.Rows.Count, 2];
+                for (int i = 0; i < DataTable.Rows.Count; i++)
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        temp[i, j] = int.Parse(DataTable.Rows[i][j + 1].ToString());
+                    }
+                }
+                Get_Location = temp;
                 if (mySQL.error_message != string.Empty) throw new Exception();
                 
             }
