@@ -89,12 +89,12 @@ namespace READ_TEXT485
             time++;
             if (WRegisters16[8] == 0 && WRegisters16[9] == 0 && WRegisters16[5] == 1)
             {
-                goc = (float)Math.Round((- Caculator.current_angle(manual_Speed, time * 0.045) + temp_goc),2);
+                goc = (float)Math.Round((- Caculator.current_angle(manual_Speed, time * 0.044) + temp_goc),2);
                
             }
             else if (WRegisters16[8] == 1 && WRegisters16[9] == 1 && WRegisters16[5] == 1) 
             {
-                goc = (float)Math.Round((Caculator.current_angle(manual_Speed, time * 0.045) + temp_goc), 2);
+                goc = (float)Math.Round((Caculator.current_angle(manual_Speed, time * 0.044) + temp_goc), 2);
 
             }
             MethodInvoker inv = delegate ()
