@@ -48,10 +48,7 @@ namespace READ_TEXT485
         {
             InitializeComponent();
 
-            if (!File.Exists(text))
-            {
-                File.Create(text);
-            }
+          
             if (!File.Exists(text2))
             {
                 File.Create(text2);
@@ -582,11 +579,7 @@ namespace READ_TEXT485
                 in_put1[i] = '0';
                 in_put2[i] = '0';
             }
-            //FileSystemWatcher = new FileSystemWatcher(text);
-            //FileSystemWatcher.NotifyFilter = NotifyFilters.LastWrite;
-            //FileSystemWatcher.Filter = "*.txt";
-            //FileSystemWatcher.Changed += FileSystemWatcher_Changed;
-            //FileSystemWatcher.EnableRaisingEvents = true;
+           
             App_Config = Configxml.GetSystem_Config();
             Mapping = Configxml.GetMapping(App_Config.Table);
             All_Rec = Mapping.Rectangles;
@@ -646,6 +639,10 @@ namespace READ_TEXT485
                 comboBox1.Text = "SQL Error";
                 
             }
+            if (!File.Exists(App_Config.Path+@"\"+ text))
+            {
+                File.Create(App_Config.Path + @"\" + text);
+            }
             goc = App_Config.current_angle;
             temp_goc = goc;
             manual_Speed = App_Config.manual_speed;
@@ -654,6 +651,7 @@ namespace READ_TEXT485
                 textBox15.Text = App_Config.manual_speed.ToString();
 
             };this.Invoke(inv);
+
             label23.Text = goc.ToString() + "'";
             if (App_Config.rotate == "True")
             {
@@ -683,6 +681,11 @@ namespace READ_TEXT485
                 button10.Enabled = true;
             }
 
+            FileSystemWatcher = new FileSystemWatcher(Path.GetDirectoryName(App_Config.Path + @"\" + text));
+            FileSystemWatcher.NotifyFilter = NotifyFilters.LastWrite;
+            FileSystemWatcher.Filter = "*.txt";
+            FileSystemWatcher.Changed += FileSystemWatcher_Changed;
+            FileSystemWatcher.EnableRaisingEvents = true;
             try
             {
                
@@ -737,9 +740,18 @@ namespace READ_TEXT485
             panel5.Paint += new PaintEventHandler(panel5_Paint);
             //build_data();
             panel6.Paint += new PaintEventHandler(panel6_Paint);
-
+           
 
         }
+
+        private void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            if(e.FullPath==App_Config.Path + @"\" + text) 
+            {
+                
+            }
+        }
+        
         private void ClearZelGraph() 
         {
             zedGraphControl1.GraphPane.CurveList.Clear(); // Xóa đường
@@ -2519,6 +2531,7 @@ namespace READ_TEXT485
                
                 btn_edit_map.Text = "Done";             
                 btn_Match_point.Enabled = true;
+                btn_cancel.Enabled = true;
 
             }
             else if (btn_edit_map.Text == "Done") 
@@ -2529,6 +2542,7 @@ namespace READ_TEXT485
                 Mapping.Rectangles = All_Rec;
                 Configxml.Update_Mapping(Mapping,table);
                 btn_Match_point.Enabled = false;
+                btn_cancel.Enabled = false;
             }
         }
 
@@ -2540,6 +2554,22 @@ namespace READ_TEXT485
         private void label22_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            All_Point.Clear();
+            panel6.Refresh();
+        }
+        FolderBrowserDialog FolderBrowserDialog = new FolderBrowserDialog();
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if(FolderBrowserDialog.ShowDialog() == DialogResult.OK) 
+            {
+                textBox17.Text = FolderBrowserDialog.SelectedPath.ToString();
+                Configxml.UpdateSystem_Config("Path", textBox17.Text);
+                App_Config = Configxml.GetSystem_Config();
+            }
         }
 
         private void btn_Match_point_Click(object sender, EventArgs e)

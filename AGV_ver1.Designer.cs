@@ -153,10 +153,14 @@ namespace READ_TEXT485
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_Match_point = new System.Windows.Forms.Button();
             this.btn_edit_map = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -728,7 +732,7 @@ namespace READ_TEXT485
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox1.Size = new System.Drawing.Size(202, 361);
+            this.groupBox1.Size = new System.Drawing.Size(202, 440);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection";
@@ -737,9 +741,9 @@ namespace READ_TEXT485
             // 
             this.Discon_btn.BackColor = System.Drawing.SystemColors.Highlight;
             this.Discon_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Discon_btn.Location = new System.Drawing.Point(6, 274);
+            this.Discon_btn.Location = new System.Drawing.Point(6, 328);
             this.Discon_btn.Name = "Discon_btn";
-            this.Discon_btn.Size = new System.Drawing.Size(185, 81);
+            this.Discon_btn.Size = new System.Drawing.Size(185, 106);
             this.Discon_btn.TabIndex = 2;
             this.Discon_btn.Text = "Disconnect";
             this.Discon_btn.UseVisualStyleBackColor = false;
@@ -750,9 +754,9 @@ namespace READ_TEXT485
             this.Connect_btn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.Connect_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Connect_btn.ForeColor = System.Drawing.Color.Black;
-            this.Connect_btn.Location = new System.Drawing.Point(6, 192);
+            this.Connect_btn.Location = new System.Drawing.Point(6, 211);
             this.Connect_btn.Name = "Connect_btn";
-            this.Connect_btn.Size = new System.Drawing.Size(185, 81);
+            this.Connect_btn.Size = new System.Drawing.Size(185, 106);
             this.Connect_btn.TabIndex = 2;
             this.Connect_btn.Text = "Connect AGV";
             this.Connect_btn.UseVisualStyleBackColor = false;
@@ -946,7 +950,7 @@ namespace READ_TEXT485
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(216, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(359, 361);
+            this.groupBox2.Size = new System.Drawing.Size(359, 440);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input/Coil";
@@ -1464,9 +1468,12 @@ namespace READ_TEXT485
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox6.Controls.Add(this.button11);
+            this.groupBox6.Controls.Add(this.textBox17);
             this.groupBox6.Controls.Add(this.textBox16);
             this.groupBox6.Controls.Add(this.groupBox9);
             this.groupBox6.Controls.Add(this.dataGridView1);
+            this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.label21);
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Controls.Add(this.label16);
@@ -1475,14 +1482,14 @@ namespace READ_TEXT485
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(762, 363);
+            this.groupBox6.Size = new System.Drawing.Size(783, 445);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Data Source";
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(267, 19);
+            this.textBox16.Location = new System.Drawing.Point(269, 18);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(489, 20);
             this.textBox16.TabIndex = 8;
@@ -1495,10 +1502,10 @@ namespace READ_TEXT485
             this.groupBox9.Controls.Add(this.button5);
             this.groupBox9.Controls.Add(this.button6);
             this.groupBox9.Controls.Add(this.button1);
-            this.groupBox9.Location = new System.Drawing.Point(6, 105);
+            this.groupBox9.Location = new System.Drawing.Point(5, 175);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox9.Size = new System.Drawing.Size(211, 255);
+            this.groupBox9.Size = new System.Drawing.Size(211, 264);
             this.groupBox9.TabIndex = 7;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Values";
@@ -1566,9 +1573,9 @@ namespace READ_TEXT485
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(223, 46);
+            this.dataGridView1.Location = new System.Drawing.Point(223, 44);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(533, 314);
+            this.dataGridView1.Size = new System.Drawing.Size(554, 395);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
@@ -1576,7 +1583,7 @@ namespace READ_TEXT485
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(220, 22);
+            this.label21.Location = new System.Drawing.Point(222, 21);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(41, 13);
             this.label21.TabIndex = 2;
@@ -1626,6 +1633,7 @@ namespace READ_TEXT485
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btn_cancel);
             this.tabPage4.Controls.Add(this.btn_Match_point);
             this.tabPage4.Controls.Add(this.btn_edit_map);
             this.tabPage4.Controls.Add(this.panel6);
@@ -1638,9 +1646,21 @@ namespace READ_TEXT485
             this.tabPage4.Text = "Map";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackColor = System.Drawing.Color.Crimson;
+            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancel.Location = new System.Drawing.Point(705, 130);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(68, 56);
+            this.btn_cancel.TabIndex = 1;
+            this.btn_cancel.Text = "Cancel";
+            this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
             // btn_Match_point
             // 
-            this.btn_Match_point.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btn_Match_point.BackColor = System.Drawing.Color.Gold;
             this.btn_Match_point.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Match_point.Location = new System.Drawing.Point(705, 68);
             this.btn_Match_point.Name = "btn_Match_point";
@@ -1652,7 +1672,7 @@ namespace READ_TEXT485
             // 
             // btn_edit_map
             // 
-            this.btn_edit_map.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btn_edit_map.BackColor = System.Drawing.Color.Blue;
             this.btn_edit_map.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_edit_map.Location = new System.Drawing.Point(705, 6);
             this.btn_edit_map.Name = "btn_edit_map";
@@ -1675,6 +1695,33 @@ namespace READ_TEXT485
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(6, 122);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(39, 16);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Path";
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(78, 118);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(111, 20);
+            this.textBox17.TabIndex = 8;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(192, 118);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(24, 20);
+            this.button11.TabIndex = 9;
+            this.button11.Text = "...";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // AGV_ver1
             // 
@@ -1855,6 +1902,10 @@ namespace READ_TEXT485
         private System.Windows.Forms.Button btn_Match_point;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button11;
     }
 }
 
