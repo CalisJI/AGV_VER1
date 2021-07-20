@@ -59,29 +59,29 @@
     </Rectangle>
     <Rectangle>
       <Location>
-        <X>23</X>
-        <Y>33</Y>
+        <X>93</X>
+        <Y>93</Y>
       </Location>
       <Size>
         <Width>15</Width>
         <Height>15</Height>
       </Size>
-      <X>23</X>
-      <Y>33</Y>
+      <X>93</X>
+      <Y>93</Y>
       <Width>15</Width>
       <Height>15</Height>
     </Rectangle>
     <Rectangle>
       <Location>
-        <X>20</X>
-        <Y>30</Y>
+        <X>90</X>
+        <Y>90</Y>
       </Location>
       <Size>
         <Width>20</Width>
         <Height>20</Height>
       </Size>
-      <X>20</X>
-      <Y>30</Y>
+      <X>90</X>
+      <Y>90</Y>
       <Width>20</Width>
       <Height>20</Height>
     </Rectangle>
@@ -92,20 +92,20 @@
       <Y>30</Y>
     </Point>
     <Point>
-      <X>30</X>
-      <Y>40</Y>
-    </Point>
-    <Point>
-      <X>30</X>
-      <Y>40</Y>
-    </Point>
-    <Point>
       <X>50</X>
       <Y>80</Y>
     </Point>
     <Point>
       <X>50</X>
       <Y>80</Y>
+    </Point>
+    <Point>
+      <X>100</X>
+      <Y>100</Y>
+    </Point>
+    <Point>
+      <X>100</X>
+      <Y>100</Y>
     </Point>
     <Point>
       <X>20</X>
@@ -114,7 +114,10 @@
   </Egde>
   <Route>
     <string>0</string>
-    <string>2</string>
     <string>1</string>
+    <string>1</string>
+    <string>2</string>
+    <string>2</string>
+    <string>0</string>
   </Route>
 </Mapping>

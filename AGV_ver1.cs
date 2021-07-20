@@ -26,8 +26,9 @@ namespace READ_TEXT485
         ModBus_RS485 _RS485 = new ModBus_RS485();
         ModBus_RS485 _RS232 = new ModBus_RS485();
         private static string root = Application.StartupPath;
-        private static string File1 = "Config_1.txt";
-        private static string File2 = "Config_2.txt";
+        private static string File1 = "Read.txt";
+        private static string File2 = "Write.txt";
+        private static string GPS = "GPS.txt";
         string text = root + "/" + File1;
         string text2 = root + "/" + File2;
         Int16[] Registers = new Int16[12];
@@ -41,9 +42,10 @@ namespace READ_TEXT485
         FileSystemWatcher FileSystemWatcher = new FileSystemWatcher();
         App_Config App_Config;
         Caculator Caculator = new Caculator();
-        Shape Shape = new Shape();
+      
         Mapping Mapping = new Mapping();
-        private int[] ran_engle = new int[90] ;    
+     
+        Community Comunity = new Community();
         public AGV_ver1()
         {
             InitializeComponent();
@@ -532,7 +534,7 @@ namespace READ_TEXT485
             Start_btn.Enabled = false;
             Stop_btn.Enabled = false;
          
-            btn_Match_point.Enabled = false;
+            //btn_Match_point.Enabled = false;
             pictureBox5.Hide();
            
             string[] serial_port = SerialPort.GetPortNames();
@@ -585,7 +587,7 @@ namespace READ_TEXT485
             All_Rec = Mapping.Rectangles;
             All_Point = Mapping.Egde;
             Route = Mapping.Route;
-            panel6.Refresh();
+            //panel6.Refresh();
             if (App_Config.COM == "") ComP_box.SelectedIndex = 0;
             else if (App_Config.COM != "") 
             {
@@ -611,37 +613,43 @@ namespace READ_TEXT485
             Kd = float.Parse(App_Config.Kd);
             Parity_box.SelectedIndex = 0;
             StopB_box.SelectedIndex = 0;
-            try
-            {
+            //try
+            //{
                
-                DataTable dataTable = mySQL.Get_Database_Name();
-                foreach (DataRow item in dataTable.Rows)
-                {
-                    string database_Name = item["database_name"].ToString();
-                    comboBox1.Items.Add(database_Name);
-                }
-                foreach (var item in comboBox1.Items)
-                {
-                    if (item.ToString() == App_Config.Database)
-                    {
-                        comboBox1.SelectedItem = App_Config.Database;
-                    }
-                    else
-                    {
-                        comboBox1.Text = "" + App_Config.Database + " Do Not Exist";
-                    }
-                }
+            //    DataTable dataTable = mySQL.Get_Database_Name();
+            //    foreach (DataRow item in dataTable.Rows)
+            //    {
+            //        string database_Name = item["database_name"].ToString();
+            //        comboBox1.Items.Add(database_Name);
+            //    }
+            //    foreach (var item in comboBox1.Items)
+            //    {
+            //        if (item.ToString() == App_Config.Database)
+            //        {
+            //            comboBox1.SelectedItem = App_Config.Database;
+            //        }
+            //        else
+            //        {
+            //            comboBox1.Text = "" + App_Config.Database + " Do Not Exist";
+            //        }
+            //    }
 
-                if (mySQL.error_message != string.Empty) throw new Exception();
-            }
-            catch (Exception ex)
-            {
-                comboBox1.Text = "SQL Error";
+            //    if (mySQL.error_message != string.Empty) throw new Exception();
+            //}
+            //catch (Exception ex)
+            //{
+            //    comboBox1.Text = "SQL Error";
                 
-            }
-            if (!File.Exists(App_Config.Path+@"\"+ text))
+            //}
+            MethodInvoker invoker = delegate 
             {
-                File.Create(App_Config.Path + @"\" + text);
+                textBox17.Text = App_Config.Path;
+            
+            };this.Invoke(invoker);
+            if (!File.Exists(App_Config.Path+ @"\"+ File1))
+            {
+                File.SetAttributes(App_Config.Path, FileAttributes.Normal);
+                File.Create(App_Config.Path + @"\" + File1);
             }
             goc = App_Config.current_angle;
             temp_goc = goc;
@@ -681,47 +689,47 @@ namespace READ_TEXT485
                 button10.Enabled = true;
             }
 
-            FileSystemWatcher = new FileSystemWatcher(Path.GetDirectoryName(App_Config.Path + @"\" + text));
+            FileSystemWatcher = new FileSystemWatcher(Path.GetDirectoryName(App_Config.Path + @"\" + File1));
             FileSystemWatcher.NotifyFilter = NotifyFilters.LastWrite;
             FileSystemWatcher.Filter = "*.txt";
             FileSystemWatcher.Changed += FileSystemWatcher_Changed;
             FileSystemWatcher.EnableRaisingEvents = true;
-            try
-            {
+            //try
+            //{
                
-                List<string> dataTable = mySQL.Get_table_Name(App_Config.Database);
-                foreach (string item in dataTable)
-                {
-                    comboBox2.Items.Add(item);
-                }
-                foreach (var item in comboBox2.Items)
-                {
-                    if (item.ToString() == App_Config.Table) 
-                    {
-                        comboBox2.SelectedItem = App_Config.Table;
-                    }
-                    else 
-                    {
-                        comboBox2.Text = "Table Do Not Exist";
-                    }
-                }
-                if (mySQL.error_message != string.Empty) throw new Exception();
-            }
-            catch (Exception ex)
-            {
-                comboBox2.Text = "SQL Error";
-            }
-            string[,] temp = new string[DataTable.Rows.Count, 3];
-            Get_Location = new string[DataTable.Rows.Count, 3];
-            for (int i = 0; i < DataTable.Rows.Count; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    temp[i, j] = DataTable.Rows[i][j].ToString();
-                }
-            }
-            Get_Location = temp;
-            comboBox2.SelectedItem = App_Config.Table;
+            //    List<string> dataTable = mySQL.Get_table_Name(App_Config.Database);
+            //    foreach (string item in dataTable)
+            //    {
+            //        comboBox2.Items.Add(item);
+            //    }
+            //    foreach (var item in comboBox2.Items)
+            //    {
+            //        if (item.ToString() == App_Config.Table) 
+            //        {
+            //            comboBox2.SelectedItem = App_Config.Table;
+            //        }
+            //        else 
+            //        {
+            //            comboBox2.Text = "Table Do Not Exist";
+            //        }
+            //    }
+            //    if (mySQL.error_message != string.Empty) throw new Exception();
+            //}
+            //catch (Exception ex)
+            //{
+            //    comboBox2.Text = "SQL Error";
+            //}
+            //string[,] temp = new string[DataTable.Rows.Count, 3];
+            //Get_Location = new string[DataTable.Rows.Count, 3];
+            //for (int i = 0; i < DataTable.Rows.Count; i++)
+            //{
+            //    for (int j = 0; j < 3; j++)
+            //    {
+            //        temp[i, j] = DataTable.Rows[i][j].ToString();
+            //    }
+            //}
+            //Get_Location = temp;
+            //comboBox2.SelectedItem = App_Config.Table;
             GraphPane = zedGraphControl1.GraphPane;
             GraphPane.Title.Text = "Graph of speed data over time";
             GraphPane.XAxis.Title.Text = "Timer(s)";
@@ -739,16 +747,106 @@ namespace READ_TEXT485
             GraphPane.AxisChange();
             panel5.Paint += new PaintEventHandler(panel5_Paint);
             //build_data();
-            panel6.Paint += new PaintEventHandler(panel6_Paint);
+            //panel6.Paint += new PaintEventHandler(panel6_Paint);
            
 
         }
-
+        int z = 0;
         private void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
-            if(e.FullPath==App_Config.Path + @"\" + text) 
+            if(e.FullPath==App_Config.Path + @"\" + File1) 
             {
-                
+                z++;
+                if (z == 2) 
+                {
+                    int a = 0;
+                    int ok = 0;
+                    using (StreamReader sr = new StreamReader(App_Config.Path + @"\" + File1))
+                    {
+                        while (sr.ReadLine() != null) 
+                        {
+                            
+                            a++;
+                        }
+                    }
+                    using (StreamReader sr = new StreamReader(App_Config.Path + @"\" + File1))
+                    {
+                        string[] Receive = new string[a];
+                        for (int b = 0; b < a; b++)
+                        {
+                            Receive[b] = sr.ReadLine();
+
+                        }
+                        foreach (var item in Receive)
+                        {
+                            MethodInvoker inv = delegate
+                            {
+                                textBox16.AppendText(item +" ");
+
+                            }; this.Invoke(inv);
+                        }
+                        if (Receive[0] == "Go To:" && (Receive[1] != "" || Receive[1] != null))
+                        {
+                            table = Receive[1];
+                            Comunity = Configxml.Get_Order(table);
+                            Configxml.UpdateSystem_Config("Table", table);
+                            Configxml.Create_MapFile(table);
+                            App_Config = Configxml.GetSystem_Config();
+                            Mapping = Configxml.GetMapping(App_Config.Table);
+                            DataTable = Comunity.DataTable;
+                            MethodInvoker inv = delegate
+                            {
+                                dataGridView1.DataSource = DataTable;
+                            }; this.Invoke(inv);
+
+
+                            string[,] temp = new string[DataTable.Rows.Count, 3];
+                            Get_Location = new string[DataTable.Rows.Count, 3];
+                            for (int i = 0; i < DataTable.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < 3; j++)
+                                {
+                                    temp[i, j] = DataTable.Rows[i][j].ToString();
+                                }
+                            }
+                            Get_Location = temp;
+                            ok = 1;
+
+                        }
+                        else if (Receive[0] == "Run:" && (Receive[1] != "" || Receive[1] != null))
+                        {
+                            ok = 2;
+                            WRegisters16[4] = 300;
+
+                        }
+                        else ok = 0;
+                    }
+                    if (ok==1) 
+                    {
+                        using (StreamWriter sw = new StreamWriter(App_Config.Path + @"\" + File2))
+                        {
+                            sw.WriteLine("Downloaded OK (" + table + ")");
+                        }
+                    }
+                    else if(ok==0)
+                    {
+                        using (StreamWriter sw = new StreamWriter(App_Config.Path + @"\" + File2))
+                        {
+                            sw.WriteLine("[Error] Action is invalid");
+                        }
+
+                    }
+                    else if (ok == 2) 
+                    {
+                        using (StreamWriter sw = new StreamWriter(App_Config.Path + @"\" + File2))
+                        {
+                            sw.WriteLine("Started");
+                        }
+                    }
+                   
+                        z = 0;
+                }
+               
             }
         }
         
@@ -797,18 +895,7 @@ namespace READ_TEXT485
                 textBox7.Text = App_Config.Ki.ToString();
                 textBox8.Text = App_Config.Kd.ToString();
             };this.Invoke(inv);
-            //try
-            //{
-            //    serialPort1.PortName = "COM4";
-            //    serialPort1.BaudRate = 115200;
-            //    serialPort1.Open();
-            //}
-            //catch (Exception ex1)
-            //{
-
-            //    MessageBox.Show("RFID " + ex1.Message);
-            //}
-          
+            
             bool open = _RS485.Opened(port, baud, 8, parity, stopBits);
            
             if (open )
@@ -1406,8 +1493,12 @@ namespace READ_TEXT485
 
                             }
                         }
-                        
-                        
+
+                        using (StreamWriter sw = new StreamWriter(App_Config.Path + @"\" + GPS)) 
+                        {
+                            sw.WriteLine(RFID_ID);
+                            
+                        }
                        
 
                     }
@@ -1911,58 +2002,58 @@ namespace READ_TEXT485
         #region Events
         private void comboBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            try
-            {
-                comboBox1.Items.Clear();
-                DataTable dataTable = mySQL.Get_Database_Name();
-                foreach (DataRow item in dataTable.Rows)
-                {
-                    string database_Name = item["database_name"].ToString();
-                    comboBox1.Items.Add(database_Name);
-                }
-                if (mySQL.error_message != string.Empty) throw new Exception();
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    comboBox1.Items.Clear();
+            //    DataTable dataTable = mySQL.Get_Database_Name();
+            //    foreach (DataRow item in dataTable.Rows)
+            //    {
+            //        string database_Name = item["database_name"].ToString();
+            //        comboBox1.Items.Add(database_Name);
+            //    }
+            //    if (mySQL.error_message != string.Empty) throw new Exception();
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
-            }
+            //    MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
+            //}
         }
         string databases = string.Empty;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.Text!="")
-            {
-                databases = comboBox1.Text;
-                Configxml.UpdateSystem_Config("Database", databases);
-            }
+            //if (comboBox1.Text!="")
+            //{
+            //    databases = comboBox1.Text;
+            //    Configxml.UpdateSystem_Config("Database", databases);
+            //}
           
         }
 
         private void comboBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            if (comboBox1.Text=="")
-            {
-                return;
-            }
-            else 
-            {
-                try
-                {
-                    comboBox2.Items.Clear();
-                    List<string> dataTable = mySQL.Get_table_Name(databases);
-                    foreach (string item in dataTable)
-                    {
+            //if (comboBox1.Text=="")
+            //{
+            //    return;
+            //}
+            //else 
+            //{
+            //    try
+            //    {
+            //        comboBox2.Items.Clear();
+            //        List<string> dataTable = mySQL.Get_table_Name(databases);
+            //        foreach (string item in dataTable)
+            //        {
                         
-                        comboBox2.Items.Add(item);
-                    }
-                    if (mySQL.error_message != string.Empty) throw new Exception();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
-                }
-            }
+            //            comboBox2.Items.Add(item);
+            //        }
+            //        if (mySQL.error_message != string.Empty) throw new Exception();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
+            //    }
+            //}
         }
         string table = string.Empty;
         int count_row = 0;
@@ -2010,7 +2101,7 @@ namespace READ_TEXT485
                 All_Rec.Add(ex_rec);
             }
             Mapping.Rectangles = All_Rec;
-            panel6.Refresh();          
+            //panel6.Refresh();          
             Configxml.Update_Mapping(Mapping, table);
             
         }
@@ -2333,98 +2424,98 @@ namespace READ_TEXT485
         List<string> Route = new List<string>();
         bool flag_match = false;
         bool hit = false;
-        private void panel6_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (flag) 
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    in_rec = Ex_rec.Ex_Rectangle(15, 15, e.X, e.Y);
-                    ex_rec = Ex_rec.Ex_Rectangle(20, 20, e.X, e.Y); // Create new Rectangle
-                    All_Rec.Add(in_rec);
-                    All_Rec.Add(ex_rec);
-                    Mapping.Rectangles = All_Rec;
-                    panel6.Refresh();
-                }
-                else if(e.Button == MouseButtons.Right) 
-                {
-                    Rectangle[] rec = new Rectangle[2];
-                    foreach (var item in All_Rec)
-                    {
-                        if (item.Width == 20) 
-                        {
-                            if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)))
-                            {
+        //private void panel6_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    if (flag) 
+        //    {
+        //        if (e.Button == MouseButtons.Left)
+        //        {
+        //            in_rec = Ex_rec.Ex_Rectangle(15, 15, e.X, e.Y);
+        //            ex_rec = Ex_rec.Ex_Rectangle(20, 20, e.X, e.Y); // Create new Rectangle
+        //            All_Rec.Add(in_rec);
+        //            All_Rec.Add(ex_rec);
+        //            Mapping.Rectangles = All_Rec;
+        //            //panel6.Refresh();
+        //        }
+        //        else if(e.Button == MouseButtons.Right) 
+        //        {
+        //            Rectangle[] rec = new Rectangle[2];
+        //            foreach (var item in All_Rec)
+        //            {
+        //                if (item.Width == 20) 
+        //                {
+        //                    if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)))
+        //                    {
 
-                                if((item.X + item.Width / 2) == e.X) 
-                                {
-                                    rec[0] = item;
-                                }
-                            }
-                        }
-                        else if (item.Width == 10) 
-                        {
-                            if ((item.X + item.Width / 2) == e.X) 
-                            {
-                                rec[1] = item;
-                            }
-                        }
+        //                        if((item.X + item.Width / 2) == e.X) 
+        //                        {
+        //                            rec[0] = item;
+        //                        }
+        //                    }
+        //                }
+        //                else if (item.Width == 10) 
+        //                {
+        //                    if ((item.X + item.Width / 2) == e.X) 
+        //                    {
+        //                        rec[1] = item;
+        //                    }
+        //                }
                         
-                    }
-                    All_Rec.Remove(rec[0]);
-                    All_Rec.Remove(rec[1]);
-                    Mapping.Rectangles = All_Rec;
-                    panel6.Refresh();
-                }
-            }
-            else if (flag_match) 
-            {
-                if(e.Button == MouseButtons.Left) 
-                {
-                    int f = 0;
-                    foreach (var item in Mapping.Rectangles)
-                    {
-                        if (f % 2 != 0)
-                        {
-                            if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && !hit)
-                            {
-                                All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
-                                string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
-                                if (get != string.Empty) 
-                                {
-                                    //if(!Route.Contains(get))
-                                    //{
-                                        Route.Add(get);
-                                    //}                                  
-                                }
-                                hit = true;
-                            }
-                            else if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && hit)
-                            {
-                                All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
-                                string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
-                                if (get != string.Empty)
-                                {
-                                    //if (!Route.Contains(get))
-                                    //{
-                                        Route.Add(get);
-                                    //}
-                                }
-                                hit = false;
-                            }
+        //            }
+        //            All_Rec.Remove(rec[0]);
+        //            All_Rec.Remove(rec[1]);
+        //            Mapping.Rectangles = All_Rec;
+        //            panel6.Refresh();
+        //        }
+        //    }
+        //    else if (flag_match) 
+        //    {
+        //        if(e.Button == MouseButtons.Left) 
+        //        {
+        //            int f = 0;
+        //            foreach (var item in Mapping.Rectangles)
+        //            {
+        //                if (f % 2 != 0)
+        //                {
+        //                    if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && !hit)
+        //                    {
+        //                        All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
+        //                        string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
+        //                        if (get != string.Empty) 
+        //                        {
+        //                            //if(!Route.Contains(get))
+        //                            //{
+        //                                Route.Add(get);
+        //                            //}                                  
+        //                        }
+        //                        hit = true;
+        //                    }
+        //                    else if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && hit)
+        //                    {
+        //                        All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
+        //                        string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
+        //                        if (get != string.Empty)
+        //                        {
+        //                            //if (!Route.Contains(get))
+        //                            //{
+        //                                Route.Add(get);
+        //                            //}
+        //                        }
+        //                        hit = false;
+        //                    }
                           
-                        }
+        //                }
 
-                        f++;
-                    }
-                    Mapping.Egde = All_Point;
-                    Mapping.Route = Route;
-                    panel6.Refresh();
+        //                f++;
+        //            }
+        //            Mapping.Egde = All_Point;
+        //            Mapping.Route = Route;
+        //            panel6.Refresh();
                     
-                }
+        //        }
                
-            }          
-        }
+        //    }          
+        //}
         private string get_ID(int X,int Y) 
         {
             string get = string.Empty;
@@ -2524,27 +2615,27 @@ namespace READ_TEXT485
 
         }
 
-        private void btn_edit_map_Click(object sender, EventArgs e)
-        {
-            if(btn_edit_map.Text=="Edit Map") 
-            {
+        //private void btn_edit_map_Click(object sender, EventArgs e)
+        //{
+        //    if(btn_edit_map.Text=="Edit Map") 
+        //    {
                
-                btn_edit_map.Text = "Done";             
-                btn_Match_point.Enabled = true;
-                btn_cancel.Enabled = true;
+        //        btn_edit_map.Text = "Done";             
+        //        btn_Match_point.Enabled = true;
+        //        btn_cancel.Enabled = true;
 
-            }
-            else if (btn_edit_map.Text == "Done") 
-            {
-                flag = false;
-                flag_match = false;
-                btn_edit_map.Text = "Edit Map";
-                Mapping.Rectangles = All_Rec;
-                Configxml.Update_Mapping(Mapping,table);
-                btn_Match_point.Enabled = false;
-                btn_cancel.Enabled = false;
-            }
-        }
+        //    }
+        //    else if (btn_edit_map.Text == "Done") 
+        //    {
+        //        flag = false;
+        //        flag_match = false;
+        //        btn_edit_map.Text = "Edit Map";
+        //        Mapping.Rectangles = All_Rec;
+        //        Configxml.Update_Mapping(Mapping,table);
+        //        btn_Match_point.Enabled = false;
+        //        btn_cancel.Enabled = false;
+        //    }
+        //}
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -2556,11 +2647,11 @@ namespace READ_TEXT485
 
         }
 
-        private void btn_cancel_Click(object sender, EventArgs e)
-        {
-            All_Point.Clear();
-            panel6.Refresh();
-        }
+        //private void btn_cancel_Click(object sender, EventArgs e)
+        //{
+        //    All_Point.Clear();
+        //    panel6.Refresh();
+        //}
         FolderBrowserDialog FolderBrowserDialog = new FolderBrowserDialog();
         private void button11_Click(object sender, EventArgs e)
         {
@@ -2569,6 +2660,15 @@ namespace READ_TEXT485
                 textBox17.Text = FolderBrowserDialog.SelectedPath.ToString();
                 Configxml.UpdateSystem_Config("Path", textBox17.Text);
                 App_Config = Configxml.GetSystem_Config();
+                if (!File.Exists(App_Config.Path + @"\" + File1)) 
+                {
+                    File.Create(App_Config.Path + @"\" + File1).Close();
+                }
+                FileSystemWatcher = new FileSystemWatcher(Path.GetDirectoryName(App_Config.Path + @"\" + File1));
+                FileSystemWatcher.NotifyFilter = NotifyFilters.LastWrite;
+                FileSystemWatcher.Filter = "*.txt";
+                FileSystemWatcher.Changed += FileSystemWatcher_Changed;
+                FileSystemWatcher.EnableRaisingEvents = true;
             }
         }
 
@@ -2579,45 +2679,71 @@ namespace READ_TEXT485
         }
 
         bool hold = false;
+        private void Call_AGV(string station) 
+        {
+            mySQL.Fill_data(databases, table, ref dataGridView1);
+            DataTable = mySQL.Read_data(databases, table);
+            hold = true;
+            Configxml.UpdateSystem_Config("Table", table);
+            Configxml.Create_MapFile(table);
+            All_Rec.Clear();
+            All_Point.Clear();
+            Route.Clear();
+            App_Config = Configxml.GetSystem_Config();
+            Mapping = Configxml.GetMapping(App_Config.Table);
+            All_Rec = Mapping.Rectangles;
+            All_Point = Mapping.Egde;
+            Route = Mapping.Route;
+            string[,] temp = new string[DataTable.Rows.Count, 3];
+            Get_Location = new string[DataTable.Rows.Count, 3];
+            for (int i = 0; i < DataTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    temp[i, j] = DataTable.Rows[i][j].ToString();
+                }
+            }
+            Get_Location = temp;
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 
-                if (comboBox2.Text == "") return;
-                hold = false;
-                table = comboBox2.Text;
-                mySQL.Fill_data(databases, table, ref dataGridView1);
-                DataTable = mySQL.Read_data(databases, table);               
-                hold = true;              
-                Configxml.UpdateSystem_Config("Table", table);
-                Configxml.Create_MapFile(table);
-                All_Rec.Clear();
-                All_Point.Clear();
-                Route.Clear();
-                App_Config = Configxml.GetSystem_Config();
-                Mapping = Configxml.GetMapping(App_Config.Table);
-                All_Rec = Mapping.Rectangles;
-                All_Point = Mapping.Egde;
-                Route = Mapping.Route;
-                string[,] temp = new string[DataTable.Rows.Count, 3];
-                Get_Location = new string[DataTable.Rows.Count, 3];
-                for (int i = 0; i < DataTable.Rows.Count; i++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        temp[i, j] = DataTable.Rows[i][j].ToString();
-                    }
-                }
-                Get_Location = temp;
-                if (mySQL.error_message != string.Empty) throw new Exception();
+            //    if (comboBox2.Text == "") return;
+            //    hold = false;
+            //    table = comboBox2.Text;
+            //    mySQL.Fill_data(databases, table, ref dataGridView1);
+            //    DataTable = mySQL.Read_data(databases, table);               
+            //    hold = true;              
+            //    Configxml.UpdateSystem_Config("Table", table);
+            //    Configxml.Create_MapFile(table);
+            //    All_Rec.Clear();
+            //    All_Point.Clear();
+            //    Route.Clear();
+            //    App_Config = Configxml.GetSystem_Config();
+            //    Mapping = Configxml.GetMapping(App_Config.Table);
+            //    All_Rec = Mapping.Rectangles;
+            //    All_Point = Mapping.Egde;
+            //    Route = Mapping.Route;
+            //    string[,] temp = new string[DataTable.Rows.Count, 3];
+            //    Get_Location = new string[DataTable.Rows.Count, 3];
+            //    for (int i = 0; i < DataTable.Rows.Count; i++)
+            //    {
+            //        for (int j = 0; j < 3; j++)
+            //        {
+            //            temp[i, j] = DataTable.Rows[i][j].ToString();
+            //        }
+            //    }
+            //    Get_Location = temp;
+            //    if (mySQL.error_message != string.Empty) throw new Exception();
                 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show("[SYSTEM]: "+ex.Message + "[SQL]: " + mySQL.error_message);
-            }
+            //    MessageBox.Show("[SYSTEM]: "+ex.Message + "[SQL]: " + mySQL.error_message);
+            //}
         }
 
         
@@ -2627,65 +2753,65 @@ namespace READ_TEXT485
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    if (i > (dataGridView1.Rows.Count - 2)) break;
-                    string cmd2 = "UPDATE " + table + " SET `X`= '" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "'," +
-                        "`Y`= '" + dataGridView1.Rows[i].Cells[2].Value.ToString() + "'," +
-                        "`RUNSTOP`= '" + dataGridView1.Rows[i].Cells[3].Value.ToString() + "'," +
-                        "`LR`= '" + dataGridView1.Rows[i].Cells[4].Value.ToString() + "'," +
-                        "`SPEED`= '" + dataGridView1.Rows[i].Cells[5].Value.ToString() + "'," +
-                        "`DIR`= '" + dataGridView1.Rows[i].Cells[6].Value.ToString() + "'," +
-                        "`LIFT`= '" + dataGridView1.Rows[i].Cells[7].Value.ToString() + "'" +
-                        " WHERE ID = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'";
-                   bool b2= mySQL.SQL_command(cmd2, databases);
-                    if ( !b2) 
-                    {
-                        throw new Exception();
-                    }
+            //try
+            //{
+            //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //    {
+            //        if (i > (dataGridView1.Rows.Count - 2)) break;
+            //        string cmd2 = "UPDATE " + table + " SET `X`= '" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "'," +
+            //            "`Y`= '" + dataGridView1.Rows[i].Cells[2].Value.ToString() + "'," +
+            //            "`RUNSTOP`= '" + dataGridView1.Rows[i].Cells[3].Value.ToString() + "'," +
+            //            "`LR`= '" + dataGridView1.Rows[i].Cells[4].Value.ToString() + "'," +
+            //            "`SPEED`= '" + dataGridView1.Rows[i].Cells[5].Value.ToString() + "'," +
+            //            "`DIR`= '" + dataGridView1.Rows[i].Cells[6].Value.ToString() + "'," +
+            //            "`LIFT`= '" + dataGridView1.Rows[i].Cells[7].Value.ToString() + "'" +
+            //            " WHERE ID = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'";
+            //       bool b2= mySQL.SQL_command(cmd2, databases);
+            //        if ( !b2) 
+            //        {
+            //            throw new Exception();
+            //        }
                     
-                }
-                DataTable = mySQL.Read_data(databases, table);
-                button7.PerformClick();
-                MessageBox.Show("Update data successfully");
+            //    }
+            //    DataTable = mySQL.Read_data(databases, table);
+            //    button7.PerformClick();
+            //    MessageBox.Show("Update data successfully");
                 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show("[SYSTEM]" + ex.Message + " :[SQL]" + mySQL.error_message);
-            }
+            //    MessageBox.Show("[SYSTEM]" + ex.Message + " :[SQL]" + mySQL.error_message);
+            //}
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                hold = false;
-                string cmd2 = "DROP TABLE IF EXISTS " + comboBox2.Text + "";
-                string cmd = @"CREATE TABLE "+comboBox2.Text+" (ID VARCHAR(50), X TEXT, Y TEXT, RUNSTOP TEXT, LR TEXT, SPEED TEXT, DIR TEXT, LIFT TEXT)";
-                bool check = mySQL.SQL_command(cmd2, databases);
-                bool kq = mySQL.SQL_command(cmd, databases);
-                if (!kq||!check)
-                {
-                    throw new Exception();
-                }
-                if (kq) 
-                {
-                    MessageBox.Show("Create successfully");
-                }
-                comboBox2.Items.Add(comboBox2.Text);
-                mySQL.Fill_data(databases, comboBox2.Text,ref dataGridView1);
-                table = comboBox2.Text;
-                hold = true;
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    hold = false;
+            //    string cmd2 = "DROP TABLE IF EXISTS " + comboBox2.Text + "";
+            //    string cmd = @"CREATE TABLE "+comboBox2.Text+" (ID VARCHAR(50), X TEXT, Y TEXT, RUNSTOP TEXT, LR TEXT, SPEED TEXT, DIR TEXT, LIFT TEXT)";
+            //    bool check = mySQL.SQL_command(cmd2, databases);
+            //    bool kq = mySQL.SQL_command(cmd, databases);
+            //    if (!kq||!check)
+            //    {
+            //        throw new Exception();
+            //    }
+            //    if (kq) 
+            //    {
+            //        MessageBox.Show("Create successfully");
+            //    }
+            //    comboBox2.Items.Add(comboBox2.Text);
+            //    mySQL.Fill_data(databases, comboBox2.Text,ref dataGridView1);
+            //    table = comboBox2.Text;
+            //    hold = true;
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
-            }
+            //    MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
+            //}
         }
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -2696,24 +2822,24 @@ namespace READ_TEXT485
 
         private void button4_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string cmd = "DROP TABLE IF EXISTS " + comboBox2.Text + "";
-                bool check = mySQL.SQL_command(cmd, databases);
-                comboBox2.Items.Clear();
-                List<string> dataTable = mySQL.Get_table_Name(databases);
-                foreach (string item in dataTable)
-                {
-                    comboBox2.Items.Add(item);
-                }
-                comboBox2.SelectedIndex = 0;
-                if (mySQL.error_message != string.Empty) throw new Exception();
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    string cmd = "DROP TABLE IF EXISTS " + comboBox2.Text + "";
+            //    bool check = mySQL.SQL_command(cmd, databases);
+            //    comboBox2.Items.Clear();
+            //    List<string> dataTable = mySQL.Get_table_Name(databases);
+            //    foreach (string item in dataTable)
+            //    {
+            //        comboBox2.Items.Add(item);
+            //    }
+            //    comboBox2.SelectedIndex = 0;
+            //    if (mySQL.error_message != string.Empty) throw new Exception();
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
-            }
+            //    MessageBox.Show("[SYSTEM]: " + ex.Message + "[SQL]: " + mySQL.error_message);
+            //}
         }
 
         private void button6_Click(object sender, EventArgs e)

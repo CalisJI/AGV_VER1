@@ -142,6 +142,58 @@
       <Height>20</Height>
     </Rectangle>
   </Rectangles>
-  <Egde />
-  <Route />
+  <Egde>
+    <Point>
+      <X>20</X>
+      <Y>60</Y>
+    </Point>
+    <Point>
+      <X>80</X>
+      <Y>100</Y>
+    </Point>
+    <Point>
+      <X>80</X>
+      <Y>100</Y>
+    </Point>
+    <Point>
+      <X>100</X>
+      <Y>60</Y>
+    </Point>
+    <Point>
+      <X>100</X>
+      <Y>60</Y>
+    </Point>
+    <Point>
+      <X>100</X>
+      <Y>20</Y>
+    </Point>
+    <Point>
+      <X>100</X>
+      <Y>20</Y>
+    </Point>
+    <Point>
+      <X>150</X>
+      <Y>70</Y>
+    </Point>
+    <Point>
+      <X>150</X>
+      <Y>70</Y>
+    </Point>
+    <Point>
+      <X>20</X>
+      <Y>60</Y>
+    </Point>
+  </Egde>
+  <Route>
+    <string>1</string>
+    <string>3</string>
+    <string>3</string>
+    <string>4</string>
+    <string>4</string>
+    <string>0</string>
+    <string>0</string>
+    <string>2</string>
+    <string>2</string>
+    <string>1</string>
+  </Route>
 </Mapping>

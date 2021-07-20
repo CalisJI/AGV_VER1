@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace READ_TEXT485
 {
@@ -13,6 +14,7 @@ namespace READ_TEXT485
         public List<Rectangle> Rectangles { get; set; }
         public List<Point> Egde { get; set; }
         public List<string> Route { get; set; }
+       
     }
     public class Shape 
     {

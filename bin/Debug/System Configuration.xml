@@ -3,11 +3,12 @@
   <COM>COM1</COM>
   <Baud>115200</Baud>
   <Database>agv_data</Database>
-  <Table>data4</Table>
-  <Kp>0.150000005960464</Kp>
+  <Table>Trạm 3</Table>
+  <Kp>0.15</Kp>
   <Ki>4</Ki>
   <Kd>0</Kd>
   <rotate>True</rotate>
   <current_angle>0</current_angle>
   <manual_speed>300</manual_speed>
+  <Path>C:\Users\quyth\OneDrive\Máy tính\Communicate</Path>
 </App_Config>
