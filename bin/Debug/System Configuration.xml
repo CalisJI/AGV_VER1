@@ -3,7 +3,7 @@
   <COM>COM1</COM>
   <Baud>115200</Baud>
   <Database>agv_data</Database>
-  <Table>Trạm 3</Table>
+  <Table>Trạm 2</Table>
   <Kp>0.15</Kp>
   <Ki>4</Ki>
   <Kd>0</Kd>

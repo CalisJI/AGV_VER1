@@ -777,6 +777,10 @@ namespace READ_TEXT485
                             Receive[b] = sr.ReadLine();
 
                         }
+                        MethodInvoker methodInvoker = delegate 
+                        {
+                            textBox16.Text = "";
+                        };this.Invoke(methodInvoker);
                         foreach (var item in Receive)
                         {
                             MethodInvoker inv = delegate
@@ -2424,219 +2428,7 @@ namespace READ_TEXT485
         List<string> Route = new List<string>();
         bool flag_match = false;
         bool hit = false;
-        //private void panel6_MouseDown(object sender, MouseEventArgs e)
-        //{
-        //    if (flag) 
-        //    {
-        //        if (e.Button == MouseButtons.Left)
-        //        {
-        //            in_rec = Ex_rec.Ex_Rectangle(15, 15, e.X, e.Y);
-        //            ex_rec = Ex_rec.Ex_Rectangle(20, 20, e.X, e.Y); // Create new Rectangle
-        //            All_Rec.Add(in_rec);
-        //            All_Rec.Add(ex_rec);
-        //            Mapping.Rectangles = All_Rec;
-        //            //panel6.Refresh();
-        //        }
-        //        else if(e.Button == MouseButtons.Right) 
-        //        {
-        //            Rectangle[] rec = new Rectangle[2];
-        //            foreach (var item in All_Rec)
-        //            {
-        //                if (item.Width == 20) 
-        //                {
-        //                    if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)))
-        //                    {
-
-        //                        if((item.X + item.Width / 2) == e.X) 
-        //                        {
-        //                            rec[0] = item;
-        //                        }
-        //                    }
-        //                }
-        //                else if (item.Width == 10) 
-        //                {
-        //                    if ((item.X + item.Width / 2) == e.X) 
-        //                    {
-        //                        rec[1] = item;
-        //                    }
-        //                }
-                        
-        //            }
-        //            All_Rec.Remove(rec[0]);
-        //            All_Rec.Remove(rec[1]);
-        //            Mapping.Rectangles = All_Rec;
-        //            panel6.Refresh();
-        //        }
-        //    }
-        //    else if (flag_match) 
-        //    {
-        //        if(e.Button == MouseButtons.Left) 
-        //        {
-        //            int f = 0;
-        //            foreach (var item in Mapping.Rectangles)
-        //            {
-        //                if (f % 2 != 0)
-        //                {
-        //                    if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && !hit)
-        //                    {
-        //                        All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
-        //                        string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
-        //                        if (get != string.Empty) 
-        //                        {
-        //                            //if(!Route.Contains(get))
-        //                            //{
-        //                                Route.Add(get);
-        //                            //}                                  
-        //                        }
-        //                        hit = true;
-        //                    }
-        //                    else if ((e.X > item.X && (e.X < item.X + item.Width)) && (e.Y > item.Y && (e.Y < item.Y + item.Height)) && hit)
-        //                    {
-        //                        All_Point.Add(new Point(item.X + item.Width / 2, item.Y + item.Height / 2));
-        //                        string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
-        //                        if (get != string.Empty)
-        //                        {
-        //                            //if (!Route.Contains(get))
-        //                            //{
-        //                                Route.Add(get);
-        //                            //}
-        //                        }
-        //                        hit = false;
-        //                    }
-                          
-        //                }
-
-        //                f++;
-        //            }
-        //            Mapping.Egde = All_Point;
-        //            Mapping.Route = Route;
-        //            panel6.Refresh();
-                    
-        //        }
-               
-        //    }          
-        //}
-        private string get_ID(int X,int Y) 
-        {
-            string get = string.Empty;
-            for (int ge = 0; ge < Get_Location.GetLength(0); ge++)
-            {
-               
-                if (X.ToString() == Get_Location[ge, 1] && Y.ToString() == Get_Location[ge, 2])
-                {
-                    get= ge.ToString();
-                }
-            }
-            return get;
-        }
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-            int i = 0;
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            //for (int a = 20; a < panel6.Width; a+=20)
-            //{
-            //    e.Graphics.DrawLine(new Pen(Color.Blue, 0.5f), new Point(a, 0), new Point(a, panel6.Height));
-            //}
-            //for (int a = 20; a < panel6.Height; a+=20)
-            //{
-            //    e.Graphics.DrawLine(new Pen(Color.Blue, 0.5f), new Point(0, a), new Point(panel6.Width, a));
-            //}
-            foreach(var item in Mapping.Rectangles) 
-            {              
-                if (i % 2 == 0) 
-                {
-                    e.Graphics.FillRectangle(Brushes.Black, item);
-                }
-                else 
-                {
-                    e.Graphics.DrawRectangle(new Pen(Color.Blue, 1), item);
-                    for (int d = 0; d < Get_Location.GetLength(0); d++)
-                    {
-                        if (item.X + item.Width / 2 == int.Parse(Get_Location[d, 1]) && item.Y + item.Height / 2 == int.Parse(Get_Location[d, 2])) 
-                        {
-                            string get = get_ID(item.X + item.Width / 2, item.Y + item.Height / 2);
-                           
-                            Font font = new Font("Times New Roman", 10);
-                            e.Graphics.DrawString("("+get+")", font, Brushes.Red, new Point(item.X, item.Y - 15));
-                        }
-                    }
-                }
-                i++;
-            }
-
-            if (Mapping.Egde.Count % 2 == 0 && Mapping.Egde.Count > 1)  
-            {
-                for (int j = 0; j < Mapping.Egde.Count; j = j + 2)
-                {
-                    Pen pen = new Pen(Brushes.Yellow, 4f);
-                    pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
-                    e.Graphics.DrawLine(pen, Mapping.Egde[j], Mapping.Egde[j + 1]);
-                }
-            }
-            else if(Mapping.Egde.Count % 2 == 1 && Mapping.Egde.Count > 1) 
-            {
-                for (int j = 0; j < Mapping.Egde.Count-1; j = j + 2)
-                {
-                    Pen pen = new Pen(Brushes.Yellow,4f);
-                    pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
-                    e.Graphics.DrawLine(pen, Mapping.Egde[j], Mapping.Egde[j + 1]);
-                }
-            }
-            string tct = string.Empty;
-            string txt = string.Empty;
-            string tet = string.Empty;
-            MethodInvoker inv = delegate
-            {
-                if (Route.Count < 1) return;
-                for (int s = 0; s < Route.Count; s++)
-                {
-                    //textBox16.AppendText(Route[i] + "-->");
-                    txt = Route[s] + "-->";
-                    if (tet != txt) 
-                    {
-                        txt = Route[s] + "-->";
-                        tct += txt;
-                        tet = txt;
-                    }
-                    else 
-                    {
-                        txt = "";
-                        tct += txt;
-                        tet = Route[s] + "-->";
-                    }                                  
-                }
-                tct = tct.Substring(0, tct.Length - 3);
-                textBox16.Text = tct;
-            }; this.Invoke(inv);
-        }
-
-        private void panel6_MouseUp(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        //private void btn_edit_map_Click(object sender, EventArgs e)
-        //{
-        //    if(btn_edit_map.Text=="Edit Map") 
-        //    {
-               
-        //        btn_edit_map.Text = "Done";             
-        //        btn_Match_point.Enabled = true;
-        //        btn_cancel.Enabled = true;
-
-        //    }
-        //    else if (btn_edit_map.Text == "Done") 
-        //    {
-        //        flag = false;
-        //        flag_match = false;
-        //        btn_edit_map.Text = "Edit Map";
-        //        Mapping.Rectangles = All_Rec;
-        //        Configxml.Update_Mapping(Mapping,table);
-        //        btn_Match_point.Enabled = false;
-        //        btn_cancel.Enabled = false;
-        //    }
-        //}
-
+  
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
@@ -2646,12 +2438,7 @@ namespace READ_TEXT485
         {
 
         }
-
-        //private void btn_cancel_Click(object sender, EventArgs e)
-        //{
-        //    All_Point.Clear();
-        //    panel6.Refresh();
-        //}
+   
         FolderBrowserDialog FolderBrowserDialog = new FolderBrowserDialog();
         private void button11_Click(object sender, EventArgs e)
         {
